@@ -8,19 +8,19 @@ import entidad.Prestamo;
 
 public interface PrestamosDao {
 	
-	public boolean insert(Prestamo prestamo);
+	public boolean Insert(Prestamo prestamo);
 
-	public boolean logicalDeletion(Prestamo prestamo); // Baja lógica
+	public boolean EliminacionLogica(Prestamo prestamo); // Baja lógica
 
-	public boolean update(Prestamo prestamo);
+	public boolean Update(Prestamo prestamo);
 
-	public Prestamo readOne(int nroCuenta);
+	public Prestamo BuscarUno(int nroCuenta);
 	
-	public List<Prestamo> readAll();
+	public List<Prestamo> BuscarTodos();
 
-	public String readLast();
+	public String Buscarultimo();
 
-	public List<Prestamo> readAllDni(String dni);
+	public List<Prestamo> BuscarDni(String dni);
 	
-	public List<Cuota> getCuotas(int codPrestamo);
+	public List<Cuota> ObtenerCuota(int codPrestamo);
 }

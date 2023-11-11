@@ -13,7 +13,7 @@ import entidad.TipoMovimiento;
 public class TransferenciaDaoImpl implements TransferenciaDao{
 	private static final String transferir = "{CALL SP_TRANSFERENCIA(?,?,?,?,?,?,?)}";
 	
-	public Boolean DoTransfer(Cuenta CtaOrigen, Cuenta CtaDestino, BigDecimal importe, BigDecimal saldoOrigen, BigDecimal SaldoDestino, TipoMovimiento TMov, String detalle){
+	public Boolean CrearTrans(Cuenta CtaOrigen, Cuenta CtaDestino, BigDecimal importe, BigDecimal saldoOrigen, BigDecimal SaldoDestino, TipoMovimiento TMov, String detalle){
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false; 
 		try {

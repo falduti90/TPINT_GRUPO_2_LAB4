@@ -17,7 +17,7 @@ public class TipoCuentaDaoImpl implements TipoCuentaDao {
 	private static final String readOne = "SELECT * FROM TiposCuentas Where codTipo = ?";
 	
 	@Override
-	public boolean insert(TipoCuenta tipo_cuenta_a_agregar) {
+	public boolean Insert(TipoCuenta tipo_cuenta_a_agregar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -44,7 +44,7 @@ public class TipoCuentaDaoImpl implements TipoCuentaDao {
 	}
 
 	@Override
-	public boolean logicalDeletion(TipoCuenta tipo_cuenta_a_eliminar) {
+	public boolean EliminacionLogica(TipoCuenta tipo_cuenta_a_eliminar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isLogicalDeletionExitoso = false;
@@ -67,7 +67,7 @@ public class TipoCuentaDaoImpl implements TipoCuentaDao {
 	}
 
 	@Override
-	public List<TipoCuenta> readAll() {
+	public List<TipoCuenta> BuscarTodas() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<TipoCuenta> tipoCuenta = new ArrayList<TipoCuenta>();
@@ -91,7 +91,7 @@ public class TipoCuentaDaoImpl implements TipoCuentaDao {
 	}
 
 	@Override
-	public TipoCuenta readOne(int codTipo) {
+	public TipoCuenta BuscarUna(int codTipo) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		TipoCuenta tipoCuenta = new TipoCuenta();

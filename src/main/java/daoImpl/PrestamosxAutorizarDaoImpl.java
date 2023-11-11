@@ -25,7 +25,7 @@ public class PrestamosxAutorizarDaoImpl implements PrestamosxAutorizarDao {
 	private static final String countAll = "SELECT COUNT(codPrestamoPendinte) as total FROM agregarPrestamoxAutorizar where estado = 1 ORDER by apellido, dni codPrestamoPendinte";
 	
 	@Override
-	public boolean insert(PrestamoxAutorizar prestamo) {
+	public boolean Insert(PrestamoxAutorizar prestamo) {
 		
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -55,17 +55,17 @@ public class PrestamosxAutorizarDaoImpl implements PrestamosxAutorizarDao {
 	
 	}
 	
-	public boolean logicalDeletion(PrestamoxAutorizar prestamo) {
+	public boolean EliminacionLogica(PrestamoxAutorizar prestamo) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public PrestamoxAutorizar readOne(int nroCuenta) {
+	public PrestamoxAutorizar BuscarUno(int nroCuenta) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 	
-	public List<PrestamoxAutorizar> readAll() {
+	public List<PrestamoxAutorizar> BuscarTodos() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<PrestamoxAutorizar> prestamoxAutorizar = new ArrayList<PrestamoxAutorizar>();
@@ -89,7 +89,9 @@ public class PrestamosxAutorizarDaoImpl implements PrestamosxAutorizarDao {
 		}
 		return prestamoxAutorizar;
 	}
-	public List<PrestamoxAutorizar> readAllActive() {
+	
+	
+	public List<PrestamoxAutorizar> BuscarActivos() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<PrestamoxAutorizar> prestamoxAutorizar = new ArrayList<PrestamoxAutorizar>();
@@ -114,7 +116,7 @@ public class PrestamosxAutorizarDaoImpl implements PrestamosxAutorizarDao {
 		return prestamoxAutorizar;
 	}
 
-	public boolean update(PrestamoxAutorizar prestamo) {
+	public boolean Update(PrestamoxAutorizar prestamo) {
 		
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
@@ -160,7 +162,7 @@ public class PrestamosxAutorizarDaoImpl implements PrestamosxAutorizarDao {
 	}
 
 	
-	public int countActive() {
+	public int ContarPrestamos() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		int cant = 0;

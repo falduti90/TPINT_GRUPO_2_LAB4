@@ -23,7 +23,7 @@ public class PrestamosDaoImpl implements PrestamosDao{
 	private static final String readall = "SELECT * FROM prestamos where dni = ?";
 	private static final String getcuotas = "select * from cuotas_x_prestamo where codPrestamo  =  ? ";
 	
-	public List<Prestamo> readAllDni(String dni) {
+	public List<Prestamo> BuscarDni(String dni) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Prestamo> prestamos = new ArrayList<Prestamo>();
@@ -60,7 +60,7 @@ public class PrestamosDaoImpl implements PrestamosDao{
 		return new Prestamo(codPrestamo,fecha,importePagar,importePedido,plazoPago,montoMensual,cantidadCuotas, estado);
 	}
 	
-	public List<Cuota> getCuotas(int codPrestamo){
+	public List<Cuota> ObtenerCuota(int codPrestamo){
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Cuota> cuotas = new ArrayList<Cuota>();
@@ -97,45 +97,42 @@ public class PrestamosDaoImpl implements PrestamosDao{
 	}
 
 	@Override
-	public boolean insert(Prestamo prestamo) {
+	public boolean Insert(Prestamo prestamo) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean logicalDeletion(Prestamo prestamo) {
+	public boolean EliminacionLogica(Prestamo prestamo) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean update(Prestamo prestamo) {
+	public boolean Update(Prestamo prestamo) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public Prestamo readOne(int nroCuenta) {
+	public Prestamo BuscarUno(int nroCuenta) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Prestamo> readAll() {
+	public List<Prestamo> BuscarTodos() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String readLast() {
+	public String Buscarultimo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	/*
-	 * public Prestamo(int codPrestamo, Date fecha, BigDecimal importe_a_pagar, BigDecimal importe_pedido,
-			int plazo_pago, BigDecimal monto_mensual, int cantidad_cuotas) {
-	 * */
+
 	
 }
 

@@ -20,7 +20,7 @@ public class PaisDaoImpl implements PaisDao {
 	private static final String readlast = "SELECT * FROM Paises ORDER by codPais DESC LIMIT 1";
 	private static final String readOne = "SELECT * FROM Paises Where codPais = ?";
 	
-	public boolean insert(Pais pais_a_agregar) {
+	public boolean Insert(Pais pais_a_agregar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -46,7 +46,7 @@ public class PaisDaoImpl implements PaisDao {
 		return isInsertExitoso;
 	}
 	
-	public boolean update(Pais pais_a_actualizar) {
+	public boolean Update(Pais pais_a_actualizar) {
 
 		System.out.println(pais_a_actualizar.toString());
 		PreparedStatement statement;
@@ -74,7 +74,7 @@ public class PaisDaoImpl implements PaisDao {
 		return isUpdateExitoso;
 	}
 
-	public boolean logicalDeletion(Pais pais_a_eliminar) {
+	public boolean EliminacionLogica(Pais pais_a_eliminar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isLogicalDeletionExitoso = false;
@@ -96,7 +96,7 @@ public class PaisDaoImpl implements PaisDao {
 		return isLogicalDeletionExitoso;
 	}
 	
-	public List<Pais> readAll() {
+	public List<Pais> BuscarTodos() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Pais> paises = new ArrayList<Pais>();
@@ -119,7 +119,7 @@ public class PaisDaoImpl implements PaisDao {
 		return paises;
 	}
 	
-	public int readLast() {
+	public int Buscarultimo() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		Pais pais = new Pais();
@@ -142,7 +142,7 @@ public class PaisDaoImpl implements PaisDao {
 		return pais.getCodPais();
 	}
 	
-	public Pais readOne(int codPais) {
+	public Pais BuscarUno(int codPais) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		Pais pais = new Pais();

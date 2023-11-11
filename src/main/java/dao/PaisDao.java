@@ -6,16 +6,16 @@ import entidad.Pais;
 
 public interface PaisDao {
 	
-	public boolean insert(Pais pais_a_agregar);
+	public boolean Insert(Pais pais_a_agregar);
 
-	public boolean logicalDeletion(Pais pais_a_eliminar);  // Baja lógica
+	public boolean EliminacionLogica(Pais pais_a_eliminar);  // Baja lógica
 
-	public boolean update(Pais pais_a_modificar);
+	public boolean Update(Pais pais_a_modificar);
 
-	public List<Pais> readAll();
+	public List<Pais> BuscarTodos();
 
-	public Pais readOne(int codPais);
+	public Pais BuscarUno(int codPais);
 	
-	public int readLast();
+	public int Buscarultimo();
 
 }

@@ -6,15 +6,13 @@ import entidad.PrestamoxAutorizar;
 
 public interface PrestamosxAutorizarDao {
 	
-	public boolean insert(PrestamoxAutorizar prestamo);
-	public boolean update(PrestamoxAutorizar prestamo);
+	public boolean Insert(PrestamoxAutorizar prestamo);
+	public boolean Update(PrestamoxAutorizar prestamo);
+	public boolean EliminacionLogica(PrestamoxAutorizar prestamo); // Baja lógica
+	public List<PrestamoxAutorizar> BuscarTodos();
+	public PrestamoxAutorizar BuscarUno(int nroCuenta);
+	public List<PrestamoxAutorizar> BuscarActivos();
+	public int ContarPrestamos();
 
-	public boolean logicalDeletion(PrestamoxAutorizar prestamo); // Baja lógica
-
-	public PrestamoxAutorizar readOne(int nroCuenta);
-	
-	public List<PrestamoxAutorizar> readAll();
-	public List<PrestamoxAutorizar> readAllActive();
-	public int countActive();
 
 }

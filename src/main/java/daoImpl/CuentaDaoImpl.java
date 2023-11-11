@@ -215,7 +215,7 @@ public class CuentaDaoImpl implements CuentaDao{
 		Date fecha_creacion = resultSet.getDate("fecha_creacion");
 		int numCuenta = resultSet.getInt("tipoCuenta");
 		TipoCuentaDao tipoCuentaDao = new TipoCuentaDaoImpl();
-		TipoCuenta tipoCuenta = tipoCuentaDao.readOne(numCuenta);
+		TipoCuenta tipoCuenta = tipoCuentaDao.BuscarUna(numCuenta);
 		BigDecimal saldo = resultSet.getBigDecimal("saldo");
 		Boolean estado = resultSet.getBoolean("estado");
 		return new Cuenta(nroCuenta,cbu,cliente,fecha_creacion,tipoCuenta,saldo,estado);

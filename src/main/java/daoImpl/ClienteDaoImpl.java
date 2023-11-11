@@ -250,10 +250,10 @@ public class ClienteDaoImpl implements ClienteDao {
 		LocalidadDao localidadDao = new LocalidadDaoImpl();
 		Localidad localidad = localidadDao.BuscarUna(codLocalidad);		
 		ProvinciaDao provinciaDao = new ProvinciaDaoImpl();
-		Provincia provincia = provinciaDao.readOne(codProvincia);		
+		Provincia provincia = provinciaDao.BuscarUna(codProvincia);		
 		PaisDao paisDao = new PaisDaoImpl();
-		Pais pais = paisDao.readOne(codPais);
-		Pais nacionalidad = paisDao.readOne(codNacionalidad);
+		Pais pais = paisDao.BuscarUno(codPais);
+		Pais nacionalidad = paisDao.BuscarUno(codNacionalidad);
 		
 		
 		return new Cliente(dni, nombre, apellido, cuil, sexo, nacionalidad, fecha_nac, direccion, localidad, provincia, pais, correo_electronico, telefonos, estado);

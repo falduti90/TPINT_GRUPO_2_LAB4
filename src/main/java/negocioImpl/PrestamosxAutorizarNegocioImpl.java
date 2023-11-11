@@ -15,23 +15,27 @@ public class PrestamosxAutorizarNegocioImpl implements PrestamosxAutorizarNegoci
 	public boolean insert(PrestamoxAutorizar prestamo) {
 
 		boolean estado = false;
-		estado = pxaDao.insert(prestamo);
+		estado = pxaDao.Insert(prestamo);
 		return estado;
 	}
+	
 
 	@Override
 	public boolean logicalDeletion(PrestamoxAutorizar prestamo) {
 		boolean estado=false;
 		if( prestamo.getNroCuenta()  > 0 )
 		{
-			estado=pxaDao.logicalDeletion(prestamo);
+			estado=pxaDao.EliminacionLogica(prestamo);
 		}
 		return estado;
 	}
+	
+	
+	
 	@Override
 	public List<PrestamoxAutorizar> readAll() {
 		List<PrestamoxAutorizar> prestamo;
-		prestamo = pxaDao.readAll();
+		prestamo = pxaDao.BuscarTodos();
 		return prestamo;
 	
 	}
@@ -39,7 +43,7 @@ public class PrestamosxAutorizarNegocioImpl implements PrestamosxAutorizarNegoci
 	@Override
 	public PrestamoxAutorizar readOne(int nroPrestamo) {
 		PrestamoxAutorizar prestamo = new PrestamoxAutorizar();
-		prestamo = pxaDao.readOne(nroPrestamo);
+		prestamo = pxaDao.BuscarUno(nroPrestamo);
 		return prestamo; 
 	}
 
@@ -48,7 +52,7 @@ public class PrestamosxAutorizarNegocioImpl implements PrestamosxAutorizarNegoci
 		boolean estado=false;
 		if( prestamo.getCodPrestamoPendiente()  > 0 )
 		{
-			estado=pxaDao.update(prestamo);
+			estado=pxaDao.Update(prestamo);
 			
 		}
 		return estado;
@@ -57,14 +61,14 @@ public class PrestamosxAutorizarNegocioImpl implements PrestamosxAutorizarNegoci
 	public int countActive() {
 
 		int cant;
-		cant = pxaDao.countActive();
+		cant = pxaDao.ContarPrestamos();
 		return cant;
 	}
 
 	@Override
 	public List<PrestamoxAutorizar> readAllActive() {
 		List<PrestamoxAutorizar> prestamo;
-		prestamo = pxaDao.readAllActive();
+		prestamo = pxaDao.BuscarActivos();
 		return prestamo;
 	
 	}

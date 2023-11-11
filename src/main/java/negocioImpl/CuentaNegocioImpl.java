@@ -102,7 +102,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 		
 		try {
 			c.setDni(clienteDao.BuscarUno(dni));
-			c.setTipoCuenta(tcDao.readOne(tc));
+			c.setTipoCuenta(tcDao.BuscarUna(tc));
 					
 			long cbuNuevo = Long.parseLong(clienteDao.BuscarUno(dni).getDni().toString());
 			ArrayList<Cuenta> todas = (ArrayList<Cuenta>)cDao.BuscarTodos();

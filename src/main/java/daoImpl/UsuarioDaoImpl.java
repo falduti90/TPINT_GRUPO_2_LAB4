@@ -69,7 +69,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 
 	}
 	
-	public boolean insert(Usuario usuario_a_agregar) {
+	public boolean Insert(Usuario usuario_a_agregar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -102,7 +102,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		return isInsertExitoso;
 	}
 
-	public boolean update(Usuario usuario_a_modificar) {
+	public boolean Update(Usuario usuario_a_modificar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isUpdateExitoso = false;
@@ -132,7 +132,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		return isUpdateExitoso;
 	}
 	
-	public boolean logicalDeletion(String dni) {
+	public boolean EliminacionLogica(String dni) {
 		System.out.println(dni.toString());
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
@@ -158,7 +158,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		return isLogicalDeletionExitoso;
 	}
 	
-	public List<Usuario> readAll() {
+	public List<Usuario> BuscarTodos() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Usuario> usuariosList = new ArrayList<Usuario>();
@@ -181,7 +181,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		return usuariosList;
 	}
 	
-	public Usuario readOne(String dni) {
+	public Usuario BuscarUno(String dni) {
 		PreparedStatement statement;
 		ResultSet resultSet; 
 		Usuario usuario = new Usuario();
@@ -225,10 +225,10 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		LocalidadDao localidadDao = new LocalidadDaoImpl();
 		Localidad localidad = localidadDao.BuscarUna(codLocalidad);		
 		ProvinciaDao provinciaDao = new ProvinciaDaoImpl();
-		Provincia provincia = provinciaDao.readOne(codProvincia);		
+		Provincia provincia = provinciaDao.BuscarUna(codProvincia);		
 		PaisDao paisDao = new PaisDaoImpl();
-		Pais pais = paisDao.readOne(codPais);
-		Pais nacionalidad = paisDao.readOne(codNacionalidad);
+		Pais pais = paisDao.BuscarUno(codPais);
+		Pais nacionalidad = paisDao.BuscarUno(codNacionalidad);
 		
 
 		usuario.getcliente().setNombre(Nombre);
@@ -261,7 +261,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		ClienteDao clDao = new ClienteDaoImpl();
 		Cliente cliente = clDao.BuscarUno(dni);
 		TipoUsuarioDao tuDao = new TipoUsuarioDaoImpl();
-		TipoUsuario tipoUs = tuDao.readOne(tipo);
+		TipoUsuario tipoUs = tuDao.BuscarUno(tipo);
 				
 		return new Usuario(usuario, cliente, tipoUs, contraseña, estado);
 	}

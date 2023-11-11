@@ -21,7 +21,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao{
 	private static final String readlast = "SELECT * FROM Provincias ORDER by codProvincia DESC LIMIT 1";
 	private static final String readOne = "SELECT * FROM Provincias Where codProvincia = ?";
 	
-	public boolean insert(Provincia provincia_a_agregar) {
+	public boolean Insert(Provincia provincia_a_agregar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -47,7 +47,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao{
 		return isInsertExitoso;
 	}
 	
-	public boolean update(Provincia provincia_a_actualizar) {
+	public boolean Update(Provincia provincia_a_actualizar) {
 
 		System.out.println(provincia_a_actualizar.toString());
 		PreparedStatement statement;
@@ -75,7 +75,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao{
 		return isUpdateExitoso;
 	}
 
-	public boolean logicalDeletion(Provincia provincia_a_eliminar) {
+	public boolean EliminacionLogica(Provincia provincia_a_eliminar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isLogicalDeletionExitoso = false;
@@ -97,7 +97,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao{
 		return isLogicalDeletionExitoso;
 	}
 	
-	public List<Provincia> readAll() {
+	public List<Provincia> BuscarTodas() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Provincia> provincias = new ArrayList<Provincia>();
@@ -120,7 +120,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao{
 		return provincias;
 	}
 	
-	public int readLast() {
+	public int Buscarultima() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		Provincia provincia = new Provincia();
@@ -143,7 +143,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao{
 		return provincia.getCodProvincia();
 	}
 
-	public Provincia readOne(int codProvincia) {
+	public Provincia BuscarUna(int codProvincia) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		Provincia provincia = new Provincia();
@@ -176,7 +176,7 @@ public class ProvinciaDaoImpl implements ProvinciaDao{
 		boolean estado = resultSet.getBoolean("estado");
 		
 		PaisDao paisDao = new PaisDaoImpl();
-		Pais pais = paisDao.readOne(codPais);
+		Pais pais = paisDao.BuscarUno(codPais);
 
 		return new Provincia(codProvincia, pais, provincia, estado);
 	}

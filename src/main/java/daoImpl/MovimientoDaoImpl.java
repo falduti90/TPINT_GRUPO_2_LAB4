@@ -145,7 +145,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 		BigDecimal saldo = resultSet.getBigDecimal("saldo");
 		int codTipoMovimiento = resultSet.getInt("tipoMovimiento");
 		TipoMovimientoDao tipoMovimientoDao = new TipoMovimientoDaoImpl();
-		TipoMovimiento tipoMovimiento = tipoMovimientoDao.readOne(codTipoMovimiento);
+		TipoMovimiento tipoMovimiento = tipoMovimientoDao.BuscarUno(codTipoMovimiento);
 		return new Movimiento(codMovimiento,cuenta,fecha,importe,tipoMovimiento,saldo,detalle);
 		
 	}

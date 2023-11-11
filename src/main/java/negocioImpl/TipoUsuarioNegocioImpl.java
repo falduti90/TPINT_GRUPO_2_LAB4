@@ -14,13 +14,13 @@ public class TipoUsuarioNegocioImpl implements TipoUsuarioNegocio {
 
 	public List<TipoUsuario> readAll() {
 		List<TipoUsuario> lTipo;
-		lTipo = tDao.readAll();
+		lTipo = tDao.BuscarTodos();
 		return lTipo;
 	}
 
 	public TipoUsuario readOne(int codUsuario) {
 
-		return tDao.readOne(codUsuario);
+		return tDao.BuscarUno(codUsuario);
 	}
 
 }

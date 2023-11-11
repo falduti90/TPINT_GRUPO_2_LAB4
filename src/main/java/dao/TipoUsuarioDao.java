@@ -6,8 +6,8 @@ import entidad.TipoUsuario;
 
 public interface TipoUsuarioDao {
 	
-	public List<TipoUsuario> readAll();
+	public List<TipoUsuario> BuscarTodos();
 	
-	public TipoUsuario readOne(int codTipoUsuario);
+	public TipoUsuario BuscarUno(int codTipoUsuario);
 
 }

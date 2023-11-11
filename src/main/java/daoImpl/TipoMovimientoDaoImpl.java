@@ -19,7 +19,7 @@ public class TipoMovimientoDaoImpl implements TipoMovimientoDao {
 	private static final String readOne = "SELECT * FROM TiposMovimientos Where codTipo = ?";
 
 	
-	public boolean insert(TipoMovimiento tipo_movimiento_a_agregar) {
+	public boolean Insert(TipoMovimiento tipo_movimiento_a_agregar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -46,7 +46,7 @@ public class TipoMovimientoDaoImpl implements TipoMovimientoDao {
 	}
 
 	
-	public boolean logicalDeletion(TipoMovimiento tipo_movimiento_a_eliminar) {
+	public boolean EliminacionLogica(TipoMovimiento tipo_movimiento_a_eliminar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isLogicalDeletionExitoso = false;
@@ -68,7 +68,7 @@ public class TipoMovimientoDaoImpl implements TipoMovimientoDao {
 		return isLogicalDeletionExitoso;
 	}
 	
-	public List<TipoMovimiento> readAll() {
+	public List<TipoMovimiento> BuscarTodos() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<TipoMovimiento> tipoMovimiento = new ArrayList<TipoMovimiento>();
@@ -91,7 +91,7 @@ public class TipoMovimientoDaoImpl implements TipoMovimientoDao {
 		return tipoMovimiento;
 	}
 	
-	public int readLast() {
+	public int BuscarUltimo() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		TipoMovimiento tipoMovimiento = new TipoMovimiento();
@@ -114,7 +114,7 @@ public class TipoMovimientoDaoImpl implements TipoMovimientoDao {
 		return tipoMovimiento.getCodTipo();
 	}
 	
-	public TipoMovimiento readOne(int codTipo) {
+	public TipoMovimiento BuscarUno(int codTipo) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		TipoMovimiento tipoMovimiento = new TipoMovimiento();
@@ -150,7 +150,7 @@ public class TipoMovimientoDaoImpl implements TipoMovimientoDao {
 
 
 	@Override
-	public boolean update(TipoMovimiento tipo_movimiento_a_modificar) {
+	public boolean Update(TipoMovimiento tipo_movimiento_a_modificar) {
 		// TODO Auto-generated method stub
 		return false;
 	}

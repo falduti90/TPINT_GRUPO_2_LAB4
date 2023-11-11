@@ -14,7 +14,7 @@ public class TipoUsuarioDaoImpl implements TipoUsuarioDao{
 	private static final String readall = "SELECT * FROM TiposUsuarios";
 	private static final String readOne = "SELECT * FROM TiposUsuarios Where codTipo = ?";
 	
-	public List<TipoUsuario> readAll() {
+	public List<TipoUsuario> BuscarTodos() {
 		PreparedStatement statement;
 		ResultSet resultSet; 
 		ArrayList<TipoUsuario> lTipo = new ArrayList<TipoUsuario>();
@@ -37,7 +37,7 @@ public class TipoUsuarioDaoImpl implements TipoUsuarioDao{
 		return lTipo;
 	}
 	
-	public TipoUsuario readOne(int codTipo) {
+	public TipoUsuario BuscarUno(int codTipo) {
 		PreparedStatement statement;
 		ResultSet resultSet; 
 		TipoUsuario tipo = new TipoUsuario();

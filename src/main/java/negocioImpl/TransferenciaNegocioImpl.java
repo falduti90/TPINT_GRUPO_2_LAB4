@@ -37,7 +37,7 @@ public class TransferenciaNegocioImpl implements TransferenciaNegocio{
 		SaldoDestino = cueDestino.getSaldo().add(importe);
 		SaldoOrigen = cueOrigen.getSaldo().subtract(importe);
 		
-		if(transferNeg.DoTransfer(cueOrigen, cueDestino, importe,SaldoOrigen, SaldoDestino, TMov, detalle)) {
+		if(transferNeg.CrearTrans(cueOrigen, cueDestino, importe,SaldoOrigen, SaldoDestino, TMov, detalle)) {
 			
 			return true;
 		}

@@ -180,9 +180,9 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		boolean estado = resultSet.getBoolean("estado");
 		
 		ProvinciaDao provinciaDao = new ProvinciaDaoImpl();
-		Provincia provincia = provinciaDao.readOne(codProvincia);		
+		Provincia provincia = provinciaDao.BuscarUna(codProvincia);		
 		PaisDao paisDao = new PaisDaoImpl();
-		Pais pais = paisDao.readOne(codPais);
+		Pais pais = paisDao.BuscarUno(codPais);
 
 		return new Localidad(codLocalidad, provincia, pais, localidad, estado);
 	}
