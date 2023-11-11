@@ -24,7 +24,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 	private static final String readlast = "SELECT * FROM Localidades ORDER by codLocalidad DESC LIMIT 1";
 	private static final String readOne = "SELECT * FROM Localidades Where codLocalidad = ?";
 	
-	public boolean insert(Localidad localidad_a_agregar) {
+	public boolean Insert(Localidad localidad_a_agregar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -50,7 +50,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		return isInsertExitoso;
 	}
 	
-	public boolean update(Localidad localidad_a_actualizar) {
+	public boolean Update(Localidad localidad_a_actualizar) {
 
 		System.out.println(localidad_a_actualizar.toString());
 		PreparedStatement statement;
@@ -78,7 +78,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		return isUpdateExitoso;
 	}
 
-	public boolean logicalDeletion(Localidad localidad_a_eliminar) {
+	public boolean EliminacionLogica(Localidad localidad_a_eliminar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isLogicalDeletionExitoso = false;
@@ -100,7 +100,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		return isLogicalDeletionExitoso;
 	}
 	
-	public List<Localidad> readAll() {
+	public List<Localidad> BuscarTodas() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Localidad> localidades = new ArrayList<Localidad>();
@@ -123,7 +123,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		return localidades;
 	}
 	
-	public int readLast() {
+	public int BuscarUltima() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		Localidad localidad = new Localidad();
@@ -146,7 +146,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		return localidad.getCodLocalidad();
 	}
 	
-	public Localidad readOne(int codLocalidad) {
+	public Localidad BuscarUna(int codLocalidad) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		Localidad localidad = new Localidad();

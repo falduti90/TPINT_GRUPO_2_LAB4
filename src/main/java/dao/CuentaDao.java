@@ -6,20 +6,20 @@ import entidad.Cuenta;
 
 public interface  CuentaDao {
 	
-	public boolean insert(Cuenta cuenta_a_agregar);
+	public boolean Insert(Cuenta cuenta_a_agregar);
 	
-	public boolean update(Cuenta cuenta_a_agregar);
+	public boolean Update(Cuenta cuenta_a_agregar);
 	
-	public boolean delete(Cuenta cuenta_a_eliminar);
+	public boolean EliminacionLogica(Cuenta cuenta_a_eliminar);
 
-	public List<Cuenta> readAll();
+	public List<Cuenta> BuscarTodos();
 
-	public List<Cuenta> readForClient(String dni);
+	public List<Cuenta> BuscarClienteDni(String dni);
 
-	public Cuenta readOneCbu(String cbu);
+	public Cuenta BuscarCbu(String cbu);
 	
-	public Cuenta readOne(int nroCuenta);
+	public Cuenta BuscarUno(int nroCuenta);
 
-	public int readLast();
+	public int BuscarUltimo();
 
 }

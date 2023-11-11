@@ -22,7 +22,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 	public boolean insert(Cuenta Cuenta) {
 
 		boolean estado = false;
-			estado = cDao.insert(Cuenta);
+			estado = cDao.Insert(Cuenta);
 		//}
 		return estado;
 	}
@@ -31,31 +31,31 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 	public List<Cuenta> readAll() {
 
 		List<Cuenta> lCuentas;
-		lCuentas = cDao.readAll();
+		lCuentas = cDao.BuscarTodos();
 		return lCuentas;
 	}
 
 
 	public int readLast() {
-		System.out.print(cDao.readLast());
-		return cDao.readLast();
+		System.out.print(cDao.BuscarUltimo());
+		return cDao.BuscarUltimo();
 	}
 
 	public List<Cuenta> readForClient(String dni){
 		List<Cuenta> lCuentas_x_usuario;
-		lCuentas_x_usuario = cDao.readForClient(dni);
+		lCuentas_x_usuario = cDao.BuscarClienteDni(dni);
 		return lCuentas_x_usuario; 
 	}
 
 	public Cuenta readOne(int nroCta){
 		Cuenta cta = new Cuenta();
-		cta = cDao.readOne(nroCta);
+		cta = cDao.BuscarUno(nroCta);
 		return cta; 
 	}
 	
 	public Cuenta readOneCbu(String cbu){
 		Cuenta cta = new Cuenta();
-		cta = cDao.readOneCbu(cbu);
+		cta = cDao.BuscarCbu(cbu);
 		return cta; 
 	}
 
@@ -66,7 +66,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 		boolean estado=false;
 		if( cuenta.getNroCuenta()  > 0 )
 		{
-			estado=cDao.update(cuenta);
+			estado=cDao.Update(cuenta);
 		}
 		return estado;
 	}
@@ -77,7 +77,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 		{
 			if( cuenta.getNroCuenta()  > 0 )
 			{
-				estado=cDao.delete(cuenta);
+				estado=cDao.EliminacionLogica(cuenta);
 			}
 		}
 		catch(Exception e) {
@@ -96,16 +96,16 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 		TipoCuentaDao tcDao = new TipoCuentaDaoImpl();
 		Cuenta  c = new Cuenta();
 		boolean agregado;
-		ArrayList<Cuenta> lCuenta = (ArrayList<Cuenta>) cDao.readForClient(dni); 	
+		ArrayList<Cuenta> lCuenta = (ArrayList<Cuenta>) cDao.BuscarClienteDni(dni); 	
 
 		///verificamos realmente que exista ese dni
 		
 		try {
-			c.setDni(clienteDao.readOne(dni));
+			c.setDni(clienteDao.BuscarUno(dni));
 			c.setTipoCuenta(tcDao.readOne(tc));
 					
-			long cbuNuevo = Long.parseLong(clienteDao.readOne(dni).getDni().toString());
-			ArrayList<Cuenta> todas = (ArrayList<Cuenta>)cDao.readAll();
+			long cbuNuevo = Long.parseLong(clienteDao.BuscarUno(dni).getDni().toString());
+			ArrayList<Cuenta> todas = (ArrayList<Cuenta>)cDao.BuscarTodos();
 			int x;
 			
 			if(lCuenta.isEmpty()) {
@@ -143,7 +143,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 			System.out.println(c.getDni().getDni());
 			System.out.println(c.getCbu());
 			System.out.println(c.getTipoCuenta().getCodTipo());
-			return cDao.insert(c);
+			return cDao.Insert(c);
 
 		}
 		
@@ -157,7 +157,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 		ClienteDao clienteDao = new ClienteDaoImpl();
 		try										
 		{
-		return clienteDao.readOne(dni).getDni().equals(dni);
+		return clienteDao.BuscarUno(dni).getDni().equals(dni);
 		}
 		catch(Exception e) {
            return false;
@@ -167,7 +167,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 		try
 		{
 		CuentaDao cDao = new CuentaDaoImpl();
-		ArrayList<Cuenta> lCuenta = (ArrayList<Cuenta>) cDao.readForClient(dni);
+		ArrayList<Cuenta> lCuenta = (ArrayList<Cuenta>) cDao.BuscarClienteDni(dni);
        int i=0;
        if(lCuenta !=  null)
        {

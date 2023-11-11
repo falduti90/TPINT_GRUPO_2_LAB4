@@ -27,7 +27,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 	private static final String readDesdeFecha = "SELECT * FROM Movimientos where fecha >=?";
 	private static final String readHastaFecha = "SELECT * FROM Movimientos where fecha <= ?";
 	
-	public boolean insert(Movimiento movimiento_a_agregar) {
+	public boolean Insert(Movimiento movimiento_a_agregar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -59,7 +59,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 		return isInsertExitoso;
 	}
 	
-	public ArrayList<Movimiento> readAll() {
+	public ArrayList<Movimiento> BuscarTodos() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Movimiento> movimientos = new ArrayList<Movimiento>();
@@ -83,7 +83,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 	}
 	
 	
-	public ArrayList<Movimiento> readOneCta(int nroCuenta) {
+	public ArrayList<Movimiento> BuscarNro(int nroCuenta) {
 		PreparedStatement statement;
 		ResultSet resultSet; 
 		ArrayList<Movimiento> movList = new ArrayList<Movimiento>();
@@ -110,7 +110,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 		
 	}
 
-	public Movimiento readLast() {
+	public Movimiento BuscarUltimo() {
 		PreparedStatement statement;
 		ResultSet resultSet; 
 		Movimiento mov = new Movimiento();
@@ -138,7 +138,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 		int codMovimiento = resultSet.getInt("codMovimiento");
 		int nroCuenta = resultSet.getInt("nroCuenta");
 		CuentaDao cuentaDao = new CuentaDaoImpl();
-		Cuenta cuenta = cuentaDao.readOne(nroCuenta);
+		Cuenta cuenta = cuentaDao.BuscarUno(nroCuenta);
 		Date fecha = resultSet.getDate("fecha");
 		String detalle = resultSet.getString("detalle");
 		BigDecimal importe = resultSet.getBigDecimal("importe");
@@ -150,7 +150,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 		
 	}
 	
-	public ArrayList<Movimiento> readXtipoMov(int tipoMovimiento) {
+	public ArrayList<Movimiento> BuscarPorTipo(int tipoMovimiento) {
 		PreparedStatement statement;
 		ResultSet resultSet; 
 		ArrayList<Movimiento> movList = new ArrayList<Movimiento>();
@@ -176,7 +176,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 		return movList;
 		
 	}
-	public ArrayList<Movimiento> readDesdeFecha(java.util.Date fechaInicio) {
+	public ArrayList<Movimiento> BuscarDesde(java.util.Date fechaInicio) {
 		PreparedStatement statement;
 		ResultSet resultSet; 
 		ArrayList<Movimiento> movList = new ArrayList<Movimiento>();
@@ -200,7 +200,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 		return movList;
 	}
 
-	public ArrayList<Movimiento> readHastaFecha(java.util.Date fechaFinal) {
+	public ArrayList<Movimiento> BuscarHasta(java.util.Date fechaFinal) {
 		PreparedStatement statement;
 		ResultSet resultSet; 
 		ArrayList<Movimiento> movList = new ArrayList<Movimiento>();

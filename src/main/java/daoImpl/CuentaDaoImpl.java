@@ -32,7 +32,7 @@ public class CuentaDaoImpl implements CuentaDao{
 
 
 
-	public boolean insert(Cuenta cuenta_a_agregar) {
+	public boolean Insert(Cuenta cuenta_a_agregar) {
 		
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -61,7 +61,7 @@ public class CuentaDaoImpl implements CuentaDao{
 		return isInsertExitoso;
 	}
 
-	public boolean delete(Cuenta cuenta_a_eliminar) {
+	public boolean EliminacionLogica(Cuenta cuenta_a_eliminar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isLogicalDeletionExitoso = false;
@@ -83,7 +83,7 @@ public class CuentaDaoImpl implements CuentaDao{
 		return isLogicalDeletionExitoso;
 	}
 
-	public List<Cuenta> readAll() {
+	public List<Cuenta> BuscarTodos() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Cuenta> cuenta = new ArrayList<Cuenta>();
@@ -106,7 +106,7 @@ public class CuentaDaoImpl implements CuentaDao{
 		return cuenta;
 	}
 
-	public int readLast() {
+	public int BuscarUltimo() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		Cuenta cuenta = new Cuenta();
@@ -129,7 +129,7 @@ public class CuentaDaoImpl implements CuentaDao{
 		return cuenta.getNroCuenta();
 	}
 
-	public Cuenta readOne(int nroCuenta) {
+	public Cuenta BuscarUno(int nroCuenta) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		Cuenta cuenta = new Cuenta();
@@ -154,7 +154,7 @@ public class CuentaDaoImpl implements CuentaDao{
 		return cuenta;
 	}
 
-	public Cuenta readOneCbu(String cbu) {
+	public Cuenta BuscarCbu(String cbu) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		Cuenta cuenta = new Cuenta();
@@ -179,7 +179,7 @@ public class CuentaDaoImpl implements CuentaDao{
 		return cuenta;
 	}
 	
-	public List<Cuenta> readForClient(String dni) {
+	public List<Cuenta> BuscarClienteDni(String dni) {
 		PreparedStatement statement;
 		ResultSet resultSet; 
 		ArrayList<Cuenta> cuenta = new ArrayList<Cuenta>();
@@ -211,7 +211,7 @@ public class CuentaDaoImpl implements CuentaDao{
 		Long cbu = resultSet.getLong("cbu");
 		String dni = resultSet.getString("dni");
 		ClienteDao clienteDao = new ClienteDaoImpl();
-		Cliente cliente = clienteDao.readOne(dni);
+		Cliente cliente = clienteDao.BuscarUno(dni);
 		Date fecha_creacion = resultSet.getDate("fecha_creacion");
 		int numCuenta = resultSet.getInt("tipoCuenta");
 		TipoCuentaDao tipoCuentaDao = new TipoCuentaDaoImpl();
@@ -222,7 +222,7 @@ public class CuentaDaoImpl implements CuentaDao{
 	}
 
 
-public boolean update(Cuenta cuenta_a_actualizar) {
+public boolean Update(Cuenta cuenta_a_actualizar) {
 
 		System.out.println(cuenta_a_actualizar.toString());
 		PreparedStatement statement;

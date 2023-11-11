@@ -14,7 +14,7 @@ public class LocalidadNegocioImpl implements LocalidadNegocio {
 	public boolean insert(Localidad localidad) {
 
 		boolean estado = false;
-		estado = lDao.insert(localidad);
+		estado = lDao.Insert(localidad);
 		
 		return estado;
 	}
@@ -22,7 +22,7 @@ public class LocalidadNegocioImpl implements LocalidadNegocio {
 	public boolean update(Localidad localidad) {
 
 		boolean estado = false;
-		estado = lDao.update(localidad);
+		estado = lDao.Update(localidad);
 		
 		return estado;
 	}
@@ -31,7 +31,7 @@ public class LocalidadNegocioImpl implements LocalidadNegocio {
 		boolean estado = false;
 		try {
 			if (localidad_a_eliminar.getCodLocalidad() > 0) {
-				estado = lDao.logicalDeletion(localidad_a_eliminar);
+				estado = lDao.EliminacionLogica(localidad_a_eliminar);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,20 +43,20 @@ public class LocalidadNegocioImpl implements LocalidadNegocio {
 	public List<Localidad> readAll() {
 
 		List<Localidad> lLocalidades;
-		lLocalidades = lDao.readAll();
+		lLocalidades = lDao.BuscarTodas();
 		return lLocalidades;
 	}
 
 
 	public int readLast() {
-		System.out.print(lDao.readLast());
-		return lDao.readLast();
+		System.out.print(lDao.BuscarUltima());
+		return lDao.BuscarUltima();
 	}
 
 	public Localidad readOne(int codLocalidad) {
 		
 		Localidad localidad = new Localidad();
-		localidad = lDao.readOne(codLocalidad);
+		localidad = lDao.BuscarUna(codLocalidad);
 		
 		return localidad;
 	}

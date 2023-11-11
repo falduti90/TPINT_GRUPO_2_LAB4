@@ -8,17 +8,17 @@ import entidad.Movimiento;
 
 public interface  MovimientoDao {
 	
-	public boolean insert(Movimiento movimiento);
+	public boolean Insert(Movimiento movimiento);
 	
-	public ArrayList<Movimiento> readAll();
+	public ArrayList<Movimiento> BuscarTodos();
 	
-	public ArrayList<Movimiento> readOneCta(int nroCuenta);
+	public ArrayList<Movimiento> BuscarNro(int nroCuenta);
 	
-	public Movimiento readLast();
+	public Movimiento BuscarUltimo();
 
-	public ArrayList<Movimiento> readXtipoMov(int tipoMovimiento);
+	public ArrayList<Movimiento> BuscarPorTipo(int tipoMovimiento);
 
-	public ArrayList<Movimiento> readDesdeFecha(Date fechaInicio);
+	public ArrayList<Movimiento> BuscarDesde(Date fechaInicio);
 
-	public ArrayList<Movimiento> readHastaFecha(Date fechaFinal);
+	public ArrayList<Movimiento> BuscarHasta(Date fechaFinal);
 }

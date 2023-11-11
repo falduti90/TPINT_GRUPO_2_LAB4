@@ -13,7 +13,7 @@ public class CuotasNegocioImpl implements CuotasNegocio{
 	public boolean pagarCuota(int NroCuenta,int idCuota, BigDecimal importe) {
 		CuentaDaoImpl cuenta = new CuentaDaoImpl();
 		Cuenta cuentaE;
-		cuentaE = cuenta.readOne(NroCuenta);
+		cuentaE = cuenta.BuscarUno(NroCuenta);
 		if(cuotasDao.pagarCuota(NroCuenta,idCuota, cuentaE.getSaldo().subtract(importe), "Pago cuota - ID" + idCuota))
 			return true;
 		else

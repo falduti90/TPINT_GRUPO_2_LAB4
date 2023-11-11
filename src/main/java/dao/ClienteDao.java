@@ -7,18 +7,18 @@ import entidad.Cliente;
 
 public interface ClienteDao {
 	
-	public boolean insert(Cliente cliente);
+	public boolean Insert(Cliente cliente);
 
-	public boolean logicalDeletion(Cliente cliente_a_eliminar); // Baja lógica
+	public boolean EliminacionLogica(Cliente cliente_a_eliminar); // Baja lógica
 
-	public boolean update(Cliente cliente_a_modificar);
+	public boolean Update(Cliente cliente_a_modificar);
 
-	public Cliente readOne(String dni);
+	public Cliente BuscarUno(String dni);
 	
-	public List<Cliente> readAll();
+	public List<Cliente> BuscarTodos();
 	
-	public String readLast();
+	public String BuscarUltimo();
 
-	public int countActive();
+	public int ClientesActivos();
 
 }

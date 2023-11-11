@@ -27,7 +27,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	private static final String countAll = "SELECT COUNT(dni) as total FROM Clientes where estado = 1 ORDER by apellido, dni ASC";
 	
 	
-	public int countActive() {
+	public int ClientesActivos() { 
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		int cant = 0;
@@ -51,7 +51,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		return cant;
 	}
 	
-	public boolean insert(Cliente cliente_a_agregar) {
+	public boolean Insert(Cliente cliente_a_agregar) {
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
 		boolean isInsertExitoso = false;
@@ -93,7 +93,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		return isInsertExitoso;
 	}
 	
-	public boolean update(Cliente cliente_a_actualizar) {
+	public boolean Update(Cliente cliente_a_actualizar) {
 
 		System.out.println(cliente_a_actualizar.toString());
 		PreparedStatement statement;
@@ -132,7 +132,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		return isUpdateExitoso;
 	}
 	
-	public boolean logicalDeletion(Cliente cliente_a_eliminar) {
+	public boolean EliminacionLogica(Cliente cliente_a_eliminar) {
 		System.out.println(cliente_a_eliminar.toString());
 		PreparedStatement statement;
 		Connection conexion = Conexion.getConexion().getSQLConexion();
@@ -159,7 +159,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	}
 	
 	
-	public List<Cliente> readAll() {
+	public List<Cliente> BuscarTodos() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
@@ -182,7 +182,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		return clientes;
 	}
 	
-	public Cliente readOne(String dni) {
+	public Cliente BuscarUno(String dni) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		Cliente cliente = new Cliente();
@@ -207,7 +207,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		return cliente;
 	}
 	
-	public String readLast() {
+	public String BuscarUltimo() {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		Cliente cliente = new Cliente();
@@ -248,7 +248,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		boolean estado = resultSet.getBoolean("estado");
 		
 		LocalidadDao localidadDao = new LocalidadDaoImpl();
-		Localidad localidad = localidadDao.readOne(codLocalidad);		
+		Localidad localidad = localidadDao.BuscarUna(codLocalidad);		
 		ProvinciaDao provinciaDao = new ProvinciaDaoImpl();
 		Provincia provincia = provinciaDao.readOne(codProvincia);		
 		PaisDao paisDao = new PaisDaoImpl();

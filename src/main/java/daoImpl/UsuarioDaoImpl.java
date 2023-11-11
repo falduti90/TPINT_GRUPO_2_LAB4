@@ -223,7 +223,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		int 	CodTipo = rs.getInt("codTipo");
 		
 		LocalidadDao localidadDao = new LocalidadDaoImpl();
-		Localidad localidad = localidadDao.readOne(codLocalidad);		
+		Localidad localidad = localidadDao.BuscarUna(codLocalidad);		
 		ProvinciaDao provinciaDao = new ProvinciaDaoImpl();
 		Provincia provincia = provinciaDao.readOne(codProvincia);		
 		PaisDao paisDao = new PaisDaoImpl();
@@ -259,7 +259,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		boolean estado = resultSet.getBoolean("estado");
 		
 		ClienteDao clDao = new ClienteDaoImpl();
-		Cliente cliente = clDao.readOne(dni);
+		Cliente cliente = clDao.BuscarUno(dni);
 		TipoUsuarioDao tuDao = new TipoUsuarioDaoImpl();
 		TipoUsuario tipoUs = tuDao.readOne(tipo);
 				
