@@ -6,27 +6,27 @@ import entidad.Cuenta;
 
 public interface CuentaNegocio {
 
-	public boolean insert(Cuenta cuenta_a_agregar);
+	public boolean Insert(Cuenta cuenta_a_agregar);
 
-	public boolean delete(Cuenta cuenta_a_eliminar);
+	public boolean Delete(Cuenta cuenta_a_eliminar);
 
-	public boolean update(Cuenta cuenta_a_modificar);
+	public boolean Update(Cuenta cuenta_a_modificar);
 
-	public List<Cuenta> readAll();
+	public List<Cuenta> BuscarTodos();
 	
-	public List<Cuenta> readForClient(String dni);
+	public List<Cuenta> BuscarClienteDni(String dni);
 
-	public int readLast();
+	public int BuscarUltimo();
 	
-	public Cuenta readOne(int nroCuenta);
+	public Cuenta BuscarUno(int nroCuenta);
 
-	public boolean insert(String dni, int tc);
+	public boolean Insert(String dni, int tc);
 
-	boolean verificarMaxCuentas(String dni);
+	boolean VerificarMaxCuentas(String dni);
 	
-	boolean verificarCliente(String dni);
+	boolean VerificarCliente(String dni);
 	
-	public Cuenta readOneCbu(String cbu);
+	public Cuenta BuscarCbu(String cbu);
 	
 	
 }

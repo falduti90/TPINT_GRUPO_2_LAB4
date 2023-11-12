@@ -88,9 +88,9 @@ public class ServletCuenta extends HttpServlet {
 		String resString = null;
 		Boolean resBoolean = false;
 		String dni = request.getParameter("txtdni").toString().trim();
-		ArrayList<Cuenta> lCuenta = (ArrayList<Cuenta>) neg.readForClient(dni);
+		ArrayList<Cuenta> lCuenta = (ArrayList<Cuenta>) neg.BuscarClienteDni(dni);
 		RequestDispatcher rd;
-		if(neg.verificarCliente(dni))
+		if(neg.VerificarCliente(dni))
 		{
 			if(lCuenta == null)
 			{
@@ -146,11 +146,11 @@ public class ServletCuenta extends HttpServlet {
 		boolean agregado = false;
 		String resString="";
 		
-		if(neg.verificarCliente(dni))
+		if(neg.VerificarCliente(dni))
 		{
-			if(!neg.verificarMaxCuentas(dni))
+			if(!neg.VerificarMaxCuentas(dni))
 			{
-			 agregado = neg.insert(dni,tc);
+			 agregado = neg.Insert(dni,tc);
 
 				if (agregado) {
 
@@ -186,7 +186,7 @@ public class ServletCuenta extends HttpServlet {
 	
 	private void validarSaldo( int nroCuenta ) throws SaldoCuenta {
 		
-		Cuenta cuenta = neg.readOne(nroCuenta);	
+		Cuenta cuenta = neg.BuscarUno(nroCuenta);	
 
 		if ( cuenta.getSaldo().compareTo(BigDecimal.ZERO) > 0) {
 
@@ -204,11 +204,11 @@ public class ServletCuenta extends HttpServlet {
 			int nroCuenta = Integer.parseInt(request.getParameter("cuenta"));
 			validarSaldo(nroCuenta);
 			
-			borrado = neg.delete(neg.readOne(nroCuenta));
+			borrado = neg.Delete(neg.BuscarUno(nroCuenta));
 			if (borrado) 
 				resString="Cuenta dada de baja Satisfactoriamente";
 			else
-				resString="Cuenta "+neg.readOne(nroCuenta).getNroCuenta()+" no pudo ser dada de baja satisfactoriamente";
+				resString="Cuenta "+neg.BuscarUno(nroCuenta).getNroCuenta()+" no pudo ser dada de baja satisfactoriamente";
 		} catch(SaldoCuenta ex) {
 			resString = "La cuenta debe estar en cero para poder darse de baja";
 			

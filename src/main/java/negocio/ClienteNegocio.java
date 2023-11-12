@@ -6,18 +6,18 @@ import entidad.Cliente;
 
 public interface ClienteNegocio {
 	
-	public boolean insert(Cliente cliente);
+	public boolean Insert(Cliente cliente);
 
-	public boolean logicalDeletion(Cliente cliente_a_eliminar);
+	public boolean EliminacionLogica(Cliente cliente_a_eliminar);
 
-	public boolean update(Cliente cliente_a_modificar);
+	public boolean Update(Cliente cliente_a_modificar);
 	
-	public List<Cliente> readAll();
+	public List<Cliente> BuscarTodos();
 	
-	public Cliente readOne(String dni);
+	public Cliente BuscarUno(String dni);
 
-	public String readLast();
+	public String BuscarUltimo();
 	
-	public int countActive();
+	public int ContarActivo();
 
 }

@@ -13,15 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/*
-import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-*/
-
 import entidad.Cliente;
 import entidad.Cuenta;
 import entidad.Localidad;
@@ -150,7 +141,7 @@ public class ServletCliente extends HttpServlet {
 	}
 	
 	private void cargarClientes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
-		ArrayList<Cliente> lCliente = (ArrayList<Cliente>) clienteNeg.readAll();
+		ArrayList<Cliente> lCliente = (ArrayList<Cliente>) clienteNeg.BuscarTodos();
 		request.setAttribute("clientes", lCliente);
 				
 		if (request.getParameter("btnFiltrar") != null) {
@@ -167,7 +158,7 @@ public class ServletCliente extends HttpServlet {
 		} else {
 			
 			//PAGINADO
-			int cantTotal = (int) clienteNeg.countActive();  //Cantidad de registros activos en la BD
+			int cantTotal = (int) clienteNeg.ContarActivo();  //Cantidad de registros activos en la BD
 
 			int pag = 1;
 			if(request.getParameter("pag") != null) {
@@ -181,7 +172,7 @@ public class ServletCliente extends HttpServlet {
 			int resto = offset + limit;
 			int index = 0;
 
-			ArrayList<Cliente> lClientePag = (ArrayList<Cliente>) clienteNeg.readAll();
+			ArrayList<Cliente> lClientePag = (ArrayList<Cliente>) clienteNeg.BuscarTodos();
 	        System.out.println(lClientePag); 
 			ListIterator<Cliente> itLista = lClientePag.listIterator();
 			while (itLista.hasNext()) {
@@ -205,7 +196,7 @@ public class ServletCliente extends HttpServlet {
 	
 	private void cargarClienteParaModif(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 	    String clienteSeleccionado = request.getParameter("dni");	
-		Cliente cl = clienteNeg.readOne(clienteSeleccionado);					        
+		Cliente cl = clienteNeg.BuscarUno(clienteSeleccionado);					        
 	    
 		request.setAttribute("cliente", cl);
 		request.setAttribute("dni", clienteSeleccionado);
@@ -218,7 +209,7 @@ public class ServletCliente extends HttpServlet {
 	
 	private void cargarClienteBaja(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 	    String clienteSeleccionado = request.getParameter("dni");	
-		Cliente cl = clienteNeg.readOne(clienteSeleccionado);	
+		Cliente cl = clienteNeg.BuscarUno(clienteSeleccionado);	
 		
 		String clienteBaja = "";
 		clienteBaja+="Cliente: "+cl.getApellido()+", "+cl.getNombre()+"<br><br>DNI: "+cl.getDni()+ " - CUIL: "+ cl.getCuil()+"<br><br>Sexo: "+cl.getSexo();
@@ -237,7 +228,7 @@ public class ServletCliente extends HttpServlet {
 	
 	private void validarDNI( String dni ) throws DniRepetido {
 		
-		Cliente cl = clienteNeg.readOne(dni);	
+		Cliente cl = clienteNeg.BuscarUno(dni);	
 
 		if (cl.getDni() != null) {
 
@@ -248,7 +239,7 @@ public class ServletCliente extends HttpServlet {
 	private Boolean validaEstado( String dni ) {
 		boolean estado = true;
 
-		Cliente cl = clienteNeg.readOne(dni);	
+		Cliente cl = clienteNeg.BuscarUno(dni);	
 		
 		if (cl != null && cl.isEstado() == false) {
 				estado = false;
@@ -299,7 +290,7 @@ public class ServletCliente extends HttpServlet {
 			java.sql.Date fNac = new java.sql.Date(fecha.getTime());  // acá se hace el parseo a Date sql
 	        
 	        Cliente cliente = new Cliente(dni, nombre, apellido, cuil, sexo, nacionalidad, fNac, direccion, localidad, provincia, pais, email, tel, true);
-			agregado = clienteNeg.insert(cliente);
+			agregado = clienteNeg.Insert(cliente);
 			if (agregado) {
 				request.setAttribute("agregado", agregado);
 			
@@ -370,7 +361,7 @@ public class ServletCliente extends HttpServlet {
 	        
 	        Cliente cliente = new Cliente(dni, nombre, apellido, cuil, sexo, nacionalidad, fNac, direccion, localidad, provincia, pais, email, tel, true);
 	        System.out.println(cliente); 
-	        modificado = clienteNeg.update(cliente);
+	        modificado = clienteNeg.Update(cliente);
 			if (modificado) {
 //		        System.out.println(cliente); 
 				request.setAttribute("modificado", modificado);
@@ -395,7 +386,7 @@ public class ServletCliente extends HttpServlet {
 	
 	private void validarSaldo( int nroCuenta ) throws SaldoCuenta {
 		
-		Cuenta cuenta = neg.readOne(nroCuenta);	
+		Cuenta cuenta = neg.BuscarUno(nroCuenta);	
 		
 
 		if ( cuenta.getSaldo().compareTo(BigDecimal.ZERO) > 0 && cuenta.isEstado() == true) {
@@ -416,7 +407,7 @@ public class ServletCliente extends HttpServlet {
 		
 		try {
 			String dni = request.getParameter("dni");
-			ArrayList<Cuenta> lCuentas = (ArrayList<Cuenta>) neg.readForClient(dni);
+			ArrayList<Cuenta> lCuentas = (ArrayList<Cuenta>) neg.BuscarClienteDni(dni);
 			
 			if (lCuentas != null ) {
 				for(Cuenta cta : lCuentas) {
@@ -426,7 +417,7 @@ public class ServletCliente extends HttpServlet {
 			
 	        Cliente cliente = new Cliente();
 	        cliente.setDni(dni);
-	        eliminado = clienteNeg.logicalDeletion(cliente);
+	        eliminado = clienteNeg.EliminacionLogica(cliente);
 	        
 	        UsuarioNegocio usNeg = new UsuarioNegocioImpl();
 	        Boolean eliminadoUs = usNeg.logicalDeletion(dni);

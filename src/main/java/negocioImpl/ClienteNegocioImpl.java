@@ -11,7 +11,7 @@ public class ClienteNegocioImpl implements ClienteNegocio {
 
 	ClienteDao cDao = new ClienteDaoImpl();
 
-	public boolean insert(Cliente cliente) {
+	public boolean Insert(Cliente cliente) {
 
 		boolean estado = false;
 		/*if (cliente.getDni() > -1 && cliente.getDescripcion().trim().length() > 0 && cliente.getIdTipo() > -1
@@ -21,7 +21,7 @@ public class ClienteNegocioImpl implements ClienteNegocio {
 		return estado;
 	}
 	
-	public boolean update(Cliente cliente) {
+	public boolean Update(Cliente cliente) {
 
 		boolean estado = false;
 		estado = cDao.Update(cliente);
@@ -29,7 +29,7 @@ public class ClienteNegocioImpl implements ClienteNegocio {
 		return estado;
 	}
 
-	public boolean logicalDeletion(Cliente cliente_a_eliminar) {
+	public boolean EliminacionLogica(Cliente cliente_a_eliminar) {
 		boolean estado = false;
 		try {
 			if (cliente_a_eliminar.getDni() != null) {
@@ -42,7 +42,7 @@ public class ClienteNegocioImpl implements ClienteNegocio {
 	}
 
 
-	public List<Cliente> readAll() {
+	public List<Cliente> BuscarTodos() {
 
 		List<Cliente> lClientes;
 		lClientes = cDao.BuscarTodos();
@@ -50,7 +50,7 @@ public class ClienteNegocioImpl implements ClienteNegocio {
 	}
 	
 	
-	public Cliente readOne(String dni) {
+	public Cliente BuscarUno(String dni) {
 
 		Cliente cliente;
 		cliente = cDao.BuscarUno(dni);
@@ -58,12 +58,12 @@ public class ClienteNegocioImpl implements ClienteNegocio {
 	}
 
 
-	public String readLast() {
+	public String BuscarUltimo() {
 		System.out.print(cDao.BuscarUltimo());
 		return cDao.BuscarUltimo();
 	}
 	
-	public int countActive() {
+	public int ContarActivo() {
 
 		int cant;
 		cant = cDao.ClientesActivos();

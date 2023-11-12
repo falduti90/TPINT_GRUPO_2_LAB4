@@ -21,8 +21,8 @@ public class TransferenciaNegocioImpl implements TransferenciaNegocio{
 		/*Obtengo cuenta destino y cuenta de origen*/
 		
 		
-		cueOrigen =cuentaDaoD.readOne(Integer.parseInt(ctaOrigen));
-		cueDestino =cuentaDaoD.readOneCbu(cbuDestino);
+		cueOrigen =cuentaDaoD.BuscarUno(Integer.parseInt(ctaOrigen));
+		cueDestino =cuentaDaoD.BuscarCbu(cbuDestino);
 	
 		
 		/*Validaciones*/

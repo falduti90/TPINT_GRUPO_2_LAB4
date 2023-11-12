@@ -123,7 +123,7 @@ public class ServletUsuario extends HttpServlet {
 		String dni = request.getParameter("txtDNI");
 		
 		ClienteNegocio clienteNeg = new ClienteNegocioImpl(); 
-		Cliente cl = clienteNeg.readOne(dni);	
+		Cliente cl = clienteNeg.BuscarUno(dni);	
         System.out.println(cl); 
 
 		if (cl != null && cl.isEstado() == true) {
@@ -166,7 +166,7 @@ public class ServletUsuario extends HttpServlet {
 	
 		private void cuentasUsuario(HttpServletRequest request, Usuario usuario) {
 			CuentaNegocio cuenta = new CuentaNegocioImpl(); 
-			ArrayList<Cuenta> cta = (ArrayList<Cuenta>) cuenta.readForClient(usuario.getDni());		
+			ArrayList<Cuenta> cta = (ArrayList<Cuenta>) cuenta.BuscarClienteDni(usuario.getDni());		
 			int nroCuenta;
 			if(cta.size() !=0 || cta.isEmpty() == false) {
 				nroCuenta = cta.get(0).getNroCuenta();	

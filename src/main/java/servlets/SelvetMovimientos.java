@@ -84,7 +84,7 @@ public class SelvetMovimientos extends HttpServlet {
 		if(dni != "")
 		{
 		ClienteNegocio clienteNeg = new ClienteNegocioImpl(); 
-		Cliente cl = clienteNeg.readOne(dni);	
+		Cliente cl = clienteNeg.BuscarUno(dni);	
         System.out.println(cl); 
 
 		if (cl != null && cl.isEstado() == true) {
@@ -127,7 +127,7 @@ public class SelvetMovimientos extends HttpServlet {
 		int currentCuenta = (int) request.getSession().getAttribute("cuentaSeleccionada");
 		CuentaNegocio ctaNeg = new CuentaNegocioImpl(); 
 		Cuenta cta = new Cuenta(); 
-		cta = ctaNeg.readOne(currentCuenta);
+		cta = ctaNeg.BuscarUno(currentCuenta);
 		request.setAttribute("cuenta", cta);
 
 		MovimientoNegocio movNeg = new MovimientoNegocioImpl(); 
@@ -245,7 +245,7 @@ public class SelvetMovimientos extends HttpServlet {
 	private void cargarFiltroDni(HttpServletRequest request, MovimientoNegocio movimientoNegocio) throws ServletException, IOException {
 		String dni = request.getParameter("txtDni");
 		CuentaNegocio cuentaNegocio = new CuentaNegocioImpl();
-		ArrayList<Cuenta> listaCuentas = (ArrayList<Cuenta>)cuentaNegocio.readForClient(dni);
+		ArrayList<Cuenta> listaCuentas = (ArrayList<Cuenta>)cuentaNegocio.BuscarClienteDni(dni);
 		ArrayList<Movimiento> listaMovimientos = new ArrayList<Movimiento> ();
 		for(Cuenta cnt: listaCuentas) 
 		{

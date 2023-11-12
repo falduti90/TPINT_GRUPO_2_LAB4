@@ -19,7 +19,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 
 	CuentaDao cDao = new CuentaDaoImpl();
 
-	public boolean insert(Cuenta Cuenta) {
+	public boolean Insert(Cuenta Cuenta) {
 
 		boolean estado = false;
 			estado = cDao.Insert(Cuenta);
@@ -28,7 +28,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 	}
 
 
-	public List<Cuenta> readAll() {
+	public List<Cuenta> BuscarTodos() {
 
 		List<Cuenta> lCuentas;
 		lCuentas = cDao.BuscarTodos();
@@ -36,24 +36,24 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 	}
 
 
-	public int readLast() {
+	public int BuscarUltimo() {
 		System.out.print(cDao.BuscarUltimo());
 		return cDao.BuscarUltimo();
 	}
 
-	public List<Cuenta> readForClient(String dni){
+	public List<Cuenta> BuscarClienteDni(String dni){
 		List<Cuenta> lCuentas_x_usuario;
 		lCuentas_x_usuario = cDao.BuscarClienteDni(dni);
 		return lCuentas_x_usuario; 
 	}
 
-	public Cuenta readOne(int nroCta){
+	public Cuenta BuscarUno(int nroCta){
 		Cuenta cta = new Cuenta();
 		cta = cDao.BuscarUno(nroCta);
 		return cta; 
 	}
 	
-	public Cuenta readOneCbu(String cbu){
+	public Cuenta BuscarCbu(String cbu){
 		Cuenta cta = new Cuenta();
 		cta = cDao.BuscarCbu(cbu);
 		return cta; 
@@ -61,7 +61,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 
 
 
-	public boolean update(Cuenta cuenta) {
+	public boolean Update(Cuenta cuenta) {
 
 		boolean estado=false;
 		if( cuenta.getNroCuenta()  > 0 )
@@ -70,7 +70,9 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 		}
 		return estado;
 	}
-	public boolean delete(Cuenta cuenta) {
+	
+	
+	public boolean Delete(Cuenta cuenta) {
 
 		boolean estado=false;
 		try
@@ -88,7 +90,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 
 
 	@Override
-	public boolean insert(String dni, int tc) {
+	public boolean Insert(String dni, int tc) {
 
 
 		CuentaDao cDao = new CuentaDaoImpl();
@@ -153,7 +155,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 		return false;
 		}
 	
-	public boolean verificarCliente(String dni) {
+	public boolean VerificarCliente(String dni) {
 		ClienteDao clienteDao = new ClienteDaoImpl();
 		try										
 		{
@@ -163,7 +165,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
            return false;
 }
 	}
-	public boolean verificarMaxCuentas(String dni) {
+	public boolean VerificarMaxCuentas(String dni) {
 		try
 		{
 		CuentaDao cDao = new CuentaDaoImpl();
