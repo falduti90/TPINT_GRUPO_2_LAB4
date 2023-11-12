@@ -11,7 +11,7 @@ public class PaisNegocioImpl implements PaisNegocio {
 
 	PaisDao pDao = new PaisDaoImpl();
 
-	public boolean insert(Pais pais) {
+	public boolean Insert(Pais pais) {
 
 		boolean estado = false;
 		estado = pDao.Insert(pais);
@@ -19,7 +19,7 @@ public class PaisNegocioImpl implements PaisNegocio {
 		return estado;
 	}
 	
-	public boolean update(Pais pais) {
+	public boolean Update(Pais pais) {
 
 		boolean estado = false;
 		estado = pDao.Update(pais);
@@ -27,7 +27,7 @@ public class PaisNegocioImpl implements PaisNegocio {
 		return estado;
 	}
 
-	public boolean logicalDeletion(Pais pais_a_eliminar) {
+	public boolean EliminacionLogica(Pais pais_a_eliminar) {
 		boolean estado = false;
 		try {
 			if (pais_a_eliminar.getCodPais() > 0) {
@@ -40,7 +40,7 @@ public class PaisNegocioImpl implements PaisNegocio {
 	}
 
 
-	public List<Pais> readAll() {
+	public List<Pais> BuscarTodos () {
 
 		List<Pais> lPaises;
 		lPaises = pDao.BuscarTodos();
@@ -48,7 +48,7 @@ public class PaisNegocioImpl implements PaisNegocio {
 	}
 
 
-	public int readLast() {
+	public int BuscarUltimo() {
 		System.out.print(pDao.Buscarultimo());
 		return pDao.Buscarultimo();
 	}

@@ -406,13 +406,6 @@ dl
   text-decoration: underline;
 }
 
-.header {
-	display: flex;
-	justify-content: space-between;
-	padding: 0.5rem 2rem;
-	border-bottom-style: outset;
-  	border-color: green;
-}
 
 .logged {
 	display: flex;

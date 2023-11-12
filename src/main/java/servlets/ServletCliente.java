@@ -105,7 +105,7 @@ public class ServletCliente extends HttpServlet {
 		ArrayList<Localidad> lLoc = new ArrayList<Localidad>();	
 		
 		try {
-			lPais = (ArrayList<Pais>) pNeg.readAll();		
+			lPais = (ArrayList<Pais>) pNeg.BuscarTodos();		
 			lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas();			
 			
 		}  catch (Exception e) {
@@ -127,7 +127,7 @@ public class ServletCliente extends HttpServlet {
 		ArrayList<Localidad> lLoc = new ArrayList<Localidad>();	
 		
 		try {
-				lPais = (ArrayList<Pais>) pNeg.readAll();		
+				lPais = (ArrayList<Pais>) pNeg.BuscarTodos();		
 				lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas();			
 			
 		}  catch (Exception e) {
@@ -420,7 +420,7 @@ public class ServletCliente extends HttpServlet {
 	        eliminado = clienteNeg.EliminacionLogica(cliente);
 	        
 	        UsuarioNegocio usNeg = new UsuarioNegocioImpl();
-	        Boolean eliminadoUs = usNeg.logicalDeletion(dni);
+	        Boolean eliminadoUs = usNeg.EliminacionLogica(dni);
 	        
 			 
 		} catch(SaldoCuenta ex) {

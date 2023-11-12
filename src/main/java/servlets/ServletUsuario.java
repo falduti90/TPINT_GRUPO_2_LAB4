@@ -184,7 +184,7 @@ public class ServletUsuario extends HttpServlet {
 		
 		private void cargarDesplegablesAlta(String dni, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			TipoUsuarioNegocio usNeg = new TipoUsuarioNegocioImpl(); 
-			ArrayList<TipoUsuario> lTiposUs = (ArrayList<TipoUsuario>) usNeg.readAll();
+			ArrayList<TipoUsuario> lTiposUs = (ArrayList<TipoUsuario>) usNeg.BuscarTodos();
 			request.setAttribute("tiposUsuarios", lTiposUs);
 			request.setAttribute("dni", dni);
 				
@@ -195,7 +195,7 @@ public class ServletUsuario extends HttpServlet {
 		
 		private void cargarDesplegablesModif(String dni, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			TipoUsuarioNegocio usNeg = new TipoUsuarioNegocioImpl(); 
-			ArrayList<TipoUsuario> lTiposUs = (ArrayList<TipoUsuario>) usNeg.readAll();
+			ArrayList<TipoUsuario> lTiposUs = (ArrayList<TipoUsuario>) usNeg.BuscarTodos();
 			request.setAttribute("tiposUsuarios", lTiposUs);
 			request.setAttribute("dni", dni);
 				
@@ -206,7 +206,7 @@ public class ServletUsuario extends HttpServlet {
 		
 		private void cargarUsuarioParaModif(String dni, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 			UsuarioNegocio usNeg = new UsuarioNegocioImpl(); 
-			Usuario us = usNeg.readOne(dni);	
+			Usuario us = usNeg.BuscarUno(dni);	
 			String usuario = us.getUsuario();
 			request.setAttribute("usuario", us);
 	        System.out.println(dni); 
@@ -242,7 +242,7 @@ public class ServletUsuario extends HttpServlet {
 			if(contrasenia.equals(contrasenia2)){												
 				try {
 					UsuarioNegocio usNeg = new UsuarioNegocioImpl(); 							
-					agregado = usNeg.insert(us);
+					agregado = usNeg.Insert(us);
 					if (agregado) {
 						System.out.println(us); 
 						request.setAttribute("agregado", agregado);
@@ -289,7 +289,7 @@ public class ServletUsuario extends HttpServlet {
 			if(contrasenia.equals(contrasenia2)){												
 				try {
 					UsuarioNegocio usNeg = new UsuarioNegocioImpl(); 							
-					modificado = usNeg.update(us);
+					modificado = usNeg.Update(us);
 					if (modificado) {
 						System.out.println(us); 
 						request.setAttribute("modificado", modificado);

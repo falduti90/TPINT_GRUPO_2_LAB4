@@ -104,7 +104,7 @@ public class SelvetMovimientos extends HttpServlet {
 	}
 	private void cargarPlanilla(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		TipoMovimientoNegocio tipoMovimientoNegocio = new TipoMovimientoNegocioImpl(); 
-		ArrayList<TipoMovimiento> tipoMovimiento = (ArrayList<TipoMovimiento>) tipoMovimientoNegocio.readAll();
+		ArrayList<TipoMovimiento> tipoMovimiento = (ArrayList<TipoMovimiento>) tipoMovimientoNegocio.BuscarTodos();
 		request.setAttribute("tipoMovimiento", tipoMovimiento);
 		
 		MovimientoNegocio movimientoNegocio = new MovimientoNegocioImpl();
@@ -119,7 +119,7 @@ public class SelvetMovimientos extends HttpServlet {
 	
 	private void cargarDesplegables(HttpServletRequest request) throws ServletException, IOException {
 		TipoMovimientoNegocio tipoMovimientoNegocio = new TipoMovimientoNegocioImpl(); 
-		ArrayList<TipoMovimiento> tipoMovimiento = (ArrayList<TipoMovimiento>) tipoMovimientoNegocio.readAll();
+		ArrayList<TipoMovimiento> tipoMovimiento = (ArrayList<TipoMovimiento>) tipoMovimientoNegocio.BuscarTodos();
 		request.setAttribute("tipoMovimiento", tipoMovimiento);		
 	}
 	

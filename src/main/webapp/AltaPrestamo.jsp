@@ -6,10 +6,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-<style type="text/css">
-	<jsp:include page="css/style.css"></jsp:include>
+ <style>
 </style>
+
 <title>Administrar Prestamos - Admin</title>
 </head>
 <body>
@@ -44,20 +45,28 @@
  	    } 
  		
 %>
-<header class="header"> 
-	<div>
-		<a href="inicioAdmin.jsp">
-			<img style = "float: left; margin: 2px 20px 10px 0; ; " src="img/logo.jpg"  alt="logo" width="50" height="50"  />
-		</a>
-	</div>
-	<div class="logged">
-		<span><%=usuario.getUsuario()%></span>
-		<span>LOGGUEADO</span>
-	</div>
+	
+
+<header  style=" padding: 25px;">
+  <nav style="" class="navbar navbar-expand-lg navbar-light bg-white fixed-top" >
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarExample01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active" style="background-color:highlight;">
+            <a class="nav-link" aria-current="page" href="inicioAdmin.jsp">Menu Principal</a>
+        </ul>
+        	<div class="alert alert-info ml-auto">
+               <i class="fas fa-user"></i>
+               <span><%=usuario.getUsuario()%></span>
+            </div>
+      </div>
+    </div>
+  </nav>
 </header>
 
+
 <div class="menu">
-<a style="margin-top: 0.5rem;" class="volver" href="inicioAdmin.jsp"> <span class="volverIcon fa fa-home"></span> Volver</a>
+<br><br>
 <h2>Autorización Prestamos</h2>
 <%
 		if(!resBoolean && resString!= null){%>
@@ -90,9 +99,11 @@
 	</script>
 <%if(listaPrestamos!=null && resBoolean){ %>
 
- <table >
+ <table class="table" >
 			<caption>Prestamos disponibles para aprobacion</caption>
-		   
+			
+	<thead class="thead-dark">			
+			   
 		<tr>
 			<th>Codigo de prestamo pendiente</th>
 		    <th>Numero de cuenta</th>
@@ -102,6 +113,7 @@
 		    <th>estado</th>
 		    <th colspan="2">Autorizacion</th>
 		</tr>
+	</thead>			
 <%
 
 		for(PrestamoxAutorizar p:listaPrestamos)
@@ -139,7 +151,7 @@
 		</form>
 	</tr>
 		<%}%>
-		 </table>
+</table>
 
 <%}
 		else
@@ -175,5 +187,12 @@
 	
 	<!---Termina PAginado---->
 		 </div					>	
+		 
+		 
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		 
 </body>
 </html>

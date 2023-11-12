@@ -118,7 +118,7 @@ public class ServletCuenta extends HttpServlet {
 		request.setAttribute("dni", dni);
 		request.setAttribute("resString", resString);
 		request.setAttribute("resBoolean", resBoolean);
-		request.setAttribute("listaTC", negTC.readAll());
+		request.setAttribute("listaTC", negTC.BuscarTodos());
 		
 	switch(i)
 	{
