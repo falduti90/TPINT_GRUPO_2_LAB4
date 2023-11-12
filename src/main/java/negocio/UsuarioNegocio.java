@@ -8,15 +8,15 @@ public interface UsuarioNegocio {
 
 	public Boolean IniciarSesion(Usuario usuario);
 	
-	public boolean insert(Usuario usuario);
+	public boolean Insert(Usuario usuario);
 	
-	public boolean update(Usuario usuario);
+	public boolean Update(Usuario usuario);
 	
-	public boolean logicalDeletion(String dni); // Baja lógica
+	public boolean EliminacionLogica(String dni); // Baja lógica
 
-	public Usuario readOne(String dni);
+	public Usuario BuscarUno(String dni);
 	
-	public List<Usuario> readAll();
+	public List<Usuario> BuscarTodos();
 
 //	public String readLast();
 

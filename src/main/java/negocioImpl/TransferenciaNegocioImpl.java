@@ -10,7 +10,7 @@ import negocio.TransferenciaNegocio;
 
 public class TransferenciaNegocioImpl implements TransferenciaNegocio{
 	
-	public Boolean DoTransfer(String ctaOrigen, String cbuDestino, BigDecimal importe, TipoMovimiento TMov, String detalle) {
+	public Boolean CrearTrans(String ctaOrigen, String cbuDestino, BigDecimal importe, TipoMovimiento TMov, String detalle) {
 		TransferenciaDaoImpl transferNeg = new TransferenciaDaoImpl();
 		BigDecimal SaldoDestino;
 		BigDecimal SaldoOrigen;

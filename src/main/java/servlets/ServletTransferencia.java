@@ -84,7 +84,7 @@ public class ServletTransferencia extends HttpServlet {
 		TipoMovimiento Tmov= new TipoMovimiento(4,"Transferencia",true);
 		
 		TransferenciaNegocioImpl Transferencia = new TransferenciaNegocioImpl();
-		if (Transferencia.DoTransfer(ctaOrigen, cbuDestino, importeBig, Tmov, detalle))
+		if (Transferencia.CrearTrans(ctaOrigen, cbuDestino, importeBig, Tmov, detalle))
 			request.setAttribute("Transferencia", true);
 	
 		else 

@@ -23,13 +23,13 @@ public class UsuarioNegocioImpl implements UsuarioNegocio {
 		return false;
 	}
 	
-	public boolean insert(Usuario usuario) {
+	public boolean Insert(Usuario usuario) {
 		boolean estado = false;
 		estado = uDao.Insert(usuario);
 		return estado;
 	}
 	
-	public boolean update(Usuario usuario) {
+	public boolean Update(Usuario usuario) {
 
 		boolean estado = false;
 		estado = uDao.Update(usuario);
@@ -37,7 +37,7 @@ public class UsuarioNegocioImpl implements UsuarioNegocio {
 		return estado;
 	}
 
-	public boolean logicalDeletion(String dni) {
+	public boolean EliminacionLogica(String dni) {
 		boolean estado = false;
 		try {
 			if (dni != null) {
@@ -50,14 +50,14 @@ public class UsuarioNegocioImpl implements UsuarioNegocio {
 	}
 
 
-	public List<Usuario> readAll() {
+	public List<Usuario> BuscarTodos() {
 
 		List<Usuario> lUsuarios;
 		lUsuarios = uDao.BuscarTodos();
 		return lUsuarios;
 	}
 	
-	public Usuario readOne(String dni) {
+	public Usuario BuscarUno(String dni) {
 		
 		Usuario usuario = new Usuario();
 		usuario = uDao.BuscarUno(dni);

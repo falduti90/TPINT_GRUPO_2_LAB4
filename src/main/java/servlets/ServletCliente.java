@@ -420,7 +420,7 @@ public class ServletCliente extends HttpServlet {
 	        eliminado = clienteNeg.EliminacionLogica(cliente);
 	        
 	        UsuarioNegocio usNeg = new UsuarioNegocioImpl();
-	        Boolean eliminadoUs = usNeg.logicalDeletion(dni);
+	        Boolean eliminadoUs = usNeg.EliminacionLogica(dni);
 	        
 			 
 		} catch(SaldoCuenta ex) {
