@@ -8,6 +8,10 @@
 --color-1: green; 
 }
 
+body{
+	background-color: #508bfc;
+}
+
 a{
   text-decoration: none;	
 }

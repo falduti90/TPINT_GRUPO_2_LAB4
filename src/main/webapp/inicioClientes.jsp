@@ -12,7 +12,7 @@
 	</style>
 	<title>Inicio - Cliente</title>
 </head>
-<body onLoad="bienvenida();">
+<body onLoad="bienvenido/a();">
 <script>
 		<%	Usuario usuario = new Usuario();
 		 	if(session.getAttribute("Usuario")!=null){	
@@ -38,13 +38,13 @@
 	</a>
 </div>
 <div class="logged">
-	<span><%=usuario.getUsuario()%></span>
-	<span>LOGGUEADO</span>
+	<span>Usuario/a: <%=usuario.getUsuario()%></span>
+	<a class="btn btn-primary" href="index.jsp"> <span class="fas fa-times-circle fa fa-bath"></span>Cerrar sesión</a>
+
 </div>
 </header>
 
 	<div class="menu">
-	<a class="volver" href="index.jsp"> <span class="volverIcon fas fa-times-circle"></span>Salir</a>
 
 	<h1>Panel Cliente</h1>
 	<span>Seleccione la opción deseada: </span>
