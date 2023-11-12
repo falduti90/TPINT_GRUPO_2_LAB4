@@ -106,7 +106,7 @@ public class ServletCliente extends HttpServlet {
 		
 		try {
 			lPais = (ArrayList<Pais>) pNeg.readAll();		
-			lLoc = (ArrayList<Localidad>) lNeg.readAll();			
+			lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas();			
 			
 		}  catch (Exception e) {
 			e.printStackTrace();
@@ -128,7 +128,7 @@ public class ServletCliente extends HttpServlet {
 		
 		try {
 				lPais = (ArrayList<Pais>) pNeg.readAll();		
-				lLoc = (ArrayList<Localidad>) lNeg.readAll();			
+				lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas();			
 			
 		}  catch (Exception e) {
 			e.printStackTrace();
@@ -269,7 +269,7 @@ public class ServletCliente extends HttpServlet {
 
 		
 		LocalidadNegocio locDao = new LocalidadNegocioImpl();
-		Localidad localidad = locDao.readOne(loc);	
+		Localidad localidad = locDao.BuscarUna(loc);	
         //System.out.println(localidad); 
 
 		Provincia provincia = new Provincia();		
@@ -346,7 +346,7 @@ public class ServletCliente extends HttpServlet {
 		
 		
 		LocalidadNegocio locDao = new LocalidadNegocioImpl();
-		Localidad localidad = locDao.readOne(loc);			
+		Localidad localidad = locDao.BuscarUna(loc);			
 		Provincia provincia = new Provincia();		
 		provincia.setCodProvincia(localidad.getProvincia().getCodProvincia());
 		Pais pais = new Pais();

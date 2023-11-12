@@ -108,7 +108,7 @@ public class SelvetMovimientos extends HttpServlet {
 		request.setAttribute("tipoMovimiento", tipoMovimiento);
 		
 		MovimientoNegocio movimientoNegocio = new MovimientoNegocioImpl();
-		ArrayList<Movimiento> movimiento = (ArrayList<Movimiento>)movimientoNegocio.readAll();
+		ArrayList<Movimiento> movimiento = (ArrayList<Movimiento>)movimientoNegocio.BuscarTodos();
 		cargarDesplegables(request);
 		request.setAttribute("listaMovimientos", movimiento);
 		hacerInformes(request);
@@ -131,7 +131,7 @@ public class SelvetMovimientos extends HttpServlet {
 		request.setAttribute("cuenta", cta);
 
 		MovimientoNegocio movNeg = new MovimientoNegocioImpl(); 
-		ArrayList<Movimiento> lMov = movNeg.readOneCta(currentCuenta);
+		ArrayList<Movimiento> lMov = movNeg.BuscarNro(currentCuenta);
 		//BigDecimal currentSaldo = mov.getSaldo();
 		if (lMov.size() > 0) {
 			request.setAttribute("saldo", lMov.get(0).getSaldo());
@@ -146,7 +146,7 @@ public class SelvetMovimientos extends HttpServlet {
 	
 	private void filtrarReporte(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		MovimientoNegocio movimientoNegocio = new MovimientoNegocioImpl();
-		ArrayList<Movimiento> listaMovimientos = (ArrayList<Movimiento>)movimientoNegocio.readAll();
+		ArrayList<Movimiento> listaMovimientos = (ArrayList<Movimiento>)movimientoNegocio.BuscarTodos();
 		request.setAttribute("listaMovimientos", listaMovimientos);
 		if(request.getParameter("txtFechaInicial")!=null)
 		{
@@ -225,7 +225,7 @@ public class SelvetMovimientos extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ArrayList<Movimiento> listaMovimientos = (ArrayList<Movimiento>)movimientoNegocio.readDesdeFecha(fecha_inicio);
+		ArrayList<Movimiento> listaMovimientos = (ArrayList<Movimiento>)movimientoNegocio.BuscarDesde(fecha_inicio);
 		request.setAttribute("listaMovimientos", listaMovimientos);
 	}
 	
@@ -238,7 +238,7 @@ public class SelvetMovimientos extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ArrayList<Movimiento> listaMovimientos = (ArrayList<Movimiento>)movimientoNegocio.readHastaFecha(fecha_final);
+		ArrayList<Movimiento> listaMovimientos = (ArrayList<Movimiento>)movimientoNegocio.BuscarHasta(fecha_final);
 		request.setAttribute("listaMovimientos", listaMovimientos);
 	}
 	
@@ -249,14 +249,14 @@ public class SelvetMovimientos extends HttpServlet {
 		ArrayList<Movimiento> listaMovimientos = new ArrayList<Movimiento> ();
 		for(Cuenta cnt: listaCuentas) 
 		{
-			listaMovimientos.addAll(movimientoNegocio.readOneCta((int)cnt.getNroCuenta()));
+			listaMovimientos.addAll(movimientoNegocio.BuscarNro((int)cnt.getNroCuenta()));
 		}
 		request.setAttribute("listaMovimientos", listaMovimientos);		
 	}
 	
 	private void cargarFiltroMovimiento(HttpServletRequest request, MovimientoNegocio movimientoNegocio) throws ServletException, IOException {
 		int movimiento =  Integer.parseInt(request.getParameter("movimiento"));
-		ArrayList<Movimiento> listaMovimientos = (ArrayList<Movimiento>)movimientoNegocio.readXtipoMov(movimiento);		
+		ArrayList<Movimiento> listaMovimientos = (ArrayList<Movimiento>)movimientoNegocio.BuscarPorTipo(movimiento);		
 		request.setAttribute("listaMovimientos", listaMovimientos);
 	}	
 	

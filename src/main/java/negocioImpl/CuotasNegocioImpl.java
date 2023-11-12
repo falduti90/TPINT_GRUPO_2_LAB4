@@ -10,7 +10,7 @@ import negocio.CuotasNegocio;
 public class CuotasNegocioImpl implements CuotasNegocio{
 	CuotasDaoImpl cuotasDao = new CuotasDaoImpl();
 	
-	public boolean pagarCuota(int NroCuenta,int idCuota, BigDecimal importe) {
+	public boolean PagarCuota(int NroCuenta,int idCuota, BigDecimal importe) {
 		CuentaDaoImpl cuenta = new CuentaDaoImpl();
 		Cuenta cuentaE;
 		cuentaE = cuenta.BuscarUno(NroCuenta);

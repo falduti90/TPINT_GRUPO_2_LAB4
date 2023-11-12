@@ -6,16 +6,16 @@ import entidad.Localidad;
 
 public interface LocalidadNegocio {
 	
-	public boolean insert(Localidad localidad_a_agregar);
+	public boolean Insert(Localidad localidad_a_agregar);
 
-	public boolean logicalDeletion(Localidad localidad_a_eliminar);  // Baja lógica
+	public boolean EliminacionLogica(Localidad localidad_a_eliminar);  // Baja lógica
 
-	public boolean update(Localidad localidad_a_modificar);
+	public boolean Update(Localidad localidad_a_modificar);
 
-	public List<Localidad> readAll();
+	public List<Localidad> BuscarTodas();
 	
-	public Localidad readOne(int codLocalidad);
+	public Localidad BuscarUna(int codLocalidad);
 	
-	public int readLast();
+	public int BuscarUltima();
 
 }

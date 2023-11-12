@@ -11,7 +11,7 @@ public class LocalidadNegocioImpl implements LocalidadNegocio {
 
 	LocalidadDao lDao = new LocalidadDaoImpl();
 
-	public boolean insert(Localidad localidad) {
+	public boolean Insert(Localidad localidad) {
 
 		boolean estado = false;
 		estado = lDao.Insert(localidad);
@@ -19,7 +19,7 @@ public class LocalidadNegocioImpl implements LocalidadNegocio {
 		return estado;
 	}
 	
-	public boolean update(Localidad localidad) {
+	public boolean Update(Localidad localidad) {
 
 		boolean estado = false;
 		estado = lDao.Update(localidad);
@@ -27,7 +27,7 @@ public class LocalidadNegocioImpl implements LocalidadNegocio {
 		return estado;
 	}
 
-	public boolean logicalDeletion(Localidad localidad_a_eliminar) {
+	public boolean EliminacionLogica(Localidad localidad_a_eliminar) {
 		boolean estado = false;
 		try {
 			if (localidad_a_eliminar.getCodLocalidad() > 0) {
@@ -40,7 +40,7 @@ public class LocalidadNegocioImpl implements LocalidadNegocio {
 	}
 
 
-	public List<Localidad> readAll() {
+	public List<Localidad> BuscarTodas() {
 
 		List<Localidad> lLocalidades;
 		lLocalidades = lDao.BuscarTodas();
@@ -48,12 +48,12 @@ public class LocalidadNegocioImpl implements LocalidadNegocio {
 	}
 
 
-	public int readLast() {
+	public int BuscarUltima() {
 		System.out.print(lDao.BuscarUltima());
 		return lDao.BuscarUltima();
 	}
 
-	public Localidad readOne(int codLocalidad) {
+	public Localidad BuscarUna(int codLocalidad) {
 		
 		Localidad localidad = new Localidad();
 		localidad = lDao.BuscarUna(codLocalidad);

@@ -65,7 +65,7 @@ public class ServletCuota extends HttpServlet {
 		String importe = request.getParameter("impCuota");
 		BigDecimal importeBig = new BigDecimal(importe);
 		CuotasNegocioImpl cuotasneg =  new CuotasNegocioImpl();
-		if(cuotasneg.pagarCuota(NroCuenta, idCuota, importeBig))
+		if(cuotasneg.PagarCuota(NroCuenta, idCuota, importeBig))
 			return true;
 		else
 			return false;

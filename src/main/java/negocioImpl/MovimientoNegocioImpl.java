@@ -14,7 +14,7 @@ public class MovimientoNegocioImpl implements MovimientoNegocio{
 
 	MovimientoDao mDao = new MovimientoDaoImpl();
 
-	public boolean insert(Movimiento mov) {
+	public boolean Insert(Movimiento mov) {
 
 		boolean estado = false;
 		estado = mDao.Insert(mov);
@@ -23,7 +23,7 @@ public class MovimientoNegocioImpl implements MovimientoNegocio{
 	}
 
 
-	public ArrayList<Movimiento> readAll() {
+	public ArrayList<Movimiento> BuscarTodos() {
 
 		ArrayList<Movimiento> lMovimiento;
 		lMovimiento = mDao.BuscarTodos();
@@ -31,31 +31,31 @@ public class MovimientoNegocioImpl implements MovimientoNegocio{
 	}
 
 
-	public Movimiento readLast() {
+	public Movimiento BuscarUltimo() {
 		System.out.print(mDao.BuscarUltimo());
 		return mDao.BuscarUltimo();
 	}
 
-	public ArrayList<Movimiento> readOneCta(int nroCuenta){
+	public ArrayList<Movimiento> BuscarNro(int nroCuenta){
 		ArrayList<Movimiento> lMovimientos_x_cuenta;
 		lMovimientos_x_cuenta = mDao.BuscarNro(nroCuenta);
 		return lMovimientos_x_cuenta; 
 	}
 
 
-	public ArrayList<Movimiento> readXtipoMov(int tipoMovimiento) {
+	public ArrayList<Movimiento> BuscarPorTipo(int tipoMovimiento) {
 		ArrayList<Movimiento> tipo_movimiento;
 		tipo_movimiento = mDao.BuscarPorTipo(tipoMovimiento);
 		return tipo_movimiento; 
 	}
 	
-	public ArrayList<Movimiento> readDesdeFecha(Date fechaInicio) {
+	public ArrayList<Movimiento> BuscarDesde(Date fechaInicio) {
 		ArrayList<Movimiento> tipo_movimiento;
 		tipo_movimiento = mDao.BuscarDesde(fechaInicio);
 		return tipo_movimiento; 
 	}
 
-	public ArrayList<Movimiento> readHastaFecha(Date fechaFinal) {
+	public ArrayList<Movimiento> BuscarHasta(Date fechaFinal) {
 		ArrayList<Movimiento> tipo_movimiento;
 		tipo_movimiento = mDao.BuscarHasta(fechaFinal);
 		return tipo_movimiento; 
