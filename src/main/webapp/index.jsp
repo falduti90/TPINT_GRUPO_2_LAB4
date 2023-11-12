@@ -59,16 +59,39 @@
 			 <div class="opcionesIndex">
 			 		<a href="/TPINT_GRUPO_2_LAB4/ServletUsuario?btnIndex">Te olvidaste la contraseña?</a>
 			  </div>
+			  
 			 <%} else {%>	  
 			  	 <form class="form" action="ServletUsuario" method="post">
-				<p class="inputIndex">
+				<p class="inputIndex fs-3"> Ingrese su número de documento</p>
 				 <input placeholder="Tu DNI" type="text" name="txtDNI" required >
-				 </p>
-		      <p class="">		
-				 <input type="submit" value="Siguiente" name="btnSiguiente" ID="btnIniciarSesion">
-			  </p>	      		 
+				<div class="d-inline ml-2">
+				    <input type="submit" value="Consultar" name="btnSiguiente" id="btnIniciarSesion" class="btn btn-primary">
+				</div>
+		      	<div class="d-inline">
+				    <a href="/TPINT_GRUPO_2_LAB4/" class="btn text-center">
+				        <span class="fa fa-arrow-left"></span> Volver
+				    </a>
+				</div>
+				
+				  		 
 			 </form>
 			  	 <%} %>	  
+			  <div style="display:flex; flex-direction: column; align-items: center;">
+		<% if( isCliente == false) { %>	
+				<p style="font-size: 1.2rem; color:red; margin-top:20px;">Cliente no encontrado! Por favor acerquese a alguna sucursal para realizar el alta. <p>
+			</div>
+		<%} %>
+		
+			    	    </div>
+			    <%
+			    if (request.getAttribute("SesionFallida") != null){
+			    	%>
+			    	<script>
+			    	alert("Usuario o clave no valida, intente nuevamente.");
+			    	</script>
+			    	<%
+			    }
+			    %>
 			 
         </div>
       </div>
@@ -77,22 +100,6 @@
 
 	    
 	  
-	  <div style="display:flex; flex-direction: column; align-items: center;">
-<% if( isCliente == false) { %>	
-		<p style="font-size: 1.5rem;">Cliente no encontrado. Por favor acerquese a alguna sucursal para realizar el alta. <p>
-	</div>
-<%} %>
-
-	    	    </div>
-	    <%
-	    if (request.getAttribute("SesionFallida") != null){
-	    	%>
-	    	<script>
-	    	alert("Usuario o clave no valida, intente nuevamente.");
-	    	</script>
-	    	<%
-	    }
-	    %>
 	    
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 	</section>    

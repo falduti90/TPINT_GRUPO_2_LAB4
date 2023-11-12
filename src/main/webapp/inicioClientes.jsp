@@ -53,6 +53,6 @@
 				<a href="clienteInforPersonal.jsp"> Información personal </a>
 			</div>
 	</div>
-</section>
+
 </body>
 </html>

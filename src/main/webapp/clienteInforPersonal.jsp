@@ -31,33 +31,37 @@
 	%>
  
   
- <header class="header"> 
+ <header class="header bg-warning"> 
 	<div>
 		<a href="inicioClientes.jsp">
 			<img style = "float: left; margin: 2px 20px 10px 0; ; " src="img/logo.jpg"  alt="logo" width="50" height="50"  />
 		</a>
 	</div>
 	<div class="logged">
-		<span><%=usuario.getUsuario()%></span>
-		<span>LOGGUEADO</span>
+		<span>Usuario/a: <%=usuario.getUsuario()%></span>
+	<a class="btn btn-danger" href="index.jsp"> <span class="fas fa-times-circle "></span> Cerrar sesión</a>
 	</div>
 </header>
 <div style="display:flex; justify-content: space-around; align-items: center; flex-direction: column">
-<a href="inicioClientes.jsp" class="volver"> <span class="volverIcon fa fa-home"></span>Volver</a>
 
-	<div class="inforPer">
-	<h1><%=	cliente.getApellido()%> <%=cliente.getNombre() %> </h1>
-	<span>Información personal:</span>
+
+	<div class="">
+	<h1 class="fs-1 mt-5  text-center bold"><%=	cliente.getApellido()%> <%=cliente.getNombre() %> </h1>
+	<p class="fs-4 mt-4 pt-1">Datos personales:</p>
 	<div> 
 	
-			<table class="table table-dark table-striped">
+			<table class="table table-primary table-striped-columns table-hover text-center fs-5">
 				<tr>
-					<th>DNI</th>
+					<th>Número de documento</th>
 					<td><%=cliente.getDni() %></td>
 				</tr>
 				<tr>
-			  		<th>Apellido y nombre</th>					
-					<td><%=cliente.getApellido()%>, <%=cliente.getNombre()%></td>
+			  		<th>Apellido</th>					
+					<td><%=cliente.getApellido()%></td>
+				</tr>
+				<tr>
+			  		<th>Nombre/s</th>					
+					<td><%=cliente.getNombre()%></td>
 				</tr>
 				<tr>
 			  		<th>CUIL</th>					
@@ -90,10 +94,11 @@
 				</tr>
 			
 				<tr>
-					<th>Correo</th>
+					<th>Correo electrónico</th>
 					<td><%= cliente.getCorreo_electronico() %></td>
 				</tr>			
 			</table>		
+	<a href="inicioClientes.jsp" class="btn btn-warning text-center"> <span class="fa fa-arrow-left"></span> Volver</a>
 	</div>
 </div>
 </div>
