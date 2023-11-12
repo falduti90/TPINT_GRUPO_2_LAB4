@@ -1,4 +1,4 @@
-insert into usuarios(usuario, dni, tipoUsuario, contraseña, estado) 
+insert into usuarios(usuario, dni, tipoUsuario, clave, estado) 
 	select 	nombre as usuario, 
 			dni, 
             2 as tipoUsuario,

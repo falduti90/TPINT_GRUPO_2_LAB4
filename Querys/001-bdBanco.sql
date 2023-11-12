@@ -1,7 +1,8 @@
-drop schema bdBanco
+drop schema BD_Banco_grupo_2
 
-create schema bdBanco;
-use bdBanco;
+
+create schema BD_Banco_grupo_2;
+use BD_Banco_grupo_2;
 
 create table Paises
 (

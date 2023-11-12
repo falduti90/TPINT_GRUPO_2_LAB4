@@ -9,7 +9,7 @@ public class Conexion {
 	private String host = "jdbc:mysql://localhost:3306/"; 
 	private String user = "root";
 	private String pass = "root";
-	private String dbName = "bdBanco";
+	private String dbName = "BD_Banco_grupo_2";
 	public static Conexion instancia;
 	private Connection connection;
 
