@@ -7,7 +7,7 @@
 <style type="text/css">
 	<jsp:include page="css/style.css"></jsp:include>
 </style>
-<title>Inicio - Banco LABIV</title>
+<title>Banco UTN</title>
 </head>
 
 <body>
@@ -33,7 +33,7 @@
  
 <div class="menuIndex">
 <img style = "float: left; margin: 2px 20px 10px 0; ; " src="img/logo.jpg"  alt="logo" width="50" height="50"  />
-	<h1>Online Banking Banco LABIV </h1>
+	<h1>Banco UTN </h1>
 	
 <% if( pedirDni == false && isCliente == true ) { %>
 	<h2>Acceso</h2>
