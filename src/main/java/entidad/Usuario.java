@@ -5,7 +5,7 @@ public class Usuario {
 	private String usuario;
 	private Cliente cliente;
 	private TipoUsuario tipoUsuario;
-	private String contraseña;
+	private String clave;
 	private boolean estado;
 
 	public Usuario() { 
@@ -13,22 +13,22 @@ public class Usuario {
 		this.tipoUsuario = new TipoUsuario();
 	}
 
-	public Usuario(String usuario, Cliente cliente, TipoUsuario tipoUsuario, String contraseña, boolean estado) {
+	public Usuario(String usuario, Cliente cliente, TipoUsuario tipoUsuario, String clave, boolean estado) {
 		this.cliente = new Cliente();
 		this.tipoUsuario = new TipoUsuario();
 		this.usuario = usuario;
 		this.cliente = cliente;
 		this.tipoUsuario = tipoUsuario;
-		this.contraseña = contraseña;
+		this.clave = clave;
 		this.estado = estado;
 	}
 	
-	public Usuario(String usuario, String dni, String contraseña) {
+	public Usuario(String usuario, String dni, String clave) {
 		this.cliente = new Cliente();
 		this.tipoUsuario = new TipoUsuario();
 		this.usuario = usuario;
 		this.cliente.setDni(dni);
-		this.contraseña = contraseña;
+		this.clave = clave;
 	}
 
 	public String getUsuario() {
@@ -63,12 +63,12 @@ public class Usuario {
 		this.tipoUsuario =  tipoUsuario;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getClave() {
+		return clave;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setClave(String clave) {
+		this.clave = clave;
 	}
 
 	public boolean isEstado() {
@@ -81,8 +81,8 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Usuario [usuario=" + usuario + ", cliente=" + cliente.toString() + ", tipoUsuario=" + tipoUsuario + ", contraseña="
-				+ contraseña + ", estado=" + estado + "]";
+		return "Usuario [usuario=" + usuario + ", cliente=" + cliente.toString() + ", tipoUsuario=" + tipoUsuario + ", clave="
+				+ clave + ", estado=" + estado + "]";
 	}
 	
 }

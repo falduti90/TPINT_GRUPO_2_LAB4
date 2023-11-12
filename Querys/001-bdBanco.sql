@@ -78,7 +78,7 @@ create table Usuarios
 usuario VARCHAR(20) NOT NULL PRIMARY KEY,
 dni VARCHAR(10),
 tipoUsuario INT,  
-contraseña VARCHAR(10) NOT NULL,
+clave VARCHAR(10) NOT NULL,
 estado BIT NOT NULL DEFAULT TRUE,
 foreign key (tipoUsuario) references TiposUsuarios(codTipo) 
 );

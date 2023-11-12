@@ -25,11 +25,11 @@ import entidad.Usuario;
 
 public class UsuarioDaoImpl implements UsuarioDao {
 	
-	private static final String QueryIniciarSesion = "select  c.nombre, c.apellido, c.cuil, c.sexo, c.nacionalidad, c.fecha_nac, c.direccion, c.codLocalidad, c.codProvincia, c.codPais, c.correo_electronico, c.telefonos, c.estado, tu.tipoUsuario, tu.codTipo from bdbanco.usuarios u  inner join bdbanco.clientes c on c.dni = u.dni  inner join bdbanco.tiposUsuarios tu on tu.CodTipo = u.tipoUsuario where u.usuario = ? and u.DNI = ? and	u.contraseña = ? and	u.estado = 1 and c.estado = 1 and tu.estado = 1";
-	private static final String insert = "INSERT INTO Usuarios (usuario, dni, tipoUsuario, contraseña) VALUES (?,?,?,?)";
+	private static final String QueryIniciarSesion = "select  c.nombre, c.apellido, c.cuil, c.sexo, c.nacionalidad, c.fecha_nac, c.direccion, c.codLocalidad, c.codProvincia, c.codPais, c.correo_electronico, c.telefonos, c.estado, tu.tipoUsuario, tu.codTipo from bdbanco.usuarios u  inner join bdbanco.clientes c on c.dni = u.dni  inner join bdbanco.tiposUsuarios tu on tu.CodTipo = u.tipoUsuario where u.usuario = ? and u.DNI = ? and	u.contraseÃ±a = ? and	u.estado = 1 and c.estado = 1 and tu.estado = 1";
+	private static final String insert = "INSERT INTO Usuarios (usuario, dni, tipoUsuario, contraseÃ±a) VALUES (?,?,?,?)";
 	private static final String logicalDeletion = "UPDATE Usuarios set estado = 0 Where dni = ?";
 	private static final String readall = "SELECT * FROM Usuarios";
-	private static final String update = "UPDATE Usuarios set tipoUsuario = ?, contraseña = ? Where usuario = ? and dni = ?";
+	private static final String update = "UPDATE Usuarios set tipoUsuario = ?, contraseÃ±a = ? Where usuario = ? and dni = ?";
 	private static final String readOne = "SELECT * FROM Usuarios Where dni = ?"; 
 
 
@@ -48,7 +48,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			statement = conexion.getSQLConexion().prepareStatement(QueryIniciarSesion);
 			statement.setString(1,  usuario.getUsuario());
 			statement.setString(2, usuario.getDni());
-			statement.setString(3, usuario.getContraseña());
+			statement.setString(3, usuario.getClave());
 			resultSet = statement.executeQuery();
 			
 			/*Vuelvo un registro atras*/
@@ -85,7 +85,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 			statement.setString(1, usuario_a_agregar.getUsuario());
 			statement.setString(2, usuario_a_agregar.getDni());
 			statement.setInt(3, usuario_a_agregar.getTipoUsuario().getCodTipo());
-			statement.setString(4, usuario_a_agregar.getContraseña());
+			statement.setString(4, usuario_a_agregar.getClave());
 
 			if (statement.executeUpdate() > 0) {
 				conexion.commit();
@@ -116,7 +116,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		try {
 			statement = conexion.prepareStatement(update);
 			statement.setInt(1, usuario_a_modificar.getTipoUsuario().getCodTipo());
-			statement.setString(2, usuario_a_modificar.getContraseña());
+			statement.setString(2, usuario_a_modificar.getClave());
 			statement.setString(3, usuario_a_modificar.getUsuario());
 			statement.setString(4, usuario_a_modificar.getDni());
 
@@ -255,7 +255,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		String usuario = resultSet.getString("usuario");
 		String dni = resultSet.getString("dni");
 		int tipo = resultSet.getInt("tipoUsuario");
-		String contraseña = resultSet.getString("contraseña");
+		String clave = resultSet.getString("contraseÃ±a");
 		boolean estado = resultSet.getBoolean("estado");
 		
 		ClienteDao clDao = new ClienteDaoImpl();
@@ -263,7 +263,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		TipoUsuarioDao tuDao = new TipoUsuarioDaoImpl();
 		TipoUsuario tipoUs = tuDao.BuscarUno(tipo);
 				
-		return new Usuario(usuario, cliente, tipoUs, contraseña, estado);
+		return new Usuario(usuario, cliente, tipoUs,clave, estado);
 	}
 	
 	
