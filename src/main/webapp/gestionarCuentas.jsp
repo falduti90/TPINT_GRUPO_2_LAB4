@@ -8,6 +8,8 @@
 <meta charset="ISO-8859-1">
 <title>Gestionar cuentas</title>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<!-- bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <style type="text/css">
 	<jsp:include page="css/style.css"></jsp:include>
 </style>
@@ -73,62 +75,79 @@
 	 %> 
 	 
 	 
-	 <header class="header"> 
-		<div>
-			<a href="inicioClientes.jsp">
-				<img style = "float: left; margin: 2px 20px 10px 0; ; " src="img/logo.jpg"  alt="logo" width="50" height="50"  />
-			</a>
-		</div>
-		<div class="logged">
-			<span><%=usuario.getUsuario()%></span>
-			<span>LOGGUEADO</span>
-		</div>
-	</header>
-	 
-	<div class= "selectorCuentas">
+<header class="header bg-warning p-3"> 
+	<div>
+		<a href="#">
+			<img style = "float: left; margin: 2px 20px 10px 0; ; " src="img/pngwing.com.png"  alt="logo" width="50" height="50"  />
+		</a>
+	</div>
+	<div class="logged ">
+		<span class="mx-2 fw-bold">
+		<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+		<path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+		</svg> <%=usuario.getUsuario()%></span>
+		
+		<a class="btn btn-danger" href="index.jsp"> 
+		<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+		<path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
+		</svg> Cerrar sesión</a>
 	
-		<a style="margin-top: 0.5rem;" 	class="volver" href="inicioClientes.jsp"> <span class="volverIcon fa fa-home"></span> Volver</a>
-		<h1 style="margin:auto; margin-bottom:20px; text-align:center;">Gestionar Cuentas</h1>
-		
-		
+	</div>
+</header>
+
+	<div class= "selectorCuentas">
+		<h1 style="margin:auto; margin-bottom:20px; text-align:center;" class= "fw-bold fs-2 mt-5">Gestionar Cuentas</h1>
+
 		<%if(currentCuenta != 0){
 			%>			
-			<label for="cuentaSeleccionada">Cuenta <%=currentCuenta%> </label><br>
-			<span>Cambiar cuenta:  </span>		
-			<form method="get" action="ServletCuenta" >
-				 <select name="cuentaSeleccionada">   
-				  <%
-				 	if(listaCuentas!=null)
-				 		for(Cuenta cta : listaCuentas) { 
-				 			if(cta.isEstado()) {
-				 				if(cta.getNroCuenta() != currentCuenta){
-					%>
-							<option value="<%=cta.getNroCuenta()%>" > Cuenta  <%=cta.getNroCuenta()%> </option>
-					<%	} else { %>
-							<option value="<%=cta.getNroCuenta()%>" selected > Cuenta  <%=cta.getNroCuenta()%> </option>
-					<%	} } }%>
-				  
-				</select>
-				    <input id="btnSeleccionar" type="submit" value="Seleccionar" name="btnSeleccionar">
-			</form>
+	<label for="cuentaSeleccionada"><span class="badge bg-secondary ps-5 px-5">Cuenta actual: <%=currentCuenta%></span> </label><br>	
+	<form method="get" action="ServletCuenta" class="d-flex">
+    <div class="flex-grow-1 me-2">
+        <select name="cuentaSeleccionada" class="form-select">
+            <% if(listaCuentas!=null) for(Cuenta cta : listaCuentas) { 
+                    if(cta.isEstado()) {
+                        if(cta.getNroCuenta() != currentCuenta){
+            %>
+                        <option value="<%=cta.getNroCuenta()%>" > Cuenta  <%=cta.getNroCuenta()%> </option>
+            <%      } else { %>
+                        <option value="<%=cta.getNroCuenta()%>" selected > Cuenta  <%=cta.getNroCuenta()%> </option>
+            <%      } } }%>
+        </select>
+    </div>
+    	<input id="btnSeleccionar" type="submit" value="Seleccionar" name="btnSeleccionar" class="btn btn-primary ms-4">
+	</form>
+
 	
 	</div>
-
-	<div class="menu">
-		<div class="opcionesMenu">
-				<a href="/TPINT_GRUPO_2_LAB4/ServletMovimientos?getCuenta="><input type="hidden" name="cta" value="<%=currentCuenta%>">Movimientos</a> 
-				<a href="/TPINT_GRUPO_2_LAB4/transferencias.jsp?getCuenta=<%=currentCuenta%>" >Transferencias</a>
-				<a href="/TPINT_GRUPO_2_LAB4/solicitarPrestamo.jsp?getCuenta="><input type="hidden" name="Usuario" value="<%=usuario%>">Solicitar prestamo</a>
-			  	<a href="/TPINT_GRUPO_2_LAB4/ServletPrestamos?pagoPrestamos=<%=currentCuenta%>">Pagar prestamos</a>
-			</div>
-	</div>
+	<div>
+		<div class="d-flex justify-content-center">
+		</div>
+		<div class="d-grid gap-2 col-3 mx-auto mt-5 text-body-danger">
+		    <div class="btn btn-dark  mb-2">
+		        <a href="/TPINT_GRUPO_2_LAB4/ServletMovimientos?getCuenta=" class="text-light fw-bold fs-3">
+		            <input class="btn-primary" type="hidden" name="cta" value="<%=currentCuenta%>">Movimientos
+		        </a>
+		    </div>
+		    <div class="btn btn-dark  mb-2">
+		        <a href="/TPINT_GRUPO_2_LAB4/transferencias.jsp?getCuenta=<%=currentCuenta%>" class="text-light fw-bold fs-3">Transferencias</a>
+		    </div>
+		    <div class="btn btn-dark  mb-2">
+		        <a href="/TPINT_GRUPO_2_LAB4/solicitarPrestamo.jsp?getCuenta=" class="text-light fw-bold fs-3">
+		            <input type="hidden" name="Usuario" value="<%=usuario%>">Solicitar prestamo</a>
+		    </div>
+		    <div class="btn btn-dark mb-2">
+		        <a href="/TPINT_GRUPO_2_LAB4/ServletPrestamos?pagoPrestamos=<%=currentCuenta%>" class="text-light fw-bold fs-3">Pagar prestamos</a>
+		    </div>
+			<a href="inicioClientes.jsp" class="btn btn-warning text-center fw-bold"> <span class="fa fa-arrow-left"></span> Volver</a>
+		</div>
 	
 		<%}
 		else{			
 		%>
-		 	<label for="cuentaSeleccionada">Usted no posee cuentas asignadas aún.</label><br>
-		
+	 	<label for="cuentaSeleccionada">Usted no posee cuentas asignadas aún.</label><br>
 		<%}%>
+	</div>
+
 
 </body>
 </html>
