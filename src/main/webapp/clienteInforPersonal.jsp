@@ -9,6 +9,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <style type="text/css">
 	<jsp:include page="css/style.css"></jsp:include>
 </style>
@@ -49,7 +50,7 @@
 	<span>Información personal:</span>
 	<div> 
 	
-			<table class="tablaDatos">
+			<table class="table table-dark table-striped">
 				<tr>
 					<th>DNI</th>
 					<td><%=cliente.getDni() %></td>
@@ -95,6 +96,6 @@
 			</table>		
 	</div>
 </div>
-
+</div>
 </body>
 </html>
