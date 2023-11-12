@@ -151,7 +151,7 @@ public class ServletUsuario extends HttpServlet {
 		String DNI = request.getParameter("txtDNI");
 		usuario.setDNI(DNI); 
 		usuario.setUsuario(usu);
-		usuario.setContraseÃ±a(clave);
+		usuario.setContraseña(clave);
 		UsuarioNegocioImpl usuNeg = new UsuarioNegocioImpl();
 		
 		if (usuNeg.IniciarSesion(usuario)) {
@@ -256,7 +256,7 @@ public class ServletUsuario extends HttpServlet {
 				}
 							
 			} else {
-				mensaje = "Las contraseÃ±as no coinciden";
+				mensaje = "Las Contraseñas no coinciden";
 				request.setAttribute("mensaje", mensaje);
 				request.setAttribute("agregado", agregado);
 				request.setAttribute("usuario", us);
@@ -304,7 +304,7 @@ public class ServletUsuario extends HttpServlet {
 				
 				
 			} else {
-				mensaje = "Las contraseÃ±as no coinciden";
+				mensaje = "Las Contraseñas no coinciden";
 				request.setAttribute("mensaje", mensaje);
 				request.setAttribute("modificado", modificado);
 				request.setAttribute("usuario", us);
