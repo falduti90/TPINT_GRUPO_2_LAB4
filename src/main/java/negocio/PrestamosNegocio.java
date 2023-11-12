@@ -6,6 +6,6 @@ import entidad.Cuota;
 import entidad.Prestamo;
 
 public interface PrestamosNegocio {
-	public List<Prestamo> readAllDni(String dni);
-	public List<Cuota> getCuotas(int codPrestamo);
+	public List<Prestamo> LeerDni(String dni);
+	public List<Cuota> ObtenerCuota(int codPrestamo);
 }

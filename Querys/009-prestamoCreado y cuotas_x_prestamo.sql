@@ -1,5 +1,4 @@
-#drop trigger PrestamoAutorizado;
-#drop trigger PrestamoCreado;
+
 delimiter //
  CREATE TRIGGER PrestamoAutorizado AFTER  update ON `prestamos_x_autorizar`
   FOR EACH ROW 

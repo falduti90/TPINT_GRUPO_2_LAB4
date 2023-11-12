@@ -11,14 +11,14 @@ public class TipoCuentaImpl implements TipoCuentaNegocio {
 	TipoCuentaDao TipoCuentaDao = new TipoCuentaDaoImpl();
 
 	@Override
-	public boolean insert(TipoCuenta tipo_movimiento_a_agregar) {
+	public boolean Insert(TipoCuenta tipo_movimiento_a_agregar) {
 		boolean estado = false;
 		estado = TipoCuentaDao.Insert(tipo_movimiento_a_agregar);
 		return estado;
 	}
 
 	@Override
-	public boolean logicalDeletion(TipoCuenta localidad_a_eliminar) {
+	public boolean EliminacionLogica(TipoCuenta localidad_a_eliminar) {
 		boolean estado = false;
 		try {
 			if (localidad_a_eliminar.getCodTipo() > 0) {
@@ -33,14 +33,14 @@ public class TipoCuentaImpl implements TipoCuentaNegocio {
 
 
 	@Override
-	public List<TipoCuenta> readAll() {
+	public List<TipoCuenta> BuscarTodos() {
 		List<TipoCuenta> tc;
 		tc = TipoCuentaDao.BuscarTodas();
 		return tc;
 	}
 
 	@Override
-	public TipoCuenta readOne(int codTipoCuenta) {
+	public TipoCuenta BuscarUno(int codTipoCuenta) {
 		TipoCuenta tc = new TipoCuenta();
 		tc = TipoCuentaDao.BuscarUna(codTipoCuenta);
 		

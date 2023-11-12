@@ -1,4 +1,3 @@
-/*drop procedure SP_TRANSFERENCIA*/
 DELIMITER //
 create procedure  SP_TRANSFERENCIA		(	
 										nroCuentaOrigen int, 

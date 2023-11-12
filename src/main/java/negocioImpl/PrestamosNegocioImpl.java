@@ -9,11 +9,11 @@ import negocio.PrestamosNegocio;
 
 public class PrestamosNegocioImpl implements PrestamosNegocio{
 	PrestamosDaoImpl prestamos = new PrestamosDaoImpl();
-	public List<Prestamo> readAllDni(String dni){
+	public List<Prestamo> LeerDni(String dni){
 		return prestamos.BuscarDni(dni);
 	}
 	
-	public List<Cuota> getCuotas(int codPrestamo){
+	public List<Cuota> ObtenerCuota(int codPrestamo){
 		return prestamos.ObtenerCuota(codPrestamo);
 	}
 }

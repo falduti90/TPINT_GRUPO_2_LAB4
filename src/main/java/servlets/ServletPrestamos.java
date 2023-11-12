@@ -66,7 +66,7 @@ public class ServletPrestamos extends HttpServlet {
 		ArrayList<Cuota> cuotaList = new ArrayList<Cuota>();
 		usuario = (Usuario)request.getSession().getAttribute("Usuario");
 		PrestamosNegocioImpl prestamos = new PrestamosNegocioImpl();
-		prestamosList=(ArrayList<Prestamo>) prestamos.readAllDni(usuario.getDni());	
+		prestamosList=(ArrayList<Prestamo>) prestamos.LeerDni(usuario.getDni());	
 		ArrayList<Prestamo> prestamosActivos  = new ArrayList<Prestamo>();
 		ListIterator<Prestamo> it = prestamosList.listIterator();
 		
@@ -75,7 +75,7 @@ public class ServletPrestamos extends HttpServlet {
 			Prestamo p = it.next();
 			if(p.getEstado()) {
 				prestamosActivos.add(p);
-				cuotaList.addAll((ArrayList<Cuota>)prestamos.getCuotas(p.getCodPrestamo()));
+				cuotaList.addAll((ArrayList<Cuota>)prestamos.ObtenerCuota(p.getCodPrestamo()));
 			}
 		}
 		

@@ -11,41 +11,41 @@ public class TipoMovimientoNegocioImpl implements TipoMovimientoNegocio {
 	TipoMovimientoDao tipoMovimientoDao = new TipoMovimientoDaoImpl();
 	
 	@Override
-	public boolean insert(TipoMovimiento tipo_movimiento_a_agregar) {
+	public boolean Insert(TipoMovimiento tipo_movimiento_a_agregar) {
 		boolean estado = false;
 		estado = tipoMovimientoDao.Insert(tipo_movimiento_a_agregar);
 		return estado;
 	}
 
 	@Override
-	public boolean logicalDeletion(TipoMovimiento tipo_movimiento_a_eliminar) {
+	public boolean EliminacionLogica(TipoMovimiento tipo_movimiento_a_eliminar) {
 		boolean estado = false;
 		estado = tipoMovimientoDao.EliminacionLogica(tipo_movimiento_a_eliminar);
 		return estado;
 	}
 
 	@Override
-	public boolean update(TipoMovimiento tipo_movimiento_a_modificar) {
+	public boolean Update(TipoMovimiento tipo_movimiento_a_modificar) {
 		boolean estado = false;
 		estado = tipoMovimientoDao.Update(tipo_movimiento_a_modificar);
 		return estado;
 	}
 
 	@Override
-	public List<TipoMovimiento> readAll() {
+	public List<TipoMovimiento> BuscarTodos() {
 		List<TipoMovimiento> listaMovimientos;
 		listaMovimientos = tipoMovimientoDao.BuscarTodos();
 		return listaMovimientos;
 	}
 
 	@Override
-	public TipoMovimiento readOne(int codTipoMovimiento) {
+	public TipoMovimiento BuscarUno(int codTipoMovimiento) {
 		System.out.print(tipoMovimientoDao.BuscarUno(codTipoMovimiento));
 		return tipoMovimientoDao.BuscarUno(codTipoMovimiento);
 	}
 
 	@Override
-	public int readLast() {
+	public int BuscarUltimo() {
 		System.out.print(tipoMovimientoDao.BuscarUltimo());
 		return tipoMovimientoDao.BuscarUltimo();
 	}

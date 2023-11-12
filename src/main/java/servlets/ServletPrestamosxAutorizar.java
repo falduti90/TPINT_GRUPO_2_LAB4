@@ -76,7 +76,7 @@ public class ServletPrestamosxAutorizar extends HttpServlet {
 		{
 		pxa.setCodPrestamoPendiente(Integer.parseInt(request.getParameter("codPrestamo")));
 		pxa.setEstado(i);
-		solicitado = pdxaNeg.update(pxa);
+		solicitado = pdxaNeg.Update(pxa);
 
 		if(solicitado)
 			resString="Solicitud agregada Satisfactoriamente";
@@ -88,13 +88,13 @@ public class ServletPrestamosxAutorizar extends HttpServlet {
 			resString="Solicitud no pudo ser agregada Satisfactoriamente";
 			request.setAttribute("codPrestamo",null);
 		}
-		ArrayList<PrestamoxAutorizar> lPrestamos = (ArrayList<PrestamoxAutorizar>)pdxaNeg.readAllActive() ;
+		ArrayList<PrestamoxAutorizar> lPrestamos = (ArrayList<PrestamoxAutorizar>)pdxaNeg.BuscarAcivos() ;
 		
 		
 		
 		
 		//PAGINADO
-		int cantTotal = (int) pdxaNeg.countActive();  //Cantidad de registros activos en la BD
+		int cantTotal = (int) pdxaNeg.ContarPrestamos();  //Cantidad de registros activos en la BD
 
 		int pag = 1;
 		if(request.getParameter("pag") != null) {
@@ -137,7 +137,7 @@ public class ServletPrestamosxAutorizar extends HttpServlet {
 		boolean solicitado = false;
 		String resString="";
 		PrestamosxAutorizarNegocio pdxaNeg = new PrestamosxAutorizarNegocioImpl();
-		ArrayList<PrestamoxAutorizar> lPrestamos = (ArrayList<PrestamoxAutorizar>)pdxaNeg.readAllActive() ;
+		ArrayList<PrestamoxAutorizar> lPrestamos = (ArrayList<PrestamoxAutorizar>)pdxaNeg.BuscarAcivos() ;
 		if(lPrestamos != null)
 		{
 	
@@ -150,7 +150,7 @@ public class ServletPrestamosxAutorizar extends HttpServlet {
 		
 		
 		//PAGINADO
-		int cantTotal = (int) pdxaNeg.countActive();  //Cantidad de registros activos en la BD
+		int cantTotal = (int) pdxaNeg.ContarPrestamos();  //Cantidad de registros activos en la BD
 
 		int pag = 1;
 		if(request.getParameter("pag") != null) {
@@ -207,7 +207,7 @@ public class ServletPrestamosxAutorizar extends HttpServlet {
 		pxa.setImporte(new BigDecimal(request.getParameter("txtMonto")));
 		
 		
-		solicitado = pdxaNeg.insert(pxa);
+		solicitado = pdxaNeg.Insert(pxa);
 
 		if(solicitado)
 			resString="Solicitud agregada Satisfactoriamente";
