@@ -11,8 +11,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Transferencias</title>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <style type="text/css">
-	<jsp:include page="css/style.css"></jsp:include>
+<jsp:include page="css/style.css"></jsp:include>
 </style>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 </head>
@@ -51,56 +53,73 @@
 %>
 
 
-<header class="header"> 
-	<div>
-		<a href="inicioClientes.jsp">
-			<img style = "float: left; margin: 2px 20px 10px 0; ; " src="img/logo.jpg"  alt="logo" width="50" height="50"  />
-		</a>
-	</div>
-	<div class="logged">
-		<span><%=usuario.getUsuario()%></span>
-		<span>LOGGUEADO</span>
-	</div>
-</header>
+	<header class="header bg-info p-3" > 
+		<div>
+			<a href="#">
+				<img style = "float: left; margin: 2px 20px 10px 0; ; " src="img/pngwing.com.png"  alt="logo" width="50" height="50"  />
+			</a>
+		</div>
+		<div class="logged ">
+			<span class="mx-2 fw-bold">
+			<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+			<path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"/>
+			</svg> <%=usuario.getUsuario()%></span>
+			
+			<a class="btn btn-link" href="gestionarCuentas.jsp"> 
+			<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+			<path d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
+			</svg>  <span style="color: black; font-weight: bold;">Gestion</span></a>
+		
+		</div>
+	</header>
 
-
-<a style="margin-top: 0.5rem;" class="volver" href="gestionarCuentas.jsp"> <span class="volverIcon fa fa-home"></span> Volver</a>
+<br><br>
 <h1 style="margin:auto;text-align:center;margin-bottom:30px;">Transferencias</h1>
-
 
 <form class="form" method="post">
     <fieldset>
-      <legend>Nueva transferencia</legend>
-      <p class="inputForm">
-      	<label >Cuenta origen</label>
-      	<input readonly value="<%=cuenta.getCbu()%>" type="text">
-      	<input hidden value="<%=cuenta.getNroCuenta()%>" type="text" id="txtCtaOrigen" name="txtCtaOrigen">
-      </p>    
-      <p class="inputForm">
-        <label for="txtImporteDisponible">Importe disponible: </label>
-        <input id="txtImporteDisponible" type="text" value="$<%=cuenta.getSaldo()%>" name="txtImporteDisponible" readonly>
-      </p>  
-      <p class="inputForm">
-        <label for="txtCbuDestino">CBU destino:</label>
-        <input id="txtCbu" type="text"required name="txtCbu" placeholder="CBU..">
-      </p>
-      <p class="inputForm">
-        <label for="txtDNI">DNI destino:</label>
-        <input id="txtDNI" type="text"required name="txtDNI" placeholder="DNI..">
-      </p>
-      <p class="inputForm">
-        <label for="txtMonto">Monto: </label>
-        <input id="txtMonto" type="text"required name="txtMonto"  placeholder="$00,00">
-      </p>
-      <p class="inputForm">
-        <label for="txtDetalle">Detalle: </label>
-        <input id="txtDetalle" type="text" name="txtDetalle"  placeholder="..">
-      </p>
-      <p class="button">
-        <button id="btnRealizarTransferencia" name="btnRealizarTransferencia" onclick="confirmar();" value="1">Transferir</button>
-      </p>
+        <legend>Nueva transferencia</legend>
+
+        <div class="mb-3">
+            <label for="txtCtaOrigen" class="col-form-label">Cuenta origen</label>
+            <input readonly value="<%=cuenta.getCbu()%>" type="text" class="form-control" id="txtCtaOrigen" name="txtCtaOrigen">
+            <input hidden value="<%=cuenta.getNroCuenta()%>" type="text" id="txtCtaOrigenHidden" name="txtCtaOrigenHidden">
+        </div>
+
+        <div class="mb-3">
+            <label for="txtImporteDisponible" class="col-form-label">Importe disponible:</label>
+            <input id="txtImporteDisponible" type="text" value="$<%=cuenta.getSaldo()%>" class="form-control" name="txtImporteDisponible" readonly>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label for="txtCbu" class="col-form-label">CBU destino:</label>
+                <input id="txtCbu" type="text" required class="form-control" name="txtCbu" placeholder="CBU..">
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="txtDNI" class="col-form-label">DNI destino:</label>
+                <input id="txtDNI" type="text" required class="form-control" name="txtDNI" placeholder="DNI..">
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="txtMonto" class="col-form-label">Monto:</label>
+            <input id="txtMonto" type="text" required class="form-control" name="txtMonto" placeholder="$00,00">
+        </div>
+
+        <div class="mb-3">
+            <label for="txtDetalle" class="col-form-label">Detalle:</label>
+            <input id="txtDetalle" type="text" class="form-control" name="txtDetalle" placeholder="..">
+        </div>
+
+        <div class="mb-3">
+            <button id="btnRealizarTransferencia" name="btnRealizarTransferencia" onclick="confirmar();" value="1" class="btn btn-primary">Transferir</button>
+        </div>
     </fieldset>
-</form>	
+</form>
+
+
 <script>
 	function confirmar(){
 		var monto = document.getElementById('txtMonto');
