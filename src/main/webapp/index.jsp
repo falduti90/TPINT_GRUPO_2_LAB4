@@ -8,9 +8,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 <!-- Bootstrap icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-<style type="text/css">
-	<jsp:include page="css/style.css"></jsp:include>
-</style>
+
 <title>Banco UTN</title>
 </head>
 
@@ -44,7 +42,7 @@
 		 	<form class="text-center" action="ServletUsuario" method="post">
 		 	   <fieldset>
 				<p>
-				 <input type="text" name="txtDNI"  placeholder="Número de documento" required class="form-control form-control-lg"> 
+				 <input type="text" name="txtDNI"  placeholder="Numero de documento" required class="form-control form-control-lg"> 
 				 </p>
 				<p>
 				 <input type="text" name="txtUsuario" placeholder="Usuario" required class="form-control form-control-lg" >
@@ -53,17 +51,17 @@
 				 <input type="password" name="txtClave" placeholder="Clave" required class="form-control form-control-lg">
 				 </p>
 		      <p >		
-				 <input class="btn btn-outline-success fs-4" type="submit" value="Iniciar sesión" name="btnIniciarSesion" ID="btnIniciarSesion">
+				 <input class="btn btn-outline-info fs-4" type="submit" value="Iniciar sesion" name="btnIniciarSesion" ID="btnIniciarSesion">
 		 		 </p>
 				</fieldset>	 
 			 </form>
 			 <div class="opcionesIndex">
-			 		<a href="/TPINT_GRUPO_2_LAB4/ServletUsuario?btnIndex">Te olvidaste la contraseña?</a>
+			 		<a href="/TPINT_GRUPO_2_LAB4/ServletUsuario?btnIndex">Te olvidaste la clave?</a>
 			  </div>
 			  
 			 <%} else {%>	  
 			  	 <form class="form" action="ServletUsuario" method="post">
-				<p class="inputIndex fs-3"> Ingrese su número de documento</p>
+				<p class="inputIndex fs-3"> Ingrese su numero de documento</p>
 				 <input placeholder="Tu DNI" type="text" name="txtDNI" required >
 				<div class="d-inline ml-2">
 				    <input type="submit" value="Consultar" name="btnSiguiente" id="btnIniciarSesion" class="btn btn-primary">
@@ -79,7 +77,7 @@
 			  	 <%} %>	  
 			  <div style="display:flex; flex-direction: column; align-items: center;">
 		<% if( isCliente == false) { %>	
-				<p style="font-size: 1.2rem; color:red; margin-top:20px;">Cliente no encontrado! Por favor acerquese a alguna sucursal para realizar el alta. <p>
+				<p style="font-size: 1.2rem; color:red; margin-top:20px;">Â¡Error de inicio de sesiÃ³n! Por favor, verifique sus credenciales o visite una sucursal para obtener asistencia adicional. <p>
 			</div>
 		<%} %>
 		

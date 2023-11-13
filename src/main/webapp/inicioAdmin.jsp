@@ -8,7 +8,8 @@
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-<style>
+<style type="text/css">
+<jsp:include page="css/style.css"></jsp:include>
 </style>
 <title>Inicio - Admin</title>
 </head>
@@ -34,7 +35,7 @@
    			 <li class="nav-item active" style="background-color: highlight;">
         		<a class="nav-link" aria-current="page" href="index.jsp">
             		<i class="fas fa-arrow-left"></i> 
-            		<!-- Icono de flecha -->
+            		
            				Cerrar Sesion
        				 </a>
     		</li>
@@ -53,31 +54,48 @@
     <div class="row">
         <div class="col-md-2">
             <a href="index.jsp" class="volver">
-                <span class="volverIcon fas fa-times-circle"></span>Salir
+                <span class="volverIcon fas fa-times-circle"></span>
             </a>
         </div>
         <div class="col-md-8 text-center">
-        	<br>
+            <br>
             <h1>Panel Administrador</h1>
             <p>Seleccione la opción deseada:</p>
         </div>
         <div class="col-md-2">
-            <!-- Puedes dejar este espacio vacío o personalizar según necesites -->
+          
         </div>
     </div>
 
-    <div class="row mt-3">
-        <div class="col-md-12">
-            <div class="list-group opcionesMenu">
-                <a href="adminClientes.jsp" class="list-group-item list-group-item-action">Administrar Clientes</a>
-                <a href="adminCuentas.jsp" class="list-group-item list-group-item-action">Administrar Cuentas</a>
-                <a href="/TPINT_GRUPO_2_LAB4/ServletPrestamosxAutorizar?getPrestamos" class="list-group-item list-group-item-action">Administrar Préstamos</a>
-                <a href="/TPINT_GRUPO_2_LAB4/ServletMovimientos?getMovimientos" class="list-group-item list-group-item-action">Reportes</a>
+<div class="row mt-3">
+    <div class="col-md-12">
+        <div class="card-deck">
+            <div class="card text-center bg-light">
+                <a href="adminClientes.jsp" class="card-body">
+                    <i class="fas fa-user card-icon fa-3x"></i>
+                    <h5 class="card-title mt-2">Administrar Clientes</h5>
+                </a>
+            </div>
+            <div class="card text-center bg-light">
+                <a href="adminCuentas.jsp" class="card-body">
+                    <i class='fas fa-book card-icon fa-3x'></i>
+                    <h5 class="card-title mt-2">Administrar Cuentas</h5>
+                </a>
+            </div>
+            <div class="card text-center bg-light">
+                <a href="/TPINT_GRUPO_2_LAB4/ServletPrestamosxAutorizar?getPrestamos" class="card-body">
+                    <i class="fas fa-university card-icon fa-3x"></i>
+                    <h5 class="card-title mt-2">Administrar Préstamos</h5>
+                </a>
+            </div>
+            <div class="card text-center bg-light">
+                <a href="/TPINT_GRUPO_2_LAB4/ServletMovimientos?getMovimientos" class="card-body">
+                    <i class="far fa-file-archive card-icon fa-3x"></i>
+                    <h5 class="card-title mt-2">Reportes</h5>
+                </a>
             </div>
         </div>
     </div>
 </div>
-
-
 </body>
 </html>

@@ -5,11 +5,11 @@
 }
 
 :root{
---color-1: green; 
+--color-1: #D6EAF8; 
 }
 
 body{
-	background-color: #508bfc;
+	background-color: #E5E8E8;
 }
 
 a{
@@ -352,10 +352,10 @@ dl
 }
 
 #btnSeleccionar {
-	background-color: green ; /* #008000 */
+	background-color: #5D6D7E   ; /* #008000 */
   	color: white;
   	border-radius: 7px;
-  	border: 2px solid green;
+  	border: 2px solid black;
  	padding: 0.2rem 1rem;
 }
 
@@ -413,6 +413,7 @@ dl
 	align-items: flex-end;
 	justify-content: center;
 	gap: 0.5rem;
+
 }
 
 .volver{
