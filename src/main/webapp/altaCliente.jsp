@@ -60,11 +60,8 @@
 	
 %>
  
-<<<<<<< HEAD
  <header  style=" padding: 60px;">
-=======
- <header  style=" padding: 50px;">
->>>>>>> Matibranch
+
   <nav style="" class="navbar navbar-expand-lg navbar-light bg-white fixed-top" >
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarExample01">
@@ -84,14 +81,7 @@
       </div>
     </div>
   </nav>
-<<<<<<< HEAD
 </header> 
-<%--
-<div style="display:flex; justify-content: space-around; align-items: center; flex-direction: column">--%>
-=======
-</header>
- 
->>>>>>> Matibranch
 
 <div class="container">
 
