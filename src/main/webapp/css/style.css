@@ -243,11 +243,14 @@ table th {
 	align-items: center;
 	gap: 0.5rem;
 	margin-top: 2rem;
+	width: 100%;
 }
 
 .form fieldset{
+	background-color: #F0F0F0;
 	padding: 1rem 2rem;
 	border-radius: 5px;
+	width: 100% !important; 
 }
 
 .inputForm {
@@ -263,10 +266,10 @@ table th {
 }
 
 #btnRegistrar, #btnIniciarSesion {
-	background-color: green;
+	background-color: #508BFC;
   	color: white;
   	border-radius: 7px;
-  	border: 2px solid green;
+  	border: none;
  	padding: 0.2rem 1rem;
 }
 
@@ -429,6 +432,6 @@ dl
 }
 
 .volver:hover, .volver:active {
-	color: green;
+	color: #F0F0F0;
 }
 
