@@ -60,15 +60,19 @@
 	
 %>
  
+<<<<<<< HEAD
  <header  style=" padding: 60px;">
+=======
+ <header  style=" padding: 50px;">
+>>>>>>> Matibranch
   <nav style="" class="navbar navbar-expand-lg navbar-light bg-white fixed-top" >
     <div class="container-fluid">
       <div class="collapse navbar-collapse" id="navbarExample01">
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
    			 <li class="nav-item active" style="background-color: highlight;">
-        		<a class="nav-link" href="adminClientes.jsp" aria-current="page" >
-            		<i class="volverIcon fa fa-home "></i> 
-           				Volver
+        		<a class="nav-link" aria-current="page" href="adminClientes.jsp">
+            		<i class="volverIcon fa fa-home"></i> 
+            			Volver
        				 </a>
     		</li>
 			</ul>
@@ -80,9 +84,14 @@
       </div>
     </div>
   </nav>
+<<<<<<< HEAD
 </header> 
 <%--
 <div style="display:flex; justify-content: space-around; align-items: center; flex-direction: column">--%>
+=======
+</header>
+ 
+>>>>>>> Matibranch
 
 <div class="container">
 
