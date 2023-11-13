@@ -41,15 +41,18 @@
 				<h2 class="mt-3 mb-5 fs-1">Acceso</h2>
 		 	<form class="text-center" action="ServletUsuario" method="post">
 		 	   <fieldset>
-				<p>
-				 <input type="text" name="txtDNI"  placeholder="Numero de documento" required class="form-control form-control-lg"> 
-				 </p>
-				<p>
-				 <input type="text" name="txtUsuario" placeholder="Usuario" required class="form-control form-control-lg" >
-				 </p>
-				<p>
-				 <input type="password" name="txtClave" placeholder="Clave" required class="form-control form-control-lg">
-				 </p>
+		 	   <div class="form-floating">
+				 <input type="text" name="txtDNI"  required class="form-control form-control-lg mb-2" placeholder="DNI"> 
+				 <label for="floatingInput">DNI</label>
+				</div>
+				<div class="form-floating">
+				 <input type="text" name="txtUsuario" placeholder="Usuario" required class="form-control form-control-lg mb-2" >
+				 <label for="floatingInput">Usuario</label>
+				 </div>
+				<div class="form-floating">
+				 <input type="password" name="txtClave" placeholder="Clave" required class="form-control form-control-lg mb-2">
+				 <label for="floatingInput">Clave</label>
+				 </div>
 		      <p >		
 				 <input class="btn btn-outline-info fs-4" type="submit" value="Iniciar sesion" name="btnIniciarSesion" ID="btnIniciarSesion">
 		 		 </p>

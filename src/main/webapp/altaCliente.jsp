@@ -59,27 +59,32 @@
  	}
 	
 %>
+ 
+ <header  style=" padding: 60px;">
+  <nav style="" class="navbar navbar-expand-lg navbar-light bg-white fixed-top" >
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarExample01">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+   			 <li class="nav-item active" style="background-color: highlight;">
+        		<a class="nav-link" href="adminClientes.jsp" aria-current="page" >
+            		<i class="volverIcon fa fa-home "></i> 
+           				Volver
+       				 </a>
+    		</li>
+			</ul>
 
-<header class="container mt-2"> 
-	<div>
-		<a href="inicioAdmin.jsp">
-			<img style = "float: left; margin: 2px 20px 10px 0; ; " src="img/logo.jpg"  alt="logo" width="50" height="50"  />
-		</a>
-	</div>
-	<div class="logged">
-		<span><%=usuario.getUsuario()%></span>
-		<span>LOGGUEADO</span>
-	</div>
-</header>
- 
- 
+        	<div class="alert alert-info ml-auto">
+               <i class="fas fa-user"></i>
+               <span><%=usuario.getUsuario()%></span>
+            </div>
+      </div>
+    </div>
+  </nav>
+</header> 
 <%--
 <div style="display:flex; justify-content: space-around; align-items: center; flex-direction: column">--%>
 
- <div class="container">
- <div class="text-end"> <!-- Alineación a la derecha -->
-<a style="margin-top: 0.5rem;" class="volver" href="adminClientes.jsp"> <span class="volverIcon fa fa-home "></span> Volver</a>
-</div>
+<div class="container">
 
 <div class="row">
 <h1>Alta nuevo cliente</h1>
@@ -93,7 +98,7 @@
     <fieldset>
       <legend>Nuevo cliente</legend>
       <div class="form-floating">
-        <input id="dni" type="text" required maxlength=10 name="txtDNI"  class="form-control mb-2" placeholder="Numero de DNI" value= ${txtDni}>
+        <input id="dni" type="text" required maxlength=10 name="txtDNI"  class="form-control mb-2" value= ${txtDni}>
         <label for="floatingInput">DNI</label>
       </div>
       
