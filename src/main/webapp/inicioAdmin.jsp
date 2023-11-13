@@ -53,9 +53,6 @@
 <div class="container-fluid menu">
     <div class="row">
         <div class="col-md-2">
-            <a href="index.jsp" class="volver">
-                <span class="volverIcon fas fa-times-circle"></span>
-            </a>
         </div>
         <div class="col-md-8 text-center">
             <br>
