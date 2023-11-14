@@ -96,7 +96,7 @@
 
 <% 	if(modificado == false) { %> 
 
-<form class="form " method="get" action="ServletUsuario">
+<form  method="get" action="ServletUsuario">
     <fieldset>
       <legend>Modificar usuario</legend>
 	  <div class="form-floating">

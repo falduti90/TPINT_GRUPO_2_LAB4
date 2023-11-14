@@ -91,10 +91,10 @@
 <span>Por favor complete todos los datos </span>
 </div>
 
-<div class="ABM">
+<div class="AMB">
 
-<form class="form " method="get" action="ServletCliente">
-    <fieldset>
+<form method="get" action="ServletCliente">
+    <fieldset >
       <legend>Nuevo cliente</legend>
       <div class="form-floating">
         <input id="dni" type="text" required maxlength=10 name="txtDNI"  class="form-control mb-2"  placeholder="DNI" value= ${txtDni}>
@@ -186,6 +186,7 @@
   
   
 <div class="row">
+<div class="col-12">
 <% if( agregado == true || existe == true ) { %>	
 	<div>
 		<p style="font-size: 1.5rem;"><%=mensaje %> <p>
@@ -204,6 +205,7 @@
       </div>
 	</form>
 <%} %>
+</div>
 </div>
 
 </div>

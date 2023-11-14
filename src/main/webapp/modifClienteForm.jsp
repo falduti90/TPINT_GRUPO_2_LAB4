@@ -96,9 +96,9 @@
  
 <h1>Modificar cliente</h1>
   <% if(cl != null )	{ %>
-
-<div class="ABM">
-<form class="form " method="get" action="ServletCliente">
+</div>
+<div class="row">
+<form method="get" action="ServletCliente">
     <fieldset>
     
       <legend>Modificar cliente</legend>
@@ -197,8 +197,6 @@
 </div>
     <%	}%>
 
-</div>
-
 <div class="row">
 <% if( modificado == true) 
 	{
@@ -222,8 +220,8 @@
 	</form>
 </div>
 
-</div>
 
+</div>
 
 </body>
 </html>
