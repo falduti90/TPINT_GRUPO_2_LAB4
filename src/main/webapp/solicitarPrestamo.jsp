@@ -78,8 +78,15 @@ if(request.getAttribute("resBoolean")!=null)
 <br>
 
 
-<div class="container mt-5">
-    <form class="form border border-dark rounded p-4" style="background-color: #AED6F1;" method="get" action="ServletPrestamosxAutorizar" onsubmit="return confirm('¿Estás seguro de solicitar el préstamo?')">
+<div class="container mt-2">
+    <div class="row">
+		
+			<div class="col-md-3 d-flex flex-column align-items-center border border-dark" style="background-color: #D1F2EB; background-image: url('img/prestamos3.jpg'); background-size: cover; background-position: center;">
+			</div>
+					
+		
+        <div class="col-md-8" style="background-color: #34495E;">	
+	 <form class="form border border-dark rounded p-4" style="background-color: #AED6F1;" method="get" action="ServletPrestamosxAutorizar" onsubmit="return confirm('¿Estás seguro de solicitar el préstamo?')">
         <h1 class="text-center mb-4">Nuevo préstamo</h1>
 
         <% if (resString != null && !resString.equals("go")) { %>
@@ -122,8 +129,11 @@ if(request.getAttribute("resBoolean")!=null)
             </div>
         </fieldset>
     </form>
+            <h4 class="text-center mb-4" style="font-family: 'Your Preferred Font'; color: #3498db;">
+   				Recibirás información sobre la solicitud en las próximas 48 horas.
+			</h4>
+    </div>
 </div>
-
 
 
 
