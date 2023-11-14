@@ -264,7 +264,7 @@ table th {
 
 }
 
-#btnRegistrar, #btnIniciarSesion {
+#btnIniciarSesion {
 	background-color: #508BFC;
   	color: white;
   	border-radius: 7px;

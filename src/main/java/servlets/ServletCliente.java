@@ -299,7 +299,7 @@ public class ServletCliente extends HttpServlet {
 				resultado+="<br><br>Fecha de Nacimiento: "+fNac+"<br><br>Domicilio: "+direccion+", "+localidad.getLocalidad()+", "+localidad.getProvincia().getProvincia()+", "+localidad.getPais().getPais();
 				resultado+="<br><br>Email: "+email+ " - Telefonos: "+ tel;
 				request.setAttribute("resultado", resultado);
-				mensaje = "Cliente agregado con Ã©xito";
+				mensaje = "Cliente agregado con Éxito";
 				
 				request.setAttribute("dni", dni);
 

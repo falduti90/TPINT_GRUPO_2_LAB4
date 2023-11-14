@@ -293,7 +293,7 @@ public class ServletUsuario extends HttpServlet {
 					if (modificado) {
 						System.out.println(us); 
 						request.setAttribute("modificado", modificado);
-						mensaje = "Usuario modificado con Ã©xito";
+						mensaje = "Usuario modificado con Éxito";
 						request.setAttribute("usuario", us);
 						request.setAttribute("mensaje", mensaje);
 

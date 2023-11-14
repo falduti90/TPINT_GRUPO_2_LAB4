@@ -6,6 +6,16 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+	integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+	crossorigin="anonymous">
+<!-- Bootstrap -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+	crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <style type="text/css">
 	<jsp:include page="css/style.css"></jsp:include>
@@ -52,41 +62,49 @@
 	
  %>
  
- <header class="header"> 
-	<div>
-		<a href="index.jsp">
-			<img style = "float: left; margin: 2px 20px 10px 0; ; " src="img/logo.jpg"  alt="logo" width="50" height="50"  />
-		</a>
-	</div>
-	<div class="logged">
-		<span><%=usuario.getUsuario()%></span>
-		<span>LOGGUEADO</span>
-	</div>
+ <header style="padding: 60px;">
+
+		<nav style=""
+			class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+			<div class="container-fluid">
+				<div class="collapse navbar-collapse" id="navbarExample01">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item active" style="background-color: highlight;">
+						 <% 	if(isCliente == false) { %>  
+							<a class="nav-link" aria-current="page" href="/TPINT_GRUPO_2_LAB4/ServletCliente?pag=1">
+								<i class="volverIcon fa fa-home"></i> Volver
+							</a>
+						<%} else {%>
+						<a href="index.jsp"> <span class="fas fa-times-circle"></span>Salir</a>
+						<%	} %>
+						</li>
+					</ul>
+
+					<div class="alert alert-info ml-auto">
+						<i class="fas fa-user"></i> <span><%=usuario.getUsuario()%></span>
+					</div>
+				</div>
+			</div>
+		</nav>
 </header>
  
- 
- <% 	if(isCliente == false) { %>  
-<a href="#"> <span class="fa fa-home"></span> Volver</a>
-	 <%} else {%>	  
-<a href="index.jsp"> <span class="fas fa-times-circle"></span>Salir</a>
-<%	} %>
 
-<div style="display:flex; justify-content: space-around; align-items: center; flex-direction: column">
+<div class="container">
+
+<div class="row">
 <h1>Modificar Usuario</h1>
 
 <% 	if(modificado == false) { %> 
 
-<div class="ABM">
 <form class="form " method="get" action="ServletUsuario">
     <fieldset>
       <legend>Modificar usuario</legend>
-	  <p class="inputForm">
-        <label for="dni">DNI</label>
-        <input id="dni" type="text" value="<%= dni %>" disabled > <input type="hidden" name="txtDNI" value="<%= dni %>" >
-      </p>
-      <p class="inputForm">
-        <label for="tipo">Tipo Usuario</label>
-        <select id="tipo" name="tipo" required>
+	  <div class="form-floating">
+	  	<input id="dni" type="text" value="<%= dni %>" disabled required class="form-control mb-2" > <input type="hidden" name="txtDNI" value="<%= dni %>" >
+      	<label for="floatingInput">DNI</label>
+      </div>
+      <div class="form-floating">
+        <select id="tipo" name="tipo" required required class="form-control mb-2">
          <%
 		 	if(listaTipos!=null)
 		 		
@@ -102,22 +120,22 @@
 				<option value="<%= t.getCodTipo() %>" selected> <%= t.getTipoUsuario() %></option>
 			<%	} } }%>
         </select>
-      </p>
-      <p class="inputForm">
-        <label for="usuario">Usuario</label>
-        <input disabled type="text" name="txtUsuario" value="<%= us.getUsuario() %>"> <input id="usuario" type="hidden" name="txtUsuario" value="<%= us.getUsuario() %>">
-        
-      </p>
-      <p class="inputForm">
-        <label for="contrasenia">contraseña</label>
-        <input id="contrasenia" type="password" required name="txtContrasenia" maxlength=10>
-      </p>
-	  <p class="inputForm">
-        <label for="contrasenia2">Repita contraseña</label>
-        <input id="contrasenia2" type="password" required name="txtContrasenia2" maxlength=10>
-      </p>
-      <p class="button">
-        <input id="btnRegistrar" type="submit" value="Modificar" name="btnModifUs">
+        <label for="floatingInput">Tipo Usuario</label>
+      </div>
+      <div class="form-floating">
+        <input disabled required class="form-control mb-2" type="text" name="txtUsuario" value="<%= us.getUsuario() %>"> <input id="usuario" type="hidden" name="txtUsuario" value="<%= us.getUsuario() %>">
+        <label for="floatingInput">Usuario</label>
+      </div>
+      <div class="form-floating">
+        <input id="contrasenia" type="password" required required class="form-control mb-2" name="txtContrasenia" maxlength=10 placeholder="Contraseña">
+        <label for="floatingInput">Contraseña</label>
+      </div>
+	  <div class="form-floating">
+        <input id="contrasenia2" type="password" required required class="form-control mb-2" name="txtContrasenia2" maxlength=10 placeholder="Contraseña">
+        <label for="floatingInput">Repita contraseña</label>
+      </div>
+      <p>
+        <input class="btn btn-primary" type="submit" value="Modificar" name="btnModifUs">
       </p>
     </fieldset>
 
@@ -126,6 +144,7 @@
 </div>
 <%	}%>
 
+</div>
   
 <div style="display:flex; flex-direction: column; align-items: center;">
 	<div>

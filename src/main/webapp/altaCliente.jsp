@@ -97,7 +97,7 @@
     <fieldset>
       <legend>Nuevo cliente</legend>
       <div class="form-floating">
-        <input id="dni" type="text" required maxlength=10 name="txtDNI"  class="form-control mb-2" value= ${txtDni}>
+        <input id="dni" type="text" required maxlength=10 name="txtDNI"  class="form-control mb-2"  placeholder="DNI" value= ${txtDni}>
         <label for="floatingInput">DNI</label>
       </div>
       
@@ -148,7 +148,7 @@
         
       <div class="form-floating">
         <input id="direccion" type="text" required class="form-control mb-2" name="txtDireccion" maxlength=200>
-        <label for="floatingInput">Dirección</label>
+        <label for="floatingInput">Direccion</label>
       </div>
       
       <div class="form-floating">
@@ -171,19 +171,21 @@
       
       <div class="form-floating">
         <input id="telefonos" type="text" required class="form-control mb-2" name="txtTelefonos" maxlength=200>
-        <label for="floatingInput">Teléfonos</label>
+        <label for="floatingInput">Telefonos</label>
       </div>
       
-      <p class="button">
-        <input id="btnRegistrar" type="submit" value="Registrar" name="btnAltaCliente">
-      </p>
+      <div >
+        <input class="btn btn-primary" type="submit" value="Registrar" name="btnAltaCliente">
+      </div>
     </fieldset>
 
 </form>		
 
 </div>
   <%	}%>
-<div style="display:flex; flex-direction: column; align-items: center;">
+  
+  
+<div class="row">
 <% if( agregado == true || existe == true ) { %>	
 	<div>
 		<p style="font-size: 1.5rem;"><%=mensaje %> <p>
@@ -196,10 +198,10 @@
 	<%} %>
 	<% if( agregado == true) { %>	
 	<form method="get" action="ServletUsuario">
-	  <p class="button">
-        <input id="btnRegistrar" type="submit" value="Alta Usuario Home Banking" name="btnAltaUsuario">
+	  <div >
+        <input  class="btn btn-primary" type="submit" value="Alta Usuario Home Banking" name="btnAltaUsuario">
         <input type="hidden" name="dni" value=<%= dni %> >
-      </p>
+      </div>
 	</form>
 <%} %>
 </div>
