@@ -247,10 +247,9 @@ table th {
 }
 
 .form fieldset{
-	background-color: #F0F0F0;
 	padding: 1rem 2rem;
 	border-radius: 5px;
-	width: 100% !important; 
+	
 }
 
 .inputForm {
