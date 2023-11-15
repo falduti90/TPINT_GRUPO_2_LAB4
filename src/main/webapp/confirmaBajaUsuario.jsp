@@ -5,6 +5,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- Bootstrap icons -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <style type="text/css">
 	<jsp:include page="css/style.css"></jsp:include>
 </style>
@@ -43,23 +47,38 @@
  	
 	%>
  
- <header class="header"> 
-	<div>
-		<a href="inicioAdmin.jsp">
-			<img style = "float: left; margin: 2px 20px 10px 0; ; " src="img/logo.jpg"  alt="logo" width="50" height="50"  />
-		</a>
-	</div>
-	<div class="logged">
-		<span><%=usuario.getUsuario()%></span>
-		<span>LOGGUEADO</span>
-	</div>
+<header  style=" padding: 60px;">
+
+  <nav style="" class="navbar navbar-expand-lg navbar-light bg-white fixed-top" >
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarExample01">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+   			 <li class="nav-item active" style="background-color: highlight;">
+        		<a class="nav-link" aria-current="page" href="/TPINT_GRUPO_2_LAB4/ServletCliente?pag=1">
+            		<i class="volverIcon fa fa-home"></i> 
+            			Volver
+       				 </a>
+    		</li>
+			</ul>
+
+        	<div class="alert alert-info ml-auto">
+               <i class="fas fa-user"></i>
+               <span><%=usuario.getUsuario()%></span>
+            </div>
+      </div>
+    </div>
+  </nav>
 </header>
+
+
  
-<div class="ABM">
-<a class="volver" href="/TPINT_GRUPO_2_LAB4/ServletCliente?pag=1"> <span class="volverIcon fa fa-home"></span> Volver</a>
+<div class="container">
+
+<div class="row" >
+<div class="col-12 text-center">
 <h1>Eliminar cliente</h1>
-
-
+</div>
+</div>
 <div style="display:flex; flex-direction: column; align-items: center;">
 <% if( eliminado == true || conSaldo == true) { %>	
 	<div>
@@ -80,6 +99,6 @@
 	</form>
 <%} %>
 </div>
-
+</div>
 </body>
 </html>

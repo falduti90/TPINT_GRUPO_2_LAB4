@@ -246,7 +246,7 @@ public class ServletUsuario extends HttpServlet {
 					if (agregado) {
 						System.out.println(us); 
 						request.setAttribute("agregado", agregado);
-						mensaje = "Usuario registrado con Ã©xito";
+						mensaje = "Usuario registrado con éxito";
 						request.setAttribute("usuario", us);
 						request.setAttribute("mensaje", mensaje);
 

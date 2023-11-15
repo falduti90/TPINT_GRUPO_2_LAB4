@@ -170,28 +170,46 @@ jsp
 			</div>
 		</div>
 
-		<div class="row">
-			<%	if (cantPag >= 1) {
-            //Si la página diferente a uno, si agrega el botón anterior.
-               if(pag!=1){%>
-			<a href="ServletCliente?pag=<%=pag - 1%>">&lt;</a>
-			<%  }  //Calcula la cant de páginas a mostrar.
-                            for (int i = 0; i < cantPag; i++) {
-                         
-                                if(i+1==pag){  //Si la página es igual a la página actual, muestra la etiqueta active.
-                        %>
-			<span><%=i+1%></span>
-
-			<%  } else { //Si no, sigue mostrando las etiquetas normales con la opción para desplazarse. %>
-			<a href="ServletCliente?pag=<%=i+1%>"><%=i+1%></a>
-			<%} }
-                        //Sí pagina es diferente al número máximo de páginas, muestra la opción siguiente.
-                        if(pag!=cantPag){%>
-			<a href="ServletCliente?pag=<%=pag + 1%>">&gt;</a>
-			<%} }  else { //Si el máximo de páginas no es mayor a 1, muestra solo una página %>
-			<span>1</span>
-			<% }  %>
-		</div>
+		<div class="row justify-content-center mt-4">
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <% if (cantPag >= 1) {
+                    // Si la página es diferente a uno, agrega el botón anterior.
+                    if (pag != 1) { %>
+                        <li class="page-item">
+                            <a class="page-link" href="ServletCliente?pag=<%=pag - 1%>" aria-label="Previous">
+                                <span aria-hidden="true">&lt;</span>
+                            </a>
+                        </li>
+                    <% }
+                    // Calcula la cantidad de páginas a mostrar.
+                    for (int i = 0; i < cantPag; i++) {
+                        if (i + 1 == pag) { // Si la página es igual a la página actual, muestra la etiqueta active.
+                    %>
+                            <li class="page-item active" aria-current="page">
+                                <span class="page-link"><%=i + 1%><span class="visually-hidden">(current)</span></span>
+                            </li>
+                        <% } else { // Si no, sigue mostrando las etiquetas normales con la opción para desplazarse. %>
+                            <li class="page-item">
+                                <a class="page-link" href="ServletCliente?pag=<%=i + 1%>"><%=i + 1%></a>
+                            </li>
+                        <% }
+                    }
+                    // Si la página es diferente al número máximo de páginas, muestra la opción siguiente.
+                    if (pag != cantPag) { %>
+                        <li class="page-item">
+                            <a class="page-link" href="ServletCliente?pag=<%=pag + 1%>" aria-label="Next">
+                                <span aria-hidden="true">&gt;</span>
+                            </a>
+                        </li>
+                    <% } } else { // Si el máximo de páginas no es mayor a 1, muestra solo una página %>
+                    <li class="page-item active" aria-current="page">
+                        <span class="page-link">1<span class="visually-hidden">(current)</span></span>
+                    </li>
+                <% } %>
+            </ul>
+        </nav>
+    </div>
 	</div>
 </body>
 </html>

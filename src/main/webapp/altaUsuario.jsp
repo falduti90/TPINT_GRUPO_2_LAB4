@@ -7,6 +7,10 @@
 <head>
 <meta charset="ISO-8859-1">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<!-- Bootstrap icons -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 <style type="text/css">
 	<jsp:include page="css/style.css"></jsp:include>
 </style>
@@ -49,41 +53,54 @@
 	%>
  
  
-<header class="header"> 
-	<div>
-		<a href="#">
-			<img style = "float: left; margin: 2px 20px 10px 0; ; " src="img/logo.jpg"  alt="logo" width="50" height="50"  />
-		</a>
-	</div>
-	<div class="logged">
-		<span><%=usuario.getUsuario()%></span>
-		<span>LOGGUEADO</span>
-	</div>
-</header>
+<header  style=" padding: 60px;">
+
+  <nav style="" class="navbar navbar-expand-lg navbar-light bg-white fixed-top" >
+    <div class="container-fluid">
+      <div class="collapse navbar-collapse" id="navbarExample01">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+   			 <li class="nav-item active" style="background-color: highlight;">
+   			 <% 	if(isCliente == false) { %>  
+        		<a class="nav-link" aria-current="page" href="/TPINT_GRUPO_2_LAB4/ServletCliente?pag=1">
+            		<i class="volverIcon fa fa-home"></i> 
+            			Volver
+       				 </a>
+       		<%} else {%>
+       		<a href="index.jsp"> <span class="fas fa-times-circle"></span>Salir</a>
+       		<%	} %>
+    		</li>
+			</ul>
+
+        	<div class="alert alert-info ml-auto">
+               <i class="fas fa-user"></i>
+               <span><%=usuario.getUsuario()%></span>
+            </div>
+      </div>
+    </div>
+  </nav>
+</header> 
  
+ <div class="container">
+
+<div class="row">
  
- <% 	if(isCliente == false) { %>  
-<a href="/TPINT_GRUPO_2_LAB4/ServletCliente?pag=1"> <span class="fa fa-home"></span> Volver</a>
-	 <%} else {%>	  
-<a href="index.jsp"> <span class="fas fa-times-circle"></span>Salir</a>
-<%	} %>
-<div style="display:flex; justify-content: space-around; align-items: center; flex-direction: column">
 <h1>Alta nuevo Usuario</h1>
   <%  if( agregado == false)	{ %>
 <span>Por favor complete todos los datos </span>
-<div class="ABM">
+</div>
 
-<form class="form " method="get" action="ServletUsuario">
+<div class="row">
+
+<form method="get" action="ServletUsuario">
     <fieldset>
       <legend>Nuevo usuario</legend>
 <% 	if(us == null) { %> 
-	<p class="inputForm">
-        <label for="dni">DNI</label>
-        <input id="dni" type="text" value="<%= dni %>" disabled > <input type="hidden" name="txtDNI" value="<%= dni %>" >
-      </p>
-      <p class="inputForm">
-        <label for="tipo">Tipo Usuario</label>
-        <select id="tipo" name="tipo" required>
+	<div class="form-floating">
+        <input id="dni" type="text" value="<%= dni %>" disabled class="form-control mb-2"> <input type="hidden" name="txtDNI" value="<%= dni %>" >
+        <label for="floatingInput">DNI</label>
+      </div>
+      <div class="form-floating">
+        <select id="tipo" name="tipo" required class="form-control mb-2">
          <%
 		 	if(listaTipos!=null)		 		
 				 if(isCliente == true) { %>  
@@ -95,18 +112,19 @@
 				<option value="<%= t.getCodTipo() %>" > <%= t.getTipoUsuario() %></option>
 			<%	} }%>
         </select>
-      </p>
-      <p class="inputForm">
-        <label for="usuario">Usuario</label>
-        <input id="usuario" type="text"required name="txtUsuario" maxlength=20>
-      </p>
+        <label for="floatingInput">Tipo Usuario</label>
+      </div>
+      <div class="form-floating">
+        <input id="usuario" type="text"required class="form-control mb-2" name="txtUsuario" maxlength=20>
+        <label for="floatingInput">Usuario</label>
+      </div>
       <% } else if(us != null && agregado == false) { %>
-      <p class="inputForm">
-        <label for="dni">DNI</label>
-        <input id="dni" type="text" value="<%= dni %>" disabled > <input type="hidden" name="txtDNI" value="<%= dni %>" >
-      </p>
-      <p class="inputForm">
-        <label for="tipo">Tipo Usuario</label>
+      <div class="form-floating">
+        <input id="dni" type="text" value="<%= dni %>" disabled class="form-control mb-2" > <input type="hidden" name="txtDNI" value="<%= dni %>" >
+        <label for="floatingInput">DNI</label>
+      </div>
+      <div class="form-floating">
+        
         <select id="tipo" name="tipo" required>
          <%
 		 	if(listaTipos!=null)
@@ -122,26 +140,29 @@
 				<option value="<%= t.getCodTipo() %>" selected> <%= t.getTipoUsuario() %></option>
 			<%	} }  }%>
         </select>
-      </p>
-      <p class="inputForm">
-        <label for="usuario">Usuario</label>
-        <input id="usuario" type="text"required name="txtUsuario" value="<%= us.getUsuario() %>" maxlength=20>
-      </p>
+        <label for="floatingInput">Tipo Usuario</label>
+      </div>
+      <div class="form-floating">
+        <input id="usuario" type="text"required class="form-control mb-2" name="txtUsuario" value="<%= us.getUsuario() %>" maxlength=20>
+        <label for="floatingInput">Usuario</label>
+      </div>
       <% }  %>
-      <p class="inputForm">
-        <label for="contrasenia">contraseña</label>
-        <input id="contrasenia" type="password" required name="txtContrasenia" maxlength=10>
-      </p>
-	  <p class="inputForm">
-        <label for="contrasenia2">Repita contraseña</label>
-        <input id="contrasenia2" type="password" required name="txtContrasenia2" maxlength=10>
-      </p>
-      <p class="button">
-        <input id="btnRegistrar" type="submit" value="Registrar" name="btnAltaUs">
-      </p>
+      <div class="form-floating">
+        <input id="contrasenia" type="password" required class="form-control mb-2" name="txtContrasenia" maxlength=10>
+        <label for="floatingInput">contraseña</label>
+      </div>
+	  <div class="form-floating">
+        <input id="contrasenia2" type="password" required class="form-control mb-2" name="txtContrasenia2" maxlength=10>
+        <label for="floatingInput">Repita contraseña</label>
+      </div>
+      <div>
+        <input class="btn btn-primary" type="submit" value="Registrar" name="btnAltaUs">
+      </div>
     </fieldset>
 
 </form>		
+
+</div>
 
 </div>
   <%	}%>
@@ -153,6 +174,8 @@
 	<%}%>
 	</div>
 	<%} %>
+</div>
+
 </div>
 <%-- 	<form method="get" action="ServletCuenta">
 	  <p class="button">

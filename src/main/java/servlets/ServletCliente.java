@@ -433,7 +433,7 @@ public class ServletCliente extends HttpServlet {
 		
 		if (eliminado) {
 	        System.out.println("cliente eliminado"); 
-	        mensaje = "Cliente eliminado con Ã©xito";
+	        mensaje = "Cliente eliminado con éxito";
 		}
 		
 		request.setAttribute("eliminado", eliminado);				
