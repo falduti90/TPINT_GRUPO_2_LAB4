@@ -82,7 +82,8 @@
 		<%	} %>
 		</div>
 		<div class="Cuenta-Detalle">
-			<label id="lblDisponibleCuenta">$<%= listaMovimientos.get(listaMovimientos.size()-1).getSaldo() %></label>
+			<label id="lblDisponibleCuenta">$ <%= String.format("%.2f", listaMovimientos.get(listaMovimientos.size()-1).getSaldo()) %></label>
+			
 			<label id="lblDetalleCuenta"><%= nombreCta %> - Cuenta Nro: <%= currentCuenta %></label>
 		</div>
 	</section>
@@ -104,9 +105,9 @@
 		{	%>
 		<tr>
 			<td><%= mov.getFecha() %> </td>
-			<td><%= mov.getImporte() %></td>
+			<td>$ <%= String.format("%.2f", mov.getImporte()) %></td>
 			<td><%= mov.getTipoMovimiento().getTipoMovimiento() %></td>
-			<td><%= mov.getSaldo() %></td>
+			<td>$ <%= String.format("%.2f", mov.getSaldo()) %></td>
 		 <%  if( mov.getDetalle() == null) { %>
 		 			<td> --- </td>
 		 <%	} else { %>

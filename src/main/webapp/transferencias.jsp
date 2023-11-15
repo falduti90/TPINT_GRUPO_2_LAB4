@@ -88,7 +88,7 @@
 
         <div class="mb-3">
             <label for="txtImporteDisponible" class="col-form-label">Importe disponible:</label>
-            <input id="txtImporteDisponible" type="text" value="$<%=cuenta.getSaldo()%>" class="form-control" name="txtImporteDisponible" readonly>
+            <input id="txtImporteDisponible" type="text" value="$<%= String.format("%.2f",cuenta.getSaldo())%>" class="form-control" name="txtImporteDisponible" readonly>
         </div>
 
         <div class="row">

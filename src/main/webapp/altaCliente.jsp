@@ -86,16 +86,15 @@
 <div class="container">
 
 <div class="row">
-<h1>Alta nuevo cliente</h1>
+<h1 class="text-center fw-bold mb-3">Alta nuevo cliente</h1>
   <%  if( agregado == false && existe == false)	{ %>
-<span>Por favor complete todos los datos </span>
 </div>
 
 <div class="AMB">
 
 <form method="get" action="ServletCliente">
     <fieldset >
-      <legend>Nuevo cliente</legend>
+      <legend>Por favor complete todos los datos:</legend>
       <div class="form-floating">
         <input id="dni" type="text" required maxlength=10 name="txtDNI"  class="form-control mb-2"  placeholder="DNI" value= ${txtDni}>
         <label for="floatingInput">DNI</label>

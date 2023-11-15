@@ -4,7 +4,6 @@
 <%@page import="entidad.Cuenta" %>
 <%@page import="entidad.Cuota" %>
 <%@page import="java.util.ArrayList" %>
-<%-- <%@page import="jakarta.servlet.RequestDispatcher" %> --%>
 <!DOCTYPE html>
 <html>
 <head>
