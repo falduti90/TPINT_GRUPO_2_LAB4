@@ -19,7 +19,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 
 	private static final String insert = "INSERT INTO Localidades (localidad) VALUES (?)";
 	private static final String logicalDeletion = "UPDATE Localidades set estado = 0 Where codLocalidad = ?";
-	private static final String readall = "SELECT * FROM Localidades";
+	private static final String readall = "SELECT * FROM Localidades l inner join provincias p on l.codProvincia = p.codProvincia where l.codProvincia = ?";
 	private static final String update = "UPDATE Localidades set localidad = ? Where codLocalidad = ?";
 	private static final String readlast = "SELECT * FROM Localidades ORDER by codLocalidad DESC LIMIT 1";
 	private static final String readOne = "SELECT * FROM Localidades Where codLocalidad = ?";
@@ -100,7 +100,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		return isLogicalDeletionExitoso;
 	}
 	
-	public List<Localidad> BuscarTodas() {
+	public List<Localidad> BuscarTodas(int codProv) {
 		PreparedStatement statement;
 		ResultSet resultSet; // Guarda el resultado de la query
 		ArrayList<Localidad> localidades = new ArrayList<Localidad>();
@@ -113,6 +113,7 @@ public class LocalidadDaoImpl implements LocalidadDao {
 		}
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(readall);
+			statement.setInt(1, codProv);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				localidades.add(getLocalidad(resultSet));

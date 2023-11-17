@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ListIterator;
 
 import javax.servlet.RequestDispatcher;
@@ -30,6 +31,8 @@ import negocioImpl.CuentaNegocioImpl;
 import negocioImpl.LocalidadNegocioImpl;
 import negocioImpl.PaisNegocioImpl;
 import negocioImpl.UsuarioNegocioImpl;
+import negocio.ProvinciaNegocio;
+import negocioImpl.ProvinciaNegocioImpl;;
 
 
 /**
@@ -40,6 +43,7 @@ public class ServletCliente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	ClienteNegocio clienteNeg = new ClienteNegocioImpl(); 
 	PaisNegocio pNeg = new PaisNegocioImpl(); 
+	ProvinciaNegocio prNeg = new ProvinciaNegocioImpl();
 	LocalidadNegocio lNeg = new LocalidadNegocioImpl(); 
 	CuentaNegocio neg = new CuentaNegocioImpl();
 
@@ -95,27 +99,50 @@ public class ServletCliente extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		String action = request.getParameter("action");
+        if ("getLocalidades".equals(action)) {
+            int provinciaId = Integer.parseInt(request.getParameter("provinciaId"));
+            List<Localidad> localidades = getLocalidadesPorProvincia(provinciaId);
+            response.setContentType("text/html");
+            response.getWriter().write(cargarLocalidadesEnSelect(localidades));
+        }
+        
+        if ("getProvincias".equals(action)) {
+            List<Provincia> provincias = getProvincias();
+            response.setContentType("text/html");
+            response.getWriter().write(cargarProvinciasEnSelect(provincias));
+        }
 
 	}
 	
 	
 	private void cargarDesplegablesAlta(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Pais> lPais = new ArrayList<Pais> ();
+		ArrayList<Provincia> lProv = new ArrayList<Provincia>();
 		ArrayList<Localidad> lLoc = new ArrayList<Localidad>();	
 		
+		
 		try {
-			lPais = (ArrayList<Pais>) pNeg.BuscarTodos();		
-			lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas();			
-			
-		}  catch (Exception e) {
-			e.printStackTrace();
-		} 
+	        lPais = (ArrayList<Pais>) pNeg.BuscarTodos();
+	        lProv = (ArrayList<Provincia>) prNeg.BuscarTodas();
+
+	        // Verificar si el parámetro provincia está presente en la solicitud
+	        if (request.getParameter("provincia") != null) {
+	             int codProv = Integer.parseInt(request.getParameter("provincia"));
+	            lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas(codProv);
+	        } else {
+	            // Si no hay provincia seleccionada, carga todas las localidades por defecto o toma alguna lógica predeterminada
+	            lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas(1); // Cambia esto según tu lógica predeterminada
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 		
 		
 		request.setAttribute("localidad", lLoc);
 		request.setAttribute("nacionalidad", lPais);
-
+		request.setAttribute("provincia", lProv);
 			
 		RequestDispatcher rd = request.getRequestDispatcher("/altaCliente.jsp");
 		rd.forward(request, response);
@@ -125,10 +152,11 @@ public class ServletCliente extends HttpServlet {
 	private void cargarDesplegablesModif(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Pais> lPais = new ArrayList<Pais> ();
 		ArrayList<Localidad> lLoc = new ArrayList<Localidad>();	
-		
+		ArrayList<Provincia> lPro = new ArrayList<Provincia>();	
 		try {
 				lPais = (ArrayList<Pais>) pNeg.BuscarTodos();		
-				lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas();			
+				lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas(1);
+				lPro = (ArrayList<Provincia>) prNeg.BuscarTodas();
 			
 		}  catch (Exception e) {
 			e.printStackTrace();
@@ -137,8 +165,10 @@ public class ServletCliente extends HttpServlet {
 		
 		request.setAttribute("localidad", lLoc);
 		request.setAttribute("nacionalidad", lPais);
-		
+		request.setAttribute("provincia", lPro);
 	}
+
+    
 	
 	private void cargarClientes(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException { 
 		ArrayList<Cliente> lCliente = (ArrayList<Cliente>) clienteNeg.BuscarTodos();
@@ -165,10 +195,10 @@ public class ServletCliente extends HttpServlet {
 				pag = Integer.parseInt(request.getParameter("pag"));	
 			}
 			
-			int limit = 10;                      //Elementos por pÃ¡gina.		
+			int limit = 10;                      //Elementos por página.		
 			int offset = 0;
 			if(pag > 1) offset = limit * (pag - 1);	 //inicio paginado   	
-			int cantPag = (cantTotal / limit) + 1 ; // Cantidad de pÃ¡ginas.	
+			int cantPag = (cantTotal / limit) + 1 ; // Cantidad de páginas.	
 			int resto = offset + limit;
 			int index = 0;
 
@@ -346,9 +376,11 @@ public class ServletCliente extends HttpServlet {
 		
 		
 		LocalidadNegocio locDao = new LocalidadNegocioImpl();
+		ProvinciaNegocio prDao = new ProvinciaNegocioImpl();
 		Localidad localidad = locDao.BuscarUna(loc);			
-		Provincia provincia = new Provincia();		
-		provincia.setCodProvincia(localidad.getProvincia().getCodProvincia());
+		Provincia provincia = prDao.BuscarUna(localidad.getProvincia().getCodProvincia());
+		
+		//provincia.setCodProvincia(localidad.getProvincia().getCodProvincia());
 		Pais pais = new Pais();
 		pais.setCodPais(localidad.getPais().getCodPais());
 		Pais nacionalidad = new Pais();
@@ -370,7 +402,7 @@ public class ServletCliente extends HttpServlet {
 				String resultado="";
 				resultado+="Cliente: "+apellido+", "+nombre+"<br><br>DNI: "+dni+ " - CUIL: "+ cuil+"<br><br>Sexo: "+sexo;
 				resultado+="<br><br>Fecha de Nacimiento: "+ fNac;
-				resultado+="<br><br>Domicilio: "+direccion+", "+localidad.getLocalidad()+", "+localidad.getProvincia().getProvincia()+", "+localidad.getPais().getPais();
+				resultado+="<br><br>Domicilio: "+direccion+", "+localidad.getLocalidad()+", "+provincia.getProvincia()+", "+localidad.getPais().getPais();
 				resultado+="<br><br>Email: "+email+ " - Telefonos: "+ tel;
 				request.setAttribute("resultado", resultado);
 
@@ -444,4 +476,35 @@ public class ServletCliente extends HttpServlet {
 	}
 	
 	
+	 private List<Localidad> getLocalidadesPorProvincia(int provinciaId) {
+		 ArrayList<Localidad> lLoc = new ArrayList<Localidad>();	
+         lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas(provinciaId);
+	        return lLoc;     
+	    }
+	 
+	 private String cargarLocalidadesEnSelect(List<Localidad> localidades) {
+	        StringBuilder dropdown = new StringBuilder();
+	        for (Localidad localidad : localidades) {
+	            dropdown.append("<option value=\"").append(localidad.getCodLocalidad()).append("\">")
+	                    .append(localidad.getLocalidad()).append("</option>");
+	        }
+	        return dropdown.toString();
+	    }
+	 
+	 private String cargarProvinciasEnSelect(List<Provincia> provincias) {
+	        StringBuilder dropdown = new StringBuilder();
+	        for (Provincia provincia : provincias) {
+	            dropdown.append("<option value=\"").append(provincia.getCodProvincia()).append("\">")
+	                    .append(provincia.getProvincia()).append("</option>");
+	        }
+	        return dropdown.toString();
+	    }
+	
+
+	    private List<Provincia> getProvincias() {
+	    	ArrayList<Provincia> lProv = new ArrayList<Provincia>();   
+	    	lProv = (ArrayList<Provincia>) prNeg.BuscarTodas();
+	    	return lProv;
+	    }
+	 
 }

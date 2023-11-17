@@ -8,11 +8,11 @@ public interface LocalidadNegocio {
 	
 	public boolean Insert(Localidad localidad_a_agregar);
 
-	public boolean EliminacionLogica(Localidad localidad_a_eliminar);  // Baja lÃ³gica
+	public boolean EliminacionLogica(Localidad localidad_a_eliminar);  // Baja lógica
 
 	public boolean Update(Localidad localidad_a_modificar);
 
-	public List<Localidad> BuscarTodas();
+	public List<Localidad> BuscarTodas(int codProv);
 	
 	public Localidad BuscarUna(int codLocalidad);
 	

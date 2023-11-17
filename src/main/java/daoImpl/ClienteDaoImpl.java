@@ -72,7 +72,7 @@ public class ClienteDaoImpl implements ClienteDao {
 			statement.setDate(7, cliente_a_agregar.getFecha_nac());
 			statement.setString(8, cliente_a_agregar.getDireccion());
 			statement.setInt(9, cliente_a_agregar.getLocalidad().getCodLocalidad());
-			statement.setInt(10, cliente_a_agregar.getLocalidad().getProvincia().getCodProvincia());
+			statement.setInt(10, cliente_a_agregar.getProvincia().getCodProvincia()); //prueba mati
 			statement.setInt(11, cliente_a_agregar.getLocalidad().getPais().getCodPais());
 			statement.setString(12, cliente_a_agregar.getCorreo_electronico());
 			statement.setString(13, cliente_a_agregar.getTelefonos());
@@ -115,7 +115,7 @@ public class ClienteDaoImpl implements ClienteDao {
 			statement.setDate(6, cliente_a_actualizar.getFecha_nac());
 			statement.setString(7, cliente_a_actualizar.getDireccion());
 			statement.setInt(8, cliente_a_actualizar.getLocalidad().getCodLocalidad());
-			statement.setInt(9, cliente_a_actualizar.getLocalidad().getProvincia().getCodProvincia());
+			statement.setInt(9, cliente_a_actualizar.getProvincia().getCodProvincia());//VER
 			statement.setInt(10, cliente_a_actualizar.getLocalidad().getPais().getCodPais());
 			statement.setString(11, cliente_a_actualizar.getCorreo_electronico());
 			statement.setString(12, cliente_a_actualizar.getTelefonos());

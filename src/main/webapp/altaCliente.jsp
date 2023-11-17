@@ -1,3 +1,4 @@
+<%@page import="entidad.Provincia"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@page import="entidad.Pais" %>
 <%@page import="entidad.Localidad" %>
@@ -16,6 +17,19 @@
 	<jsp:include page="css/style.css"></jsp:include>
 </style>
 <title>Alta Cliente - Admin</title>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+$(document).ready(function () {
+
+    $("#provincia").change(function () {
+        var provinciaId = $(this).val();
+        $.post("ServletCliente", {action: "getLocalidades", provinciaId: provinciaId}, function (data) {
+            $("#localidad").html(data);
+        });
+    });
+});
+</script>
 </head>
 <body>
 
@@ -39,6 +53,12 @@
 	if(request.getAttribute("localidad") != null)
 	{
 		listaLocalidades = (ArrayList<Localidad>) request.getAttribute("localidad");
+	}
+	
+	ArrayList<Provincia> listaProvincias = null;
+	if(request.getAttribute("provincia") != null)
+	{
+		listaProvincias = (ArrayList<Provincia>) request.getAttribute("provincia");
 	}
 	
 	boolean agregado = false;
@@ -151,14 +171,20 @@
       </div>
       
       <div class="form-floating">
-        <select id="localidad" name="localidad" required class="form-control mb-2">
+        <select id="provincia" name="provincia" required class="form-control mb-2">
 		  <%
-		 	if(listaLocalidades!=null)
-				for(Localidad l:listaLocalidades)
+		 	if(listaProvincias!=null)
+				for(Provincia p:listaProvincias)
 				{
 			%>
-			<option value="<%=l.getCodLocalidad()%>" > <%=l.getLocalidad()%></option>
+			<option value="<%=p.getCodProvincia()%>" > <%=p.getProvincia()%></option>
 			<%	}%>
+        </select>
+        <label for="floatingInput">Provincia</label> 
+      </div>
+      
+      <div class="form-floating">
+        <select id="localidad" name="localidad" required class="form-control mb-2">
         </select>
         <label for="floatingInput">Localidad</label> 
       </div>

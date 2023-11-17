@@ -40,10 +40,10 @@ public class LocalidadNegocioImpl implements LocalidadNegocio {
 	}
 
 
-	public List<Localidad> BuscarTodas() {
+	public List<Localidad> BuscarTodas(int codProv) {
 
 		List<Localidad> lLocalidades;
-		lLocalidades = lDao.BuscarTodas();
+		lLocalidades = lDao.BuscarTodas( codProv);
 		return lLocalidades;
 	}
 

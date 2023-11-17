@@ -1,6 +1,7 @@
 <%@page import="entidad.Usuario" %>
 <%@page import="entidad.Pais" %>
 <%@page import="entidad.Localidad" %>
+<%@page import="entidad.Provincia" %>
 <%@page import="entidad.Cliente" %>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
@@ -24,6 +25,29 @@
 	<jsp:include page="css/style.css"></jsp:include>
 </style>
 <title>Modificar Cliente - Admin</title>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+$(document).ready(function () {
+    var provinciasCargadas = false;
+
+    $("#provincia").click(function () {
+        if (!provinciasCargadas) {
+            $.post("ServletCliente", { action: "getProvincias" }, function (data) {
+                $("#provincia").html(data);
+                provinciasCargadas = true;
+            });
+        }
+    });
+
+    $("#provincia").change(function () {
+        var provinciaId = $(this).val();
+        $.post("ServletCliente", { action: "getLocalidades", provinciaId: provinciaId }, function (data) {
+            $("#localidad").html(data);
+        });
+    });
+});
+</script>
 </head>
 <body>
 
@@ -48,6 +72,12 @@
 	if(request.getAttribute("nacionalidad") != null)
 	{
 		listaPaises = (ArrayList<Pais>) request.getAttribute("nacionalidad");
+	}
+	
+	ArrayList<Provincia> listaProvincias = null;
+	if(request.getAttribute("provincia") != null)
+	{
+		listaProvincias = (ArrayList<Provincia>) request.getAttribute("provincia");
 	}
 	
 	ArrayList<Localidad> listaLocalidades = null;
@@ -160,18 +190,18 @@
         <input id="direccion" type="text" required class="form-control mb-2" name="txtDireccion" value="<%= cl.getDireccion() %>" maxlength=200>
         <label for="floatingInput">Dirección</label>
       </div>
+      
       <div class="form-floating">
-        <select id="localidad" name="localidad" required class="form-control mb-2">
-		  <%
-		 	if(listaLocalidades!=null)
-				for(Localidad l:listaLocalidades)
-				{
-					if(l.getCodLocalidad() != cl.getLocalidad().getCodLocalidad()){
-			%>
-			<option value="<%=l.getCodLocalidad()%>" > <%=l.getLocalidad()%></option>
-			<%	} else { %>
-				<option value="<%=l.getCodLocalidad()%>" selected> <%=l.getLocalidad()%></option>
-			<%	} } %>
+        <select id="provincia" name="provincia" required class="form-control mb-2">
+		  
+			<option value="<%=cl.getProvincia().getCodProvincia()%>" > <%=cl.getProvincia().getProvincia()%></option>
+        </select>
+        <label for="floatingInput">Provincia</label> 
+      </div>
+      
+      <div class="form-floating">
+        <select id="localidad" name="localidad" required class="form-control mb-2"> 
+			<option value="<%=cl.getLocalidad().getCodLocalidad()%>" > <%=cl.getLocalidad().getLocalidad()%></option>
         </select>
         <label for="floatingInput">Localidad</label> 
       </div>

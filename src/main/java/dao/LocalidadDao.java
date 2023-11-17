@@ -12,7 +12,7 @@ public interface LocalidadDao {
 
 	public boolean Update(Localidad localidad_a_modificar);
 
-	public List<Localidad> BuscarTodas();
+	public List<Localidad> BuscarTodas(int codProv);
 
 	public Localidad BuscarUna(int codLocalidad);
 	
