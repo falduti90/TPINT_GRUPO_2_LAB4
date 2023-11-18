@@ -151,7 +151,7 @@
 			}%>
 			
 		
-			<td><input type="submit" value="Aprobar" name="btnAutorizar"></td>
+			<td><input class="btn btn-primary" type="submit" value="Aprobar" name="btnAutorizar"></td>
 			<td><input type="submit" value="Rechazar" name="btnRechazar"></td>
 			<input type="hidden" name="codPrestamo" value="<%=p.getCodPrestamoPendiente()%>">
 
