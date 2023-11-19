@@ -70,7 +70,7 @@ public class ServletTransferencia extends HttpServlet {
 		/*Verifico que exista el CBU de destino*/
 		String cbuDestino = request.getParameter("txtCbu");
 		/*Levanto los datos*/
-		String ctaOrigen = request.getParameter("txtCtaOrigen");
+		String ctaOrigen = request.getParameter("txtCtaOrigenHidden");
 		String DNI = request.getParameter("txtDNI");
 		String importe = request.getParameter("txtMonto");
 		String detalle = request.getParameter("txtDetalle");
