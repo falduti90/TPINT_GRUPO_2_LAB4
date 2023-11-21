@@ -110,7 +110,7 @@ public class ServletCuenta extends HttpServlet {
 		}
 		else
 		{
-			resString="El cliente no existe";
+			resString="No se encontraron clientes";
 			resBoolean =false;
 		}
 			
@@ -165,7 +165,7 @@ public class ServletCuenta extends HttpServlet {
 				resString="El cliente con DNI: "+dni+" tiene mas de 3 cuentas a su nombre";
 		}
 		else
-			resString="El cliente no existe";
+			resString="No se encontraron clientes";
 			
 			request.setAttribute("resString", resString);
 			request.setAttribute("resBoolean", agregado);

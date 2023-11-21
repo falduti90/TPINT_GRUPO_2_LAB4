@@ -101,10 +101,10 @@ public class ServletPrestamosxAutorizar extends HttpServlet {
 			pag = Integer.parseInt(request.getParameter("pag"));	
 		}
 		
-		int limit = 10;                      //Elementos por página.		
+		int limit = 10;                      		
 		int offset = 0;
-		if(pag > 1) offset = limit * (pag - 1);	 //inicio paginado   	
-		int cantPag = (cantTotal / limit) + 1 ; // Cantidad de páginas.	
+		if(pag > 1) offset = limit * (pag - 1);	 	
+		int cantPag = (cantTotal / limit) + 1 ; 	
 		int resto = offset + limit;
 		int index = 0;
 		
