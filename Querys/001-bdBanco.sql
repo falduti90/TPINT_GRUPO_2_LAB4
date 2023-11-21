@@ -2836,15 +2836,6 @@ select	concat(52,substring(c.dni,5,2)) as nroCuenta,
 from clientes c
 ;
 
-
-INSERT INTO movimientos ( nroCuenta, fecha, importe, tipoMovimiento, saldo, detalle ) 
-select 		c.nroCuenta,
-			DATE_ADD(c.fecha_creacion, interval cast(substring(c.dni,6,2) as decimal) day) as fecha,
-            FLOOR(RAND()*(5000-200)+201) as importe,
-            FLOOR(RAND()*(4)+1) as tipoMovimiento,
-            FLOOR(RAND()*(25000-200)+201) as saldo,
-            null as detalle
-from Cuentas c
 union all
 select 		c.nroCuenta,
 			DATE_ADD(c.fecha_creacion, interval FLOOR(RAND()*(365)+1) day) as fecha,
