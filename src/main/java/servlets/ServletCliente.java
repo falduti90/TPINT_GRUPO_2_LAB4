@@ -61,6 +61,10 @@ public class ServletCliente extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if (request.getParameter("btnLimpiar") != null ) {
+			cargarClientes(request, response);
+		}
 
 		if (request.getParameter("getTxtDni") != null) {
 			cargarDesplegablesAlta(request, response);
@@ -126,13 +130,11 @@ public class ServletCliente extends HttpServlet {
 	        lPais = (ArrayList<Pais>) pNeg.BuscarTodos();
 	        lProv = (ArrayList<Provincia>) prNeg.BuscarTodas();
 
-	        // Verificar si el parámetro provincia está presente en la solicitud
 	        if (request.getParameter("provincia") != null) {
 	             int codProv = Integer.parseInt(request.getParameter("provincia"));
 	            lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas(codProv);
 	        } else {
-	            // Si no hay provincia seleccionada, carga todas las localidades por defecto o toma alguna lógica predeterminada
-	            lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas(1); // Cambia esto según tu lógica predeterminada
+	            lLoc = (ArrayList<Localidad>) lNeg.BuscarTodas(1); 
 	        }
 
 	    } catch (Exception e) {
@@ -176,15 +178,58 @@ public class ServletCliente extends HttpServlet {
 				
 		if (request.getParameter("btnFiltrar") != null) {
 	        
-	        String clienteSeleccionado = request.getParameter("clienteSeleccionado");			
+			String campo = request.getParameter("campoBusqueda").toString();
+			String busqueda = request.getParameter("valorBusqueda");		
 			ListIterator<Cliente> it = lCliente.listIterator();
-			while (it.hasNext()) {
-				Cliente cl = it.next();
-				if(!cl.getDni().equals(clienteSeleccionado)) {
-					it.remove();
-				}
-				request.setAttribute("clientesPaginados", lCliente);
+			switch (campo) {
+			    case "dni":
+					while (it.hasNext()) {
+						Cliente cl = it.next();
+						if(!cl.getDni().contains(busqueda)) {
+							it.remove();
+						}
+						request.setAttribute("clientesPaginados", lCliente);
+					}
+			        break;
+			    case "apellido":
+					while (it.hasNext()) {
+						Cliente cl = it.next();
+						if(!cl.getApellido().toLowerCase().contains(busqueda.toLowerCase())) {
+							it.remove();
+						}
+						request.setAttribute("clientesPaginados", lCliente);
+					}
+			        break;
+			    case "nombre":
+					while (it.hasNext()) {
+						Cliente cl = it.next();
+						if(!cl.getNombre().toLowerCase().contains(busqueda.toLowerCase())) {
+							it.remove();
+						}
+						request.setAttribute("clientesPaginados", lCliente);
+					}
+			        break;
+			    case "email":
+			    	while (it.hasNext()) {
+						Cliente cl = it.next();
+						if(!cl.getCorreo_electronico().toLowerCase().contains(busqueda.toLowerCase())) {
+							it.remove();
+						}
+						request.setAttribute("clientesPaginados", lCliente);
+					}
+			        break;
+			    case "localidad":
+			    	while (it.hasNext()) {
+						Cliente cl = it.next();
+						if(!cl.getLocalidad().getLocalidad().toLowerCase().contains(busqueda.toLowerCase())) {
+							it.remove();
+						}
+						request.setAttribute("clientesPaginados", lCliente);
+					}
+			        break;
 			}
+			
+	       
 		} else {
 			
 			//PAGINADO
@@ -314,7 +359,7 @@ public class ServletCliente extends HttpServlet {
 			validarDNI(dni);
 
 			//En la fecha, para pasarlo de String a Date (sql), primero hay que pasarlo a Date (java) con el formato deseado,
-			//luego se pasa a Date sql. Estas dos lÃ­neas hacen el parseo a date java:
+			//luego se pasa a Date sql. Estas dos líneas hacen el parseo a date java:
 	        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 	        java.util.Date fecha = formato.parse(request.getParameter("txtFecha_nac"));
 			java.sql.Date fNac = new java.sql.Date(fecha.getTime());  // acÃ¡ se hace el parseo a Date sql

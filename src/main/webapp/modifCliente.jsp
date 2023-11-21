@@ -100,27 +100,28 @@ jsp
 
 	<div class="row">
     <form method="get" action="ServletCliente" class="d-flex justify-content-between">
-        <div class="mx-2  mb-2">
-            <select name="clienteSeleccionado" class="form-select mb-3">
-                <% if(listaClientes!=null)
-                    for(Cliente clFil : listaClientes) { 
-                        if(clFil.isEstado()) {
-                %>
-                <option value="<%=clFil.getDni()%>">
-                    <%= clFil.getApellido() %>,
-                    <%= clFil.getNombre() %> - DNI:
-                    <%=clFil.getDni()%>
-                </option>
-                <% } }%>
-            </select>
-        </div>
+        
 
-        <div class="mr-2 mb-2">
-            <input type="submit" value="Filtrar" name="btnFiltrar" class="btn btn-primary">
-            <input type="submit" value="Limpiar filtro" name="btnLimpiar" class="btn btn-outline-primary">
-        </div>
-    </form>
-</div>
+	 <div class="mx-2 mb-2 d-flex align-items-center">
+        <label for="campo" class="mb-3" >Campo:</label>
+        <select name="campoBusqueda" id="campo" class="form-select mb-3 ms-2" required>
+            <option value="dni">DNI</option>
+            <option value="nombre">Nombre</option>
+            <option value="apellido">Apellido</option>
+            <option value="email">Email</option>
+            <option value="localidad">Localidad</option>
+        </select>
+    </div>
+    <div class="mr-2 mb-2">
+        <input type="text" name="valorBusqueda" placeholder="Valor a buscar" class="form-control mb-3" required>
+    </div>
+	
+	        <div class="mr-2 mb-2">
+	            <input type="submit" value="Filtrar" name="btnFiltrar" class="btn btn-primary">
+	            <input type="submit" value="Limpiar filtro" name="btnLimpiar" class="btn btn-outline-primary" onclick="limpiarFiltro()">
+	        </div>
+	    </form>
+	</div>
 
 
 </div>
@@ -219,5 +220,29 @@ jsp
         </nav>
     </div>
 	</div>
+	
+	<script>
+    document.getElementById("campo").addEventListener("change", function() {
+        var campoBusqueda = this.value;
+        var valorBusquedaInput = document.querySelector("input[name='valorBusqueda']");
+        
+        if (campoBusqueda === "dni") {
+            valorBusquedaInput.setAttribute("type", "number");
+            valorBusquedaInput.setAttribute("pattern", "[0-9]*"); 
+        } else {
+            valorBusquedaInput.setAttribute("type", "text");
+            valorBusquedaInput.removeAttribute("pattern"); 
+        }
+    });
+
+    document.getElementById("campo").dispatchEvent(new Event('change'));
+    
+    function limpiarFiltro() {
+        var valorBusquedaInput = document.querySelector("input[name='valorBusqueda']");
+        valorBusquedaInput.value = ""; 
+        var valorBusquedaInput = document.querySelector("input[name='valorBusqueda']");
+    valorBusquedaInput.removeAttribute("required");
+    }
+</script>
 </body>
 </html>
