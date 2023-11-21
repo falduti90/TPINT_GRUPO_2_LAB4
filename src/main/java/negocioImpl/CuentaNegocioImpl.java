@@ -159,7 +159,7 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 		ClienteDao clienteDao = new ClienteDaoImpl();
 		try										
 		{
-		return clienteDao.BuscarUno(dni).getDni().equals(dni);
+		return clienteDao.BuscarUno(dni).getDni().contains(dni);
 		}
 		catch(Exception e) {
            return false;

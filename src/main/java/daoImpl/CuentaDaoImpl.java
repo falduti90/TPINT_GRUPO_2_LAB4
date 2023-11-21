@@ -27,7 +27,7 @@ public class CuentaDaoImpl implements CuentaDao{
 	private static final String readlast = "SELECT * FROM Cuentas ORDER by nroCuenta DESC LIMIT 1";
 	private static final String readOne = "SELECT * FROM Cuentas Where nroCuenta = ?";
 	private static final String readOneCbu = "SELECT * FROM Cuentas Where CBU = ?";
-	private static final String readForClient = "SELECT * FROM Cuentas Where dni = ? and estado = 1";
+	private static final String readForClient = "SELECT * FROM Cuentas Where dni LIKE ? and estado = 1";
 	private static final String update = "UPDATE Cuentas set saldo = ?, CBU = ?, dni = ?, tipoCuenta = ? Where nroCuenta = ?";
 
 
@@ -192,7 +192,7 @@ public class CuentaDaoImpl implements CuentaDao{
 		}
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(readForClient);
-			statement.setString(1, dni);
+			statement.setString(1,  "%" + dni + "%");
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				cuenta.add(getCuenta(resultSet));

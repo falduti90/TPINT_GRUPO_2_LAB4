@@ -21,7 +21,7 @@ public class ClienteDaoImpl implements ClienteDao {
 	private static final String insert = "INSERT INTO Clientes(dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais, correo_electronico, telefonos) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
 	private static final String logicalDeletion = "UPDATE Clientes set estado = 0 Where dni = ?";
 	private static final String readall = "SELECT * FROM Clientes ORDER by apellido, dni ASC";
-	private static final String readOne = "SELECT * FROM Clientes Where dni = ?";
+	private static final String readOne = "SELECT * FROM Clientes Where dni LIKE ?";
 	private static final String update = "UPDATE Clientes set nombre = ?, apellido = ?, CUIL = ?, sexo = ?, nacionalidad = ?, fecha_nac = ?, direccion = ?, codLocalidad = ?, codProvincia = ?, codPais = ?, correo_electronico = ?, telefonos = ?  Where dni = ?";
 	private static final String readlast = "SELECT * FROM Clientes ORDER by dni DESC LIMIT 1";
 	private static final String countAll = "SELECT COUNT(dni) as total FROM Clientes where estado = 1 ORDER by apellido, dni ASC";
@@ -195,7 +195,7 @@ public class ClienteDaoImpl implements ClienteDao {
 		}
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(readOne);
-			statement.setString(1, dni);
+			statement.setString(1, "%" + dni + "%");
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				cliente = getCliente(resultSet);
