@@ -2803,7 +2803,7 @@ INSERT INTO Localidades(codPais,codProvincia,localidad) VALUES (12,  7, 'Los Cer
 
 INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('12345678','Manu','Casulo','27-12345678-1','F',1,'1975-05-01', 'Florida 123',9,1,12,'manucasulo@gmail.com');
 INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('91011123','Facundo','Amarilla','23-91011123-7','M',1,'1980-07-23', 'Mitre 2587',5,1,12,'facuamarilla@gmail.com');
-INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('14151617','Matias','Silva Islas','27-14151617-3','F',1,'1990-11-08', 'Rivera 3358',6,1,12,'matiislas@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('14151617','Mati','Silva Islas','27-14151617-3','F',1,'1990-11-08', 'Rivera 3358',6,1,12,'matiislas@gmail.com');
 INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('18192021','Matias','Falduti','20-18192021-8','M',1,'2000-08-11', 'Cabildo 1598',9,1,12,'matifalduti@gmail.com');
 INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('22232425','Luciano','Apugliese ','20-22232425-1','M',1,'1993-05-01', 'Rivadavia 321',7,1,12,'luciano@gmail.com');
 
@@ -2818,32 +2818,34 @@ INSERT INTO TiposMovimientos (tipoMovimiento) VALUES ('Transferencia');
 INSERT INTO TiposCuentas (tipoCuenta) VALUES ('Caja de Ahorro');
 INSERT INTO TiposCuentas (tipoCuenta) VALUES ('Cuenta Corriente');
 
-insert into Cuentas(nroCuenta, CBU, dni, fecha_creacion, tipoCuenta, saldo)
-select	concat(52,substring(c.dni,7,2)) as nroCuenta,
-		concat(0290010058, substring(c.dni,6,3)) as CBU, 
-        c.dni as dni,
-        substring(DATE_SUB(now(), interval cast(substring(c.dni,6,3) as decimal) day),1,10) as fecha_creacion,
-        1 as tipoCuenta,
-        cast(substring(concat(0290010058, substring(c.dni,6,8)),9,5) as decimal) as saldo
-from clientes c
-union all
-select	concat(52,substring(c.dni,5,2)) as nroCuenta,
-		concat(0290010486, substring(c.dni,5,3)) as CBU, 
-        c.dni as dni,
-       substring(DATE_SUB(now(), interval cast(substring(c.dni,6,3)*2.4 as decimal) day),1,10) as fecha_creacion,
-        1 as tipoCuenta,
-        cast(substring(concat(0290010486, substring(c.dni,6,3)),9,5)*4.6 as decimal) as saldo
-from clientes c
-;
+INSERT INTO Cuentas (nroCuenta, CBU, dni, fecha_creacion, tipoCuenta, saldo)
+SELECT
+    CONCAT(52, SUBSTRING(c.dni, 7, 2)) AS nroCuenta,
+    LPAD(CONCAT(0290010058, SUBSTRING(c.dni, 6, 3)), 23, '0') AS CBU,
+    c.dni AS dni,
+    SUBSTRING(DATE_SUB(NOW(), INTERVAL CAST(SUBSTRING(c.dni, 6, 3) AS DECIMAL) DAY), 1, 10) AS fecha_creacion,
+    1 AS tipoCuenta,
+    ROUND(CAST(SUBSTRING(CONCAT(0290010058, SUBSTRING(c.dni, 6, 8)), 9, 5) AS DECIMAL), 2) AS saldo
+FROM clientes c
+UNION ALL
+SELECT
+    CONCAT(52, SUBSTRING(c.dni, 5, 2)) AS nroCuenta,
+    LPAD(CONCAT(0290010486, SUBSTRING(c.dni, 5, 3)), 23, '0') AS CBU,
+    c.dni AS dni,
+    SUBSTRING(DATE_SUB(NOW(), INTERVAL CAST(SUBSTRING(c.dni, 6, 3) * 2.4 AS DECIMAL) DAY), 1, 10) AS fecha_creacion,
+    1 AS tipoCuenta,
+    ROUND(CAST(SUBSTRING(CONCAT(0290010486, SUBSTRING(c.dni, 6, 3)), 9, 5) * 4.6 AS DECIMAL), 2) AS saldo
+FROM clientes c
+UNION ALL
+SELECT
+    c.nroCuenta,
+    DATE_ADD(c.fecha_creacion, INTERVAL FLOOR(RAND() * (365) + 1) DAY) AS fecha,
+    FLOOR(RAND() * (8000 - 200) + 201) AS importe,
+    FLOOR(RAND() * (4) + 1) AS tipoMovimiento,
+    ROUND(FLOOR(RAND() * (25000 - 200) + 201), 2) AS saldo,
+    NULL AS detalle
+FROM Cuentas c;
 
-union all
-select 		c.nroCuenta,
-			DATE_ADD(c.fecha_creacion, interval FLOOR(RAND()*(365)+1) day) as fecha,
-            FLOOR(RAND()*(8000-200)+201) as importe,
-            FLOOR(RAND()*(4)+1) as tipoMovimiento,
-            FLOOR(RAND()*(25000-200)+201) as saldo,
-            null as detalle
-from Cuentas c;
 
 insert into prestamos(dni,fecha,importe_a_pagar,importe_pedido,plazo_pago,monto_mensual,cantidad_cuotas,estado)
 select 		c.dni,

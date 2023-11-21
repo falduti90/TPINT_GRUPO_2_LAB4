@@ -75,9 +75,9 @@
 <div class="container">
 
 <div class="row" >
-<div class="col-12 text-center">
-<h1>Eliminar cliente</h1>
-</div>
+	<div class="col-12 text-center ">
+		<h1 class="fs-1 fw-bold mb-5">Eliminar cliente</h1>
+	</div>
 </div>
 <div style="display:flex; flex-direction: column; align-items: center;">
 <% if( eliminado == true || conSaldo == true) { %>	
@@ -89,11 +89,12 @@
 	<% if(request.getAttribute("clienteBaja") != null) {%>
 		<%=request.getAttribute("clienteBaja")%>
 	<%}%>
-		<p style="font-size: 1.5rem;"> ¿Confirma realizar la baja del cliente y su usuario ? </p>
+		<p class="mt-5 fs-3 fw-bold" > ¿Confirma realizar la baja del cliente y su usuario ? </p>
 	</div>
 	<form method="get" action="ServletCliente">
-	  <p class="button">
-        <input id="btnSeleccionar" type="submit" value="Confirmar" name="btnBajaUsuario">
+	  <p >
+        <input class="btn btn-danger" id="btnSeleccionar" type="submit" value="Dar de baja" name="btnBajaUsuario">
+        <a class="btn btn-secondary" aria-current="page" href="/TPINT_GRUPO_2_LAB4/ServletCliente?pag=1">Volver</a>
         <input type="hidden" name="dni" value=<%= dni %> >
       </p>
 	</form>

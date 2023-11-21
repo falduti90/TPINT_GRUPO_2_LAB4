@@ -48,7 +48,7 @@
 
 
 
-<h1 style="margin:auto;text-align:center;margin-bottom:30px;">Pagar prestamos</h1>
+<h1 class="mt-5" style="margin:auto;text-align:center;margin-bottom:30px;">Pagar prestamos</h1>
 		<%
 	 	
 		ArrayList<Prestamo> prestamoList = null;
@@ -101,15 +101,15 @@
 		<%	} %>
 		</div>
 		<div class="Cuenta-Detalle">
-			<label id="">$<%=cuentasList.get(pos).getSaldo()%></label>
+			<label id="">$<%= String.format("%.2f", cuentasList.get(pos).getSaldo())%></label>
 			<label id="lblDetalleCuenta"><%=cuentasList.get(pos).getTipoCuenta().getTipoCuenta()%> - Cuenta Nro: <%=cuentasList.get(pos).getNroCuenta()%></label>
 		</div>
 	</section>
 	<!-- -->
 	<!--<%=cuentasList.get(pos).getNroCuenta()%>-->
 	<section class="detalle-cuota">
-	<table id="tabla-cuotas" style="display:none; text-align:center; width:80%; margin:auto;">
-		<tr style="text-align:center;">
+	<table class="table text-dark" id="tabla-cuotas" style="display:none; text-align:center; width:80%; margin:auto;">
+		<tr class="text-dark" style="text-align:center;">
 			<th>Cuota</th>
 			<th>Importe</th>
 			<th>Fecha de pago</th>
@@ -120,7 +120,7 @@
 		<% for(Cuota c : cuotasList){%>
 		<tr class="cuotasTr cuoPrestamo-<%=c.getCodPrestamo()%>" style="display:none">
 			<td><%=c.getNroCuota()%></td>
-			<td>$<%=c.getImporte() %></td>
+			<td>$<%= String.format("%.2f", c.getImporte())%></td>
 			<td><% if (c.getFecha_pago()==null ){%>
 				<%="-"%>
 			<%} 
@@ -134,10 +134,10 @@
 			else{%>
 				<%="Pago"%>
 			<%}%></td>
-			<td><button <%if(!c.getEstado()){%>
+			<td><button class="btn btn-warning fw-bold" <%if(!c.getEstado()){%>
 							disabled				
 						<%}%> 
-				onclick="cuotaSeleccionada(<%=c.getIdCuota()%>,<%=c.getImporte()%>,<%=c.getEstado()%>);" class="">Pagar cuota</button></td>
+				onclick="cuotaSeleccionada(<%=c.getIdCuota()%>,<%=c.getImporte()%>,<%=c.getEstado()%>);" class="">Pagar</button></td>
 		</tr>
 		<%}%> 
 	</table>

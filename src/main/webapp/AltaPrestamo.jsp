@@ -71,7 +71,7 @@
 </header>
 
 
-<div class="menu">
+<div class="container col-8 mt-5 pt-5">
 <br><br>
 <h2 style="color: #007bff; font-family: 'Arial', sans-serif; text-align: center;">Autorización de Préstamos</h2>
 
@@ -106,7 +106,7 @@
 	</script>
 <%if(listaPrestamos!=null && resBoolean){ %>
 
- <table class="table" >
+ <table class="table table-striped table-hover text-center p-3" >
 			<caption>Prestamos disponibles para aprobacion</caption>
 			
 	<thead class="thead-dark">			
@@ -151,8 +151,19 @@
 			}%>
 			
 		
-			<td><input class="btn btn-primary" type="submit" value="Aprobar" name="btnAutorizar"></td>
-			<td><input type="submit" value="Rechazar" name="btnRechazar"></td>
+			<td>
+			    <button type="submit" name="btnAutorizar" class="btn btn-success mr-3 mx-4" onclick="return confirm('¿Estás seguro de autorizar el prestamo solicitado?')">
+			        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+			            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+			        </svg>
+			    </button>
+			    <button type="submit" name="btnRechazar" class="btn btn-danger" onclick="return confirm('¿Rechazar el prestamo solicitado?')">
+			        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+			            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+			        </svg>
+			    </button>
+			</td>
+
 			<input type="hidden" name="codPrestamo" value="<%=p.getCodPrestamoPendiente()%>">
 
 		</form>

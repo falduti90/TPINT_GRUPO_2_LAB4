@@ -109,9 +109,8 @@ table tr:hover {background-color: #ddd;}
 table th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
-  background-color: var(--color-1);
-  color: white;
+  text-align: center;
+  background-color:aqua;
 }
 
 .tablaReportes{
@@ -353,13 +352,6 @@ dl
 	margin: 0 1rem;
 }
 
-#btnSeleccionar {
-	background-color: #5D6D7E   ; /* #008000 */
-  	color: white;
-  	border-radius: 7px;
-  	border: 2px solid black;
- 	padding: 0.2rem 1rem;
-}
 
 #btnSeleccionar:hover, #btnSeleccionar:active {
 	font-weight: 700;
