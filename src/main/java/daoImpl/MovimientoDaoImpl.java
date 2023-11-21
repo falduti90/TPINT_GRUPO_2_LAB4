@@ -23,7 +23,8 @@ public class MovimientoDaoImpl implements MovimientoDao {
 	private static final String readall = "SELECT * FROM Movimientos";
 	private static final String readOneCta = "SELECT * FROM Movimientos Where nroCuenta = ? order by fecha ASC";
 	private static final String readlast = "SELECT * FROM Movimientos ORDER by fecha DESC LIMIT 1";
-	private static final String readXtipoMov = "SELECT * FROM Movimientos Where tipoMovimiento = ?";
+	private static final String readXtipoMov = "SELECT * FROM Movimientos Where tipoMovimiento = ? and fecha between ? and ?";
+	//SELECT * FROM Movimientos Where tipoMovimiento = 4 and fecha between '2023-11-10' and '2023-11-20'
 	private static final String readDesdeFecha = "SELECT * FROM Movimientos where fecha >=?";
 	private static final String readHastaFecha = "SELECT * FROM Movimientos where fecha <= ?";
 	
@@ -150,7 +151,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 		
 	}
 	
-	public ArrayList<Movimiento> BuscarPorTipo(int tipoMovimiento) {
+	public ArrayList<Movimiento> BuscarPorTipo(int tipoMovimiento, java.util.Date fechaInicial, java.util.Date fechaFinal) {
 		PreparedStatement statement;
 		ResultSet resultSet; 
 		ArrayList<Movimiento> movList = new ArrayList<Movimiento>();
@@ -165,6 +166,8 @@ public class MovimientoDaoImpl implements MovimientoDao {
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(readXtipoMov);
 			statement.setInt(1, tipoMovimiento);
+			statement.setDate(2, new java.sql.Date(fechaInicial.getTime()));
+			statement.setDate(3, new java.sql.Date(fechaFinal.getTime()));
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				movList.add(getMovimiento(resultSet));
@@ -189,7 +192,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 		}
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(readDesdeFecha);
-			statement.setDate(1, fInicio);
+			statement.setDate(1, new java.sql.Date(fechaInicio.getTime()));
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				movList.add(getMovimiento(resultSet));
@@ -213,7 +216,7 @@ public class MovimientoDaoImpl implements MovimientoDao {
 		}
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(readHastaFecha);
-			statement.setDate(1, (Date) fechaFinal);
+			statement.setDate(1, new java.sql.Date(fechaFinal.getTime()));
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				movList.add(getMovimiento(resultSet));

@@ -16,7 +16,7 @@ public interface  MovimientoDao {
 	
 	public Movimiento BuscarUltimo();
 
-	public ArrayList<Movimiento> BuscarPorTipo(int tipoMovimiento);
+	public ArrayList<Movimiento> BuscarPorTipo(int tipoMovimiento, Date fechaInial, Date fechaFianl);
 
 	public ArrayList<Movimiento> BuscarDesde(Date fechaInicio);
 

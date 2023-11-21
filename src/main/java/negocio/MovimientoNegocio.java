@@ -16,7 +16,7 @@ public interface MovimientoNegocio {
 	
 	public Movimiento BuscarUltimo();
 
-	public ArrayList<Movimiento> BuscarPorTipo(int tipoMovimiento);
+	public ArrayList<Movimiento> BuscarPorTipo(int tipoMovimiento, Date fechaInicial, Date fechaFinal);
 
 	public ArrayList<Movimiento> BuscarDesde(Date fechaInicio);
 

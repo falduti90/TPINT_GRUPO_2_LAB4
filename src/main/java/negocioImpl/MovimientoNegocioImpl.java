@@ -43,9 +43,9 @@ public class MovimientoNegocioImpl implements MovimientoNegocio{
 	}
 
 
-	public ArrayList<Movimiento> BuscarPorTipo(int tipoMovimiento) {
+	public ArrayList<Movimiento> BuscarPorTipo(int tipoMovimiento, Date fechaInicial, Date fechaFinal) {
 		ArrayList<Movimiento> tipo_movimiento;
-		tipo_movimiento = mDao.BuscarPorTipo(tipoMovimiento);
+		tipo_movimiento = mDao.BuscarPorTipo(tipoMovimiento, fechaInicial, fechaFinal);
 		return tipo_movimiento; 
 	}
 	

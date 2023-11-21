@@ -219,8 +219,17 @@ public class SelvetMovimientos extends HttpServlet {
 	private void cargarFiltroFechaInicio(HttpServletRequest request, MovimientoNegocio movimientoNegocio) throws ServletException, IOException {
 		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
 		java.util.Date fecha_inicio = null;
+		String fechaInicioParam = request.getParameter("txtFechaInicio");
+		if (fechaInicioParam != null) {
+		    try {
+		        fecha_inicio = formato.parse(fechaInicioParam);
+		    } catch (ParseException e) {
+		        // Manejar la excepción de parseo de fecha
+		        e.printStackTrace();
+		    }
+		}
 		try {
-			 fecha_inicio = formato.parse(request.getParameter("txtFechaInicio"));
+			 fecha_inicio = formato.parse(request.getParameter("txtFechaInicial"));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -256,7 +265,18 @@ public class SelvetMovimientos extends HttpServlet {
 	
 	private void cargarFiltroMovimiento(HttpServletRequest request, MovimientoNegocio movimientoNegocio) throws ServletException, IOException {
 		int movimiento =  Integer.parseInt(request.getParameter("movimiento"));
-		ArrayList<Movimiento> listaMovimientos = (ArrayList<Movimiento>)movimientoNegocio.BuscarPorTipo(movimiento);		
+		SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
+		java.util.Date fechaInicial = null;
+		java.util.Date fechaFinal = null;
+		try {
+			 fechaFinal = formato.parse(request.getParameter("txtFechaFinal"));
+			 fechaInicial = formato.parse(request.getParameter("txtFechaInicial"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		ArrayList<Movimiento> listaMovimientos = (ArrayList<Movimiento>)movimientoNegocio.BuscarPorTipo(movimiento,fechaInicial, fechaFinal );		
 		request.setAttribute("listaMovimientos", listaMovimientos);
 	}	
 	

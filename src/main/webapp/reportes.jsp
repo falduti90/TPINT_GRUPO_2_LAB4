@@ -72,9 +72,9 @@
 	 <label for="labelDni">DNI:</label>
 	 <input type="text"  maxlength=10 id= "dni" name="txtDni">
 	 <label for="labelFechaInicio">Fecha de inicio:</label>
-	 <input type="date" name="txtFechaInicio">
-	 <label for="labelFechaInicio">Fecha de fin:</label>
-	 <input type="date" name="txtFechaFin"><br><br>
+	 <input type="date" name="txtFechaInicial">
+	 <label for="labelFechaFin">Fecha de fin:</label>
+	 <input type="date" name="txtFechaFinal"><br><br>
 	 <div style="display:flex; justify-content: space-evenly;">
 	      <input id="btnFiltrar" type="submit" value="Filtrar" name="btnFiltrarMovimiento" style="width: 200px;">
 	 </div>
