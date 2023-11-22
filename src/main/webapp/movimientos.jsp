@@ -73,20 +73,6 @@
  
 	<h1 style="margin:auto; margin-bottom:40px;text-align:center;margin-top:120px"><b>Movimientos</b></h1>
 	
-	<section class="Cuenta">
-		<div class="Cuenta-Tipo">
-		<%  if(tipoCta == 1) {	%>
-			<label >CA$</label>
-		<%	} else { %>
-				<label id="">CC$</label>
-		<%	} %>
-		</div>
-		<div class="Cuenta-Detalle">
-			<label id="lblDisponibleCuenta">$ <%= String.format("%.2f", listaMovimientos.get(listaMovimientos.size()-1).getSaldo()) %></label>
-			
-			<label id="lblDetalleCuenta"><%= nombreCta %> - Cuenta Nro: <%= currentCuenta %></label>
-		</div>
-	</section>
 	<div class="container">
 	<table class="table table-info table-striped table-hover mt-5">
 		<thead>
@@ -94,7 +80,6 @@
 			<th>Fecha</th>
 			<th>Importe</th>
 			<th>Tipo de movimiento</th>
-			<th>Saldo</th>
 			<th>Detalle</th>
 		</tr>
 		</thead>
@@ -107,7 +92,6 @@
 			<td><%= mov.getFecha() %> </td>
 			<td>$ <%= String.format("%.2f", mov.getImporte()) %></td>
 			<td><%= mov.getTipoMovimiento().getTipoMovimiento() %></td>
-			<td>$ <%= String.format("%.2f", mov.getSaldo()) %></td>
 		 <%  if( mov.getDetalle() == null) { %>
 		 			<td> --- </td>
 		 <%	} else { %>
