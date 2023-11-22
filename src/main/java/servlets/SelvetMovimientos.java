@@ -64,10 +64,12 @@ public class SelvetMovimientos extends HttpServlet {
 		if (request.getParameter("btnFiltrarMovimiento") != null) {
 			validarDNI(request, response);
 		}
+		
 	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
+	
+	
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		if(request.getParameter("btnAtras") != null ) {
@@ -224,7 +226,7 @@ public class SelvetMovimientos extends HttpServlet {
 		    try {
 		        fecha_inicio = formato.parse(fechaInicioParam);
 		    } catch (ParseException e) {
-		        // Manejar la excepción de parseo de fecha
+		        // Manejar la excepciï¿½n de parseo de fecha
 		        e.printStackTrace();
 		    }
 		}
