@@ -41,7 +41,7 @@
 			
 		}
 		
-		if(request.getSession().getAttribute("cuentaSeleccionada") != null) 
+		if(request.getSession().getAttribute("cuentaInfo") != null) 
 		{
 			try{
 				
