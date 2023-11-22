@@ -2,6 +2,8 @@
 <%@page import="entidad.Cuenta" %>
 <%@page import="entidad.Usuario" %>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.math.BigDecimal"%>
+<%@page import="java.util.Map"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,11 +26,13 @@
 		
 		ArrayList<Cuenta> listaCuentas = null;
 		int currentCuenta = 0;
+		BigDecimal currentSaldo = new BigDecimal(0);
 		if(request.getSession().getAttribute("cuentas") != null)
 		{
 			try{
 				listaCuentas = (ArrayList<Cuenta>) request.getSession().getAttribute("cuentas");
 				currentCuenta = listaCuentas.get(0).getNroCuenta();
+				currentSaldo = listaCuentas.get(0).getSaldo();
 			}
 			catch(IndexOutOfBoundsException ex){
 				ex.printStackTrace();
@@ -40,7 +44,13 @@
 		if(request.getSession().getAttribute("cuentaSeleccionada") != null) 
 		{
 			try{
-				currentCuenta = (int) request.getSession().getAttribute("cuentaSeleccionada");		
+				
+				Map<String, Object> cuentaInfo = (Map<String, Object>) request.getSession().getAttribute("cuentaInfo");
+				int nroCuenta = (int) cuentaInfo.get("cuentaSeleccionada");
+				BigDecimal saldo = (BigDecimal) cuentaInfo.get("saldo");
+				
+				currentCuenta = (int) cuentaInfo.get("cuentaSeleccionada");;	
+				currentSaldo = (BigDecimal) cuentaInfo.get("saldo");
 			}
 			catch(IndexOutOfBoundsException ex){
 				ex.printStackTrace();
@@ -100,7 +110,7 @@
 
 		<%if(currentCuenta != 0){
 			%>			
-	<label for="cuentaSeleccionada"><span class="badge bg-secondary ps-5 px-5">Cuenta actual: <%=currentCuenta%></span> </label><br>	
+	<label for="cuentaSeleccionada"><span class="badge bg-secondary ps-5 px-5">Cuenta actual: <%=currentCuenta%> <br> Saldo:$ <%= String.format("%.2f", currentSaldo)%></span> </label><br>	
 	<form method="get" action="ServletCuenta" class="d-flex">
     <div class="flex-grow-1 me-2">
         <select name="cuentaSeleccionada" class="form-select">

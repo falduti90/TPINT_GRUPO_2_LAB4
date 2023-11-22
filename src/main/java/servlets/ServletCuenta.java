@@ -3,6 +3,8 @@ package servlets;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -175,13 +177,21 @@ public class ServletCuenta extends HttpServlet {
 			
 	
 	private void setearCurrentCuenta(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		RequestDispatcher rd;
-		int nroCuenta = Integer.parseInt(request.getParameter("cuentaSeleccionada"));
-		request.getSession().setAttribute("cuentaSeleccionada", nroCuenta);
-		rd = request.getRequestDispatcher("/gestionarCuentas.jsp");
-		rd.forward(request, response);
-	
+	    RequestDispatcher rd;
+	    CuentaNegocio cuenta = new CuentaNegocioImpl();
+	    Cuenta cta = new Cuenta();
+	    int nroCuenta = Integer.parseInt(request.getParameter("cuentaSeleccionada"));
+	    cta = cuenta.BuscarUno(nroCuenta);
+	    BigDecimal saldo = cta.getSaldo();
+	    
+	    Map<String, Object> cuentaInfo = new HashMap<>();
+	    cuentaInfo.put("cuentaSeleccionada", nroCuenta);
+	    cuentaInfo.put("saldo", saldo);
+	    
+	    request.getSession().setAttribute("cuentaInfo", cuentaInfo);
+	    
+	    rd = request.getRequestDispatcher("/gestionarCuentas.jsp");
+	    rd.forward(request, response);
 	}
 	
 	private void validarSaldo( int nroCuenta ) throws SaldoCuenta {
