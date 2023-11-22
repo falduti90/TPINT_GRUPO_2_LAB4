@@ -1,4 +1,4 @@
-drop schema BD_Banco_grupo_2
+#drop schema BD_Banco_grupo_2
 
 
 create schema BD_Banco_grupo_2;
@@ -2806,6 +2806,18 @@ INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direc
 INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('14151617','Mati','Silva Islas','27-14151617-3','F',1,'1990-11-08', 'Rivera 3358',6,1,12,'matiislas@gmail.com');
 INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('18192021','Matias','Falduti','20-18192021-8','M',1,'2000-08-11', 'Cabildo 1598',9,1,12,'matifalduti@gmail.com');
 INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('22232425','Luciano','Apugliese ','20-22232425-1','M',1,'1993-05-01', 'Rivadavia 321',7,1,12,'luciano@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('12355678','Fabian','Alfonzo','27-12345678-1','F',1,'1975-05-01', 'Florida 123',9,1,12,'FabianAlfonzo@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('97017123','Carlos','Amarilla','23-91011123-7','M',1,'1980-07-23', 'Mitre 2587',5,1,12,'carlosamarilla@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('14156617','Rober','Islas','27-14151617-3','F',1,'1990-11-08', 'Rivera 3358',6,1,12,'Roberislas@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('58197021','Pepo','Nadal','20-18192021-8','M',1,'2000-08-11', 'Cabildo 1598',9,1,12,'PepoNadal@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('21232415','Lucho','Apu ','20-22232425-1','M',1,'1993-05-01', 'Rivadavia 321',7,1,12,'luchoapu@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('12945778','Pedro','Alfonzo','27-12345678-1','F',1,'1975-05-01', 'Florida 123',9,1,12,'PedroAlfonzo@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('99011123','Juanca','Ama','23-91011123-7','M',1,'1980-07-23', 'Mitre 2587',5,1,12,'Juancaama@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('19151617','Mati','Silva Islas','27-14151617-3','F',1,'1990-11-08', 'Rivera 3358',6,1,12,'matiislas@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('38198021','Mati','Perez','20-18192021-8','M',1,'2000-08-11', 'Cabildo 1598',9,1,12,'matiperez@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('62232925','Lucas','gliese ','20-22232425-1','M',1,'1993-05-01', 'Rivadavia 321',7,1,12,'lucassss@gmail.com');
+
+
 
 INSERT INTO TiposUsuarios (tipoUsuario) VALUES ('Administrador');
 INSERT INTO TiposUsuarios (tipoUsuario) VALUES ('Cliente');
