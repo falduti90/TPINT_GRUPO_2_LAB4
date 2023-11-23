@@ -16,14 +16,20 @@ BEGIN
         SET saldo_existente = 0;
 	END IF;
     
+    IF NEW.estado > 1 THEN
       SET nuevo_saldo = saldo_existente + monto;
+    END IF;
     
-    IF monto > 0 THEN
+    IF monto > 0 and NEW.estado > 1 THEN
         UPDATE Cuentas SET Saldo = Saldo + monto WHERE nroCuenta = cta;
     END IF;
     
+    IF NEW.estado > 1 then
     INSERT INTO movimientos (nroCuenta,fecha,importe,tipomovimiento,saldo,detalle) VALUES(cta,CURRENT_DATE(),monto,2,saldo_existente,'Acreditacion de Prestamo');
-
+    ELSE
+    INSERT INTO movimientos (nroCuenta,fecha,importe,tipomovimiento,saldo,detalle) VALUES(cta,CURRENT_DATE(),monto,2,saldo_existente,'Prestamo rechazado');
+	END IF;
+    
     IF NEW.estado > 1 THEN
         INSERT INTO prestamos
             (`dni`, `fecha`, `importe_a_pagar`, `importe_pedido`, `plazo_pago`, `monto_mensual`, `cantidad_cuotas`)
