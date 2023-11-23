@@ -68,7 +68,9 @@ public class ServletCuenta extends HttpServlet {
 		if (request.getParameter("btnSeleccionar")!=null) {
 			setearCurrentCuenta(request,response);
 		}
-
+		if (request.getParameter("btnConsultaCbu")!=null) {
+			consultarCbu(request,response);
+		}
 	}
 
 	/**
@@ -191,6 +193,26 @@ public class ServletCuenta extends HttpServlet {
 	    request.getSession().setAttribute("cuentaInfo", cuentaInfo);
 	    
 	    rd = request.getRequestDispatcher("/gestionarCuentas.jsp");
+	    rd.forward(request, response);
+	}
+	
+	private void consultarCbu(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    RequestDispatcher rd;
+	    CuentaNegocio cuenta = new CuentaNegocioImpl();
+	    Cuenta cta = new Cuenta();
+	    int nroCuenta = Integer.parseInt(request.getParameter("cuentaSeleccionada"));
+	    cta = cuenta.BuscarUno(nroCuenta);
+	    BigDecimal saldo = cta.getSaldo();
+	    long cbu = cta.getCbu();
+	    
+	    Map<String, Object> cuentaInfo = new HashMap<>();
+	    cuentaInfo.put("cuentaSeleccionada", nroCuenta);
+	    cuentaInfo.put("saldo", saldo);
+	    cuentaInfo.put("cbu", cbu);
+	    
+	    request.getSession().setAttribute("cuentaInfo", cuentaInfo);
+	    
+	    rd = request.getRequestDispatcher("/consultaCbu.jsp");
 	    rd.forward(request, response);
 	}
 	

@@ -106,11 +106,10 @@
 </header>
 
 	<div class= "selectorCuentas">
-		<h1 style="margin:auto; margin-bottom:20px; text-align:center;" class= "fw-bold fs-2 mt-5">Gestionar Cuentas</h1>
+		<h1 style="margin:auto; margin-bottom:20px; text-align:center;" class= "fw-bold fs-2 mt-5 mb-5">Consultar CBU</h1>
 
 		<%if(currentCuenta != 0){
 			%>			
-	<label for="cuentaSeleccionada"><span class="badge bg-secondary ps-5 px-5">Cuenta actual: <%=currentCuenta%>  <br> Saldo:$ <%= String.format("%.2f", currentSaldo)%></span> </label><br>	
 	<form method="get" action="ServletCuenta" class="d-flex">
     <div class="flex-grow-1 me-2">
         <select name="cuentaSeleccionada" class="form-select">
@@ -128,34 +127,16 @@
             <%      } } }%>
         </select>
     </div>
-    	<input id="btnSeleccionar" type="submit" value="Seleccionar" name="btnSeleccionar" class="btn btn-primary ms-4">
+    	<input id="btnConsultaCbu" type="submit" value="Consultar" name="btnSeleccionar" class="btn btn-primary ms-4">
 	</form>
-
+	<label for="cuentaSeleccionada"><span class="badge bg-info p-1 fs-6">CBU Cuenta <%=currentCuenta%>:  </label><br>	
 	
 	</div>
 	<div>
 		<div class="d-flex justify-content-center">
 		</div>
-		<div class="d-grid gap-2 col-3 mx-auto mt-5 text-body-danger">
-		    <div class="btn btn-info  mb-2">
-		        <a href="/TPINT_GRUPO_2_LAB4/ServletMovimientos?getCuenta=" class="text-dark fw-bold fs-3">
-		            <input class="btn-primary" type="hidden" name="cta" value="<%=currentCuenta%>">Movimientos
-		        </a>
-		    </div>
-		    <div class="btn btn-info  mb-2">
-		        <a href="/TPINT_GRUPO_2_LAB4/transferencias.jsp?getCuenta=<%=currentCuenta%>" class="text-dark fw-bold fs-3">Transferencias</a>
-		    </div>
-		    <div class="btn btn-info  mb-2">
-		        <a href="/TPINT_GRUPO_2_LAB4/solicitarPrestamo.jsp?getCuenta=" class="text-dark fw-bold fs-3">
-		            <input type="hidden" name="Usuario" value="<%=usuario%>">Solicitar prestamo</a>
-		    </div>
-		    <div class="btn btn-info mb-2">
-		        <a href="/TPINT_GRUPO_2_LAB4/ServletPrestamos?pagoPrestamos=<%=currentCuenta%>" class="text-dark fw-bold fs-3">Pagar prestamos</a>
-		    </div>
-		    <div class="btn btn-info mb-2">
-		        <!-- <a href="/TPINT_GRUPO_2_LAB4/ServletPrestamos?pagoPrestamos=<%=currentCuenta%>" class="text-dark fw-bold fs-3">Consultar CBU</a> -->
-		        <a href="/TPINT_GRUPO_2_LAB4/ConsultaCbu.jsp?getCuenta=" class="text-dark fw-bold fs-3">Consultar CBU</a>
-		    </div>
+		<div class="d-grid gap-2 col-1 mx-auto text-body-danger">
+
 			<a href="inicioClientes.jsp" class="btn btn-secondary text-center fw-bold"> <span class="fa fa-arrow-left"></span> Volver</a>
 		</div>
 	
