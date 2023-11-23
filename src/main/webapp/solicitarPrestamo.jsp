@@ -18,26 +18,19 @@
 <body>
 <% 
 
-///Verificacion  de usuario conectado
 Usuario usuario = null;
-if(request.getSession().getAttribute("Usuario") != null) {
-	usuario = (Usuario) request.getSession().getAttribute("Usuario");
-}
-else
-{
-    response.setStatus(response.SC_MOVED_TEMPORARILY);
-    response.setHeader("Location", "index.jsp"); 	
-}
-///terminacion de Verificacion  de usuario conectado
-
-
-///comprobacion de cuenta
 int currentCuenta = 0;
-if(request.getSession().getAttribute("cuentaSeleccionada") != null) 
-	{
-	currentCuenta = (int) request.getSession().getAttribute("cuentaSeleccionada");
-	}
-///terminacion de comprobacion de cuenta
+
+if(request.getSession().getAttribute("Usuario") != null) {
+    usuario = (Usuario) request.getSession().getAttribute("Usuario");
+} else {
+    response.setStatus(response.SC_MOVED_TEMPORARILY);
+    response.setHeader("Location", "index.jsp");
+}
+
+if(request.getParameter("getCuenta") != null) {
+    currentCuenta = Integer.parseInt(request.getParameter("getCuenta"));
+}
 
 
 ///Resultados para cuando vuelve la pagina con response

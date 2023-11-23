@@ -134,17 +134,19 @@
 		</div>
 		<div class="d-grid gap-2 col-3 mx-auto mt-5 text-body-danger">
 		    <div class="btn btn-info  mb-2">
-		        <a href="/TPINT_GRUPO_2_LAB4/ServletMovimientos?getCuenta=" class="text-dark fw-bold fs-3">
+		        <a href="/TPINT_GRUPO_2_LAB4/ServletMovimientos?getCuenta=<%=currentCuenta%>" class="text-dark fw-bold fs-3">
 		            <input class="btn-primary" type="hidden" name="cta" value="<%=currentCuenta%>">Movimientos
 		        </a>
 		    </div>
 		    <div class="btn btn-info  mb-2">
 		        <a href="/TPINT_GRUPO_2_LAB4/transferencias.jsp?getCuenta=<%=currentCuenta%>" class="text-dark fw-bold fs-3">Transferencias</a>
 		    </div>
-		    <div class="btn btn-info  mb-2">
-		        <a href="/TPINT_GRUPO_2_LAB4/solicitarPrestamo.jsp?getCuenta=" class="text-dark fw-bold fs-3">
-		            <input type="hidden" name="Usuario" value="<%=usuario%>">Solicitar prestamo</a>
-		    </div>
+		    <div class="btn btn-info mb-2">
+    			<a href="/TPINT_GRUPO_2_LAB4/solicitarPrestamo.jsp?getCuenta=<%=currentCuenta%>&Usuario=<%=usuario%>" class="text-dark fw-bold fs-3">
+      			  <input type="hidden" name="Usuario" value="<%=usuario%>">
+       				 Solicitar préstamo
+    			</a>
+			</div>
 		    <div class="btn btn-info mb-2">
 		        <a href="/TPINT_GRUPO_2_LAB4/ServletPrestamos?pagoPrestamos=<%=currentCuenta%>" class="text-dark fw-bold fs-3">Pagar prestamos</a>
 		    </div>

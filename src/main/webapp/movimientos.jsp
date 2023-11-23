@@ -30,7 +30,7 @@
 	
 	if(request.getSession().getAttribute("cuentas") != null)
 	{
-		currentCuenta = (int) request.getSession().getAttribute("cuentaSeleccionada");
+		currentCuenta = Integer.parseInt(request.getParameter("getCuenta"));
 		cta = (Cuenta) request.getAttribute("cuenta");
 		tipoCta = cta.getTipoCuenta().getCodTipo();
 		nombreCta = cta.getTipoCuenta().getTipoCuenta();
@@ -40,6 +40,13 @@
 	{
 		currentSaldo = (BigDecimal) request.getAttribute("saldo");
 		listaMovimientos = (ArrayList<Movimiento>) request.getAttribute("movimientos");
+		
+		for (int i = listaMovimientos.size() - 1; i >= 0; i--) {
+		    Movimiento movimiento = listaMovimientos.get(i);
+		    if (movimiento.getNroCuenta().getNroCuenta() != currentCuenta) {
+		        listaMovimientos.remove(i);
+		    }
+		}
 	}
 		
 	Usuario usuario = new Usuario();
@@ -72,39 +79,41 @@
  
  
 	<h1 style="margin:auto; margin-bottom:40px;text-align:center;margin-top:120px"><b>Movimientos</b></h1>
-	
-	<div class="container">
-	<table class="table table-info table-striped table-hover mt-5">
-		<thead>
-		<tr>
-			<th>Fecha</th>
-			<th>Importe</th>
-			<th>Tipo de movimiento</th>
-			<th>Detalle</th>
-		</tr>
-		</thead>
-    	<tbody>
-		
-		<%  if(listaMovimientos != null)
-			for(Movimiento mov : listaMovimientos) 
-		{	%>
-		<tr>
-			<td><%= mov.getFecha() %> </td>
-			<td>$ <%= String.format("%.2f", mov.getImporte()) %></td>
-			<td><%= mov.getTipoMovimiento().getTipoMovimiento() %></td>
-		 <%  if( mov.getDetalle() == null) { %>
-		 			<td> --- </td>
-		 <%	} else { %>
-			<td><%= mov.getDetalle()%></td>
-		<%	}  %>
-		</tr>
-	<% }  %>
-		</tbody>
-	</table>
-	<div class="mt-3">
-		<button class="btn btn-secondary fw-bold">Anterior</button>
-		<button class="btn btn-secondary fw-bold">Siguiente</button>
-	</div>
-	</div>
+
+<% if(listaMovimientos != null && !listaMovimientos.isEmpty()) { %>
+    <div class="container">
+        <table class="table table-info table-striped table-hover mt-5">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Importe</th>
+                    <th>Tipo de movimiento</th>
+                    <th>Detalle</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(Movimiento mov : listaMovimientos) { %>
+                    <tr>
+                        <td><%= mov.getFecha() %></td>
+                        <td>$ <%= String.format("%.2f", mov.getImporte()) %></td>
+                        <td><%= mov.getTipoMovimiento().getTipoMovimiento() %></td>
+                        <% if(mov.getDetalle() == null) { %>
+                            <td>---</td>
+                        <% } else { %>
+                            <td><%= mov.getDetalle() %></td>
+                        <% } %>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <div class="mt-3">
+            <button class="btn btn-secondary fw-bold">Anterior</button>
+            <button class="btn btn-secondary fw-bold">Siguiente</button>
+        </div>
+    </div>
+<% } else { %>
+    <p class="text-center">El usuario no tiene movimientos registrados en la cuenta <%= currentCuenta %>.</p>
+<% } %>
+
 </body>
 </html>

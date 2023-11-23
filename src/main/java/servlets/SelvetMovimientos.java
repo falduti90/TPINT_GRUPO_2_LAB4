@@ -126,7 +126,7 @@ public class SelvetMovimientos extends HttpServlet {
 	}
 	
 	private void filtrarMovimientos(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int currentCuenta = (int) request.getSession().getAttribute("cuentaSeleccionada");
+		int currentCuenta = Integer.parseInt(request.getParameter("getCuenta"));
 		CuentaNegocio ctaNeg = new CuentaNegocioImpl(); 
 		Cuenta cta = new Cuenta(); 
 		cta = ctaNeg.BuscarUno(currentCuenta);
