@@ -29,8 +29,31 @@ public class CuentaDaoImpl implements CuentaDao{
 	private static final String readOneCbu = "SELECT * FROM Cuentas Where CBU = ?";
 	private static final String readForClient = "SELECT * FROM Cuentas Where dni LIKE ? and estado = 1";
 	private static final String update = "UPDATE Cuentas set saldo = ?, CBU = ?, dni = ?, tipoCuenta = ? Where nroCuenta = ?";
+	private static final String cbuMax = "select max(cbu) +1  from cuentas";
 
 
+	public long BuscarMaxCbu() {
+		PreparedStatement statement;
+		ResultSet resultSet; // Guarda el resultado de la query
+		long maxCbu = 0;
+		Conexion conexion = Conexion.getConexion();
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+			statement = conexion.getSQLConexion().prepareStatement(cbuMax);
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				maxCbu = resultSet.getLong(1);
+			}
+		} catch (SQLException e) {
+			System.out.print("Error de base de datos (SQL ERROR )");
+		}
+		return maxCbu;
+	}
 
 	public boolean Insert(Cuenta cuenta_a_agregar) {
 		
@@ -45,7 +68,7 @@ public class CuentaDaoImpl implements CuentaDao{
 
 		try {
 			 CallableStatement cs = (CallableStatement) conexion.prepareCall(insert);
-			cs.setLong(1, cuenta_a_agregar.getCbu());
+			cs.setLong(1, BuscarMaxCbu());
 			cs.setString(2, cuenta_a_agregar.getDni().getDni());
 			cs.setInt(3, cuenta_a_agregar.getTipoCuenta().getCodTipo());
 
