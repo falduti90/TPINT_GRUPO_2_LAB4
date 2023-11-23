@@ -107,7 +107,7 @@
 	</section>
 	<!-- -->
 	<!--<%=cuentasList.get(pos).getNroCuenta()%>-->
-	<section class="detalle-cuota">
+	<section class="detalle-cuota mb-5">
 	<table class="table text-dark" id="tabla-cuotas" style="display:none; text-align:center; width:80%; margin:auto;">
 		<tr class="text-dark" style="text-align:center;">
 			<th>Cuota</th>

@@ -130,7 +130,7 @@
 		 <form method="get" action="ServletPrestamosxAutorizar">
 			<td><%=p.getCodPrestamoPendiente() %></td>
 			<td><%=p.getNroCuenta() %></td>
-			<td><%=p.getImporte() %></td>
+			<td>$ <%= String.format("%.2f", p.getImporte())%></td>
 			<td><%=p.getCantidad_cuotas()%></td>
 			<td><%=p.getFecha_creacion() %></td>
 			<%
