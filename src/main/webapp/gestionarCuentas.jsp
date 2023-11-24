@@ -27,13 +27,14 @@
 		ArrayList<Cuenta> listaCuentas = null;
 		int currentCuenta = 0;
 		BigDecimal currentSaldo = new BigDecimal(0);
+		long currentCbu = 0;
 		if(request.getSession().getAttribute("cuentas") != null)
 		{
 			try{
 				listaCuentas = (ArrayList<Cuenta>) request.getSession().getAttribute("cuentas");
 				currentCuenta = listaCuentas.get(0).getNroCuenta();
 				currentSaldo = listaCuentas.get(0).getSaldo();
-			}
+				currentCbu = listaCuentas.get(0).getCbu();			}
 			catch(IndexOutOfBoundsException ex){
 				ex.printStackTrace();
 				
@@ -48,9 +49,11 @@
 				Map<String, Object> cuentaInfo = (Map<String, Object>) request.getSession().getAttribute("cuentaInfo");
 				int nroCuenta = (int) cuentaInfo.get("cuentaSeleccionada");
 				BigDecimal saldo = (BigDecimal) cuentaInfo.get("saldo");
+				long cbu = (long) cuentaInfo.get("cbu");
 				
 				currentCuenta = (int) cuentaInfo.get("cuentaSeleccionada");;	
 				currentSaldo = (BigDecimal) cuentaInfo.get("saldo");
+				currentCbu = (long) cuentaInfo.get("cbu");
 			}
 			catch(IndexOutOfBoundsException ex){
 				ex.printStackTrace();
@@ -110,7 +113,8 @@
 
 		<%if(currentCuenta != 0){
 			%>			
-	<label for="cuentaSeleccionada"><span class="badge bg-secondary ps-5 px-5">Cuenta actual: <%=currentCuenta%>  <br> Saldo:$ <%= String.format("%.2f", currentSaldo)%></span> </label><br>	
+	<label for="cuentaSeleccionada"><span class="badge bg-secondary ps-5 px-5">Cuenta actual: <%=currentCuenta%>  <br> Saldo:$ <%= String.format("%.2f", currentSaldo)%> </span> </label><br>	
+
 	<form method="get" action="ServletCuenta" class="d-flex">
     <div class="flex-grow-1 me-2">
         <select name="cuentaSeleccionada" class="form-select">
@@ -130,13 +134,13 @@
     </div>
     	<input id="btnSeleccionar" type="submit" value="Seleccionar" name="btnSeleccionar" class="btn btn-primary ms-4">
 	</form>
-
+		<span class="badge text-bg-primary mt-3 p-2 fs-6">CBU - <%=currentCbu%></span>
 	
 	</div>
 	<div>
 		<div class="d-flex justify-content-center">
 		</div>
-		<div class="d-grid gap-2 col-3 mx-auto mt-5 text-body-danger">
+		<div class="d-grid gap-2 col-3 mx-auto mt-3 text-body-danger">
 		    <div class="btn btn-info  mb-2">
 		        <a href="/TPINT_GRUPO_2_LAB4/ServletMovimientos?getCuenta=<%=currentCuenta%>" class="text-dark fw-bold fs-3">
 		            <input class="btn-primary" type="hidden" name="cta" value="<%=currentCuenta%>">Movimientos
@@ -153,10 +157,6 @@
 			</div>
 		    <div class="btn btn-info mb-2">
 		        <a href="/TPINT_GRUPO_2_LAB4/ServletPrestamos?pagoPrestamos=<%=currentCuenta%>" class="text-dark fw-bold fs-3">Pagar prestamos</a>
-		    </div>
-		    <div class="btn btn-info mb-2">
-		        <!-- <a href="/TPINT_GRUPO_2_LAB4/ServletPrestamos?pagoPrestamos=<%=currentCuenta%>" class="text-dark fw-bold fs-3">Consultar CBU</a> -->
-		        <a href="/TPINT_GRUPO_2_LAB4/ConsultaCbu.jsp?getCuenta=" class="text-dark fw-bold fs-3">Consultar CBU</a>
 		    </div>
 			<a href="inicioClientes.jsp" class="btn btn-secondary text-center fw-bold"> <span class="fa fa-arrow-left"></span> Volver</a>
 		</div>
