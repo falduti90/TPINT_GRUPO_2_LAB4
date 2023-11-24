@@ -109,7 +109,7 @@
 </header>
 
 	<div class= "selectorCuentas">
-		<h1 style="margin:auto; margin-bottom:20px; text-align:center;" class= "fw-bold fs-2 mt-5">Gestionar Cuentas</h1>
+		<h1 style="margin:auto; margin-bottom:20px; text-align:center;" class= "fw-bold fs-2 mt-5 ">Gestionar Cuentas</h1>
 
 		<%if(currentCuenta != 0){
 			%>			
@@ -137,12 +137,12 @@
 		<span class="badge text-bg-primary mt-3 p-2 fs-6">CBU - <%=currentCbu%></span>
 	
 	</div>
-	<div>
-		<div class="d-flex justify-content-center">
+	<div >
+		<div class="d-flex justify-content-center ">
 		</div>
-		<div class="d-grid gap-2 col-3 mx-auto mt-3 text-body-danger">
-		    <div class="btn btn-info  mb-2">
-		        <a href="/TPINT_GRUPO_2_LAB4/ServletMovimientos?getCuenta=<%=currentCuenta%>" class="text-dark fw-bold fs-3">
+		<div class="d-grid gap-2 col-3 mx-auto mt-3 text-body-danger shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+		    <div class="btn btn-info  mb-2 ">
+		        <a href="/TPINT_GRUPO_2_LAB4/ServletMovimientos?getCuenta=<%=currentCuenta%>" class="text-dark fw-bold fs-3 ">
 		            <input class="btn-primary" type="hidden" name="cta" value="<%=currentCuenta%>">Movimientos
 		        </a>
 		    </div>

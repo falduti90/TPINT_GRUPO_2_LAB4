@@ -82,7 +82,7 @@
 
 <% if(listaMovimientos != null && !listaMovimientos.isEmpty()) { %>
     <div class="container">
-        <table class="table table-info table-striped table-hover mt-5">
+        <table class="table table-info table-striped table-hover mt-5 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
             <thead>
                 <tr>
                     <th>Fecha</th>
