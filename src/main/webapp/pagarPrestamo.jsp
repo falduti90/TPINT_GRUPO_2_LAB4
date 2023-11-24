@@ -93,7 +93,7 @@
 	</section>
 	
 	<section class="Cuenta" style="margin-bottom:30px;">
-		<div class="Cuenta-Tipo">
+		<div class="Cuenta-Tipo ">
 		<%  if(cuentasList.get(pos).getTipoCuenta().getCodTipo()== 1) {	%>
 			<label id="lblCuentaTipo">CA$</label>
 		<%	} else { %>
@@ -107,9 +107,9 @@
 	</section>
 	<!-- -->
 	<!--<%=cuentasList.get(pos).getNroCuenta()%>-->
-	<section class="detalle-cuota mb-5">
-	<table class="table text-dark" id="tabla-cuotas" style="display:none; text-align:center; width:80%; margin:auto;">
-		<tr class="text-dark" style="text-align:center;">
+	<section class="detalle-cuota mb-5 ">
+	<table class="table text-dark shadow-lg p-3 mb-5 bg-body-tertiary rounded" id="tabla-cuotas" style="display:none; text-align:center; width:80%; margin:auto;">
+		<tr class="" style="text-align:center;">
 			<th>Cuota</th>
 			<th>Importe</th>
 			<th>Fecha de pago</th>
@@ -134,7 +134,7 @@
 			else{%>
 				<%="Pago"%>
 			<%}%></td>
-			<td><button class="btn btn-warning fw-bold" <%if(!c.getEstado()){%>
+			<td><button class="btn btn-outline-success fw-bold" <%if(!c.getEstado()){%>
 							disabled				
 						<%}%> 
 				onclick="cuotaSeleccionada(<%=c.getIdCuota()%>,<%=c.getImporte()%>,<%=c.getEstado()%>);" class="">Pagar</button></td>

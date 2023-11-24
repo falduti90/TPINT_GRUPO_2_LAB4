@@ -74,15 +74,15 @@
 	</header>
 
 <br><br>
-<h1 style="margin:auto;text-align:center;margin-bottom:30px;">Transferencias</h1>
+<h1 style="margin:auto;text-align:center;margin-bottom:130px;">Transferencias</h1>
 
-<form class="form" method="post">
+<form class="container card shadow-lg p-3 mb-5 bg-body-tertiary rounded" method="post">
     <fieldset>
-        <legend>Nueva transferencia</legend>
+        <legend class="card-header text-center fw-bold">Nueva transferencia</legend>
 
-        <div class="mb-3">
-            <label for="txtCtaOrigen" class="col-form-label">CBU origen</label>
-            <input readonly value="<%=cuenta.getCbu()%>" type="text" class="form-control" id="txtCtaOrigen" name="txtCtaOrigen">
+        <div class="mb-3 card">
+            <label for="txtCtaOrigen" class="col-form-label">Cuenta origen origen</label>
+            <input readonly value="<%=cuenta.getNroCuenta()%>" type="text" class="form-control" id="txtCtaOrigen" name="txtCtaOrigen">
             <input hidden value="<%=cuenta.getNroCuenta()%>" type="text" id="txtCtaOrigenHidden" name="txtCtaOrigenHidden">
         </div>
 
