@@ -228,7 +228,7 @@ public class ServletUsuario extends HttpServlet {
 			
 			String contrasenia = request.getParameter("txtContrasenia");
 			String contrasenia2 = request.getParameter("txtContrasenia2");
-			int tipoUsuario = Integer.parseInt(request.getParameter("tipo"));
+			int tipoUsuario = Integer.parseInt(request.getParameter("txtTipo"));
 			String usuario = request.getParameter("txtUsuario");
 			String dni = request.getParameter("txtDNI");
 
@@ -256,7 +256,7 @@ public class ServletUsuario extends HttpServlet {
 				}
 							
 			} else {
-				mensaje = "Las Contraseï¿½as no coinciden";
+				mensaje = "Las Contraseñas no coinciden";
 				request.setAttribute("mensaje", mensaje);
 				request.setAttribute("agregado", agregado);
 				request.setAttribute("usuario", us);
@@ -304,7 +304,7 @@ public class ServletUsuario extends HttpServlet {
 				
 				
 			} else {
-				mensaje = "Las Contraseï¿½as no coinciden";
+				mensaje = "Las Contraseñas no coinciden";
 				request.setAttribute("mensaje", mensaje);
 				request.setAttribute("modificado", modificado);
 				request.setAttribute("usuario", us);

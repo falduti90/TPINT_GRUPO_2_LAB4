@@ -61,7 +61,7 @@
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
    			 <li class="nav-item active" style="background-color: highlight;">
    			 <% 	if(isCliente == false) { %>  
-        		<a class="nav-link" aria-current="page" href="/TPINT_GRUPO_2_LAB4/ServletCliente?pag=1">
+        		<a class="nav-link" aria-current="page" href="/TPINT_GRUPO_2_LAB4/adminClientes.jsp">
             		<i class="volverIcon fa fa-home"></i> 
             			Volver
        				 </a>
@@ -100,19 +100,14 @@
         <label for="floatingInput">DNI</label>
       </div>
       <div class="form-floating">
-        <select id="tipo" name="tipo" required class="form-control mb-2">
-         <%
+      <%
 		 	if(listaTipos!=null)		 		
-				 if(isCliente == true) { %>  
-					<option value="2" >Cliente</option>
-				<%	} else {
-				
-				for(TipoUsuario t:listaTipos){
-			%>
-				<option value="<%= t.getCodTipo() %>" > <%= t.getTipoUsuario() %></option>
-			<%	} }%>
-        </select>
-        <label for="floatingInput">Tipo Usuario</label>
+				 if(isCliente == true) { %> 
+      <input id="tipo" type="text" value="Cliente" disabled class="form-control mb-2"> <input type="hidden" name="txtTipo" value="<%= 2 %>" >
+      <%	} else { %>
+      
+      <input id="tipo" type="text" value="<%= listaTipos.get(1).getTipoUsuario() %>" disabled class="form-control mb-2"> <input type="hidden" name="txtTipo" value="<%= listaTipos.get(1).getCodTipo() %>"> <%} %>
+      <label for="floatingInput">Tipo Usuario</label>
       </div>
       <div class="form-floating">
         <input id="usuario" type="text"required class="form-control mb-2" name="txtUsuario" maxlength=20>
@@ -124,23 +119,14 @@
         <label for="floatingInput">DNI</label>
       </div>
       <div class="form-floating">
-        
-        <select id="tipo" name="tipo" required>
-         <%
-		 	if(listaTipos!=null)
-		 		
-			 if(isCliente == true) { %>  
-				<option value="2" selected >Cliente</option>
-			<%	} else {			
-				
-				for(TipoUsuario t:listaTipos){
-					if(t.getCodTipo() != us.getTipoUsuario().getCodTipo()) { %>
-						<option value="<%= t.getCodTipo() %>" > <%= t.getTipoUsuario() %></option>
-			<%	} else { %>
-				<option value="<%= t.getCodTipo() %>" selected> <%= t.getTipoUsuario() %></option>
-			<%	} }  }%>
-        </select>
-        <label for="floatingInput">Tipo Usuario</label>
+      <%
+		 	if(listaTipos!=null)		 		
+				 if(isCliente == true) { %> 
+      <input id="tipo" type="text" value="Cliente" disabled class="form-control mb-2"> <input type="hidden" name="txtTipo" value="<%= 2 %>" >
+      <%	} else { %>
+      
+      <input id="tipo" type="text" value="<%= listaTipos.get(1).getTipoUsuario() %>" disabled class="form-control mb-2"> <input type="hidden" name="txtTipo" value="<%= listaTipos.get(1).getCodTipo() %>"> <%} %>
+      <label for="floatingInput">Tipo Usuario</label>
       </div>
       <div class="form-floating">
         <input id="usuario" type="text"required class="form-control mb-2" name="txtUsuario" value="<%= us.getUsuario() %>" maxlength=20>

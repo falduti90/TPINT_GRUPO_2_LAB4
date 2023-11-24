@@ -16,6 +16,19 @@
 <!-- bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8"
+	src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#miTabla').DataTable();
+	});
+</script>
+
+
 </head>
 <body>
 
@@ -82,7 +95,7 @@
 
 <% if(listaMovimientos != null && !listaMovimientos.isEmpty()) { %>
     <div class="container">
-        <table class="table table-info table-striped table-hover mt-5 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+        <table id="miTabla" class="table table-info table-striped table-hover mt-5 shadow-lg p-3 mb-5 bg-body-tertiary rounded">
             <thead>
                 <tr>
                     <th>Fecha</th>
@@ -106,10 +119,6 @@
                 <% } %>
             </tbody>
         </table>
-        <div class="mt-3">
-            <button class="btn btn-secondary fw-bold">Anterior</button>
-            <button class="btn btn-secondary fw-bold">Siguiente</button>
-        </div>
     </div>
 <% } else { %>
     <p class="text-center">El usuario no tiene movimientos registrados en la cuenta <%= currentCuenta %>.</p>
