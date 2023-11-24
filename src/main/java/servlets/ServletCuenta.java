@@ -185,11 +185,11 @@ public class ServletCuenta extends HttpServlet {
 	    int nroCuenta = Integer.parseInt(request.getParameter("cuentaSeleccionada"));
 	    cta = cuenta.BuscarUno(nroCuenta);
 	    BigDecimal saldo = cta.getSaldo();
-	    
+	    long cbu = cta.getCbu();
 	    Map<String, Object> cuentaInfo = new HashMap<>();
 	    cuentaInfo.put("cuentaSeleccionada", nroCuenta);
 	    cuentaInfo.put("saldo", saldo);
-	    
+	    cuentaInfo.put("cbu", cbu);
 	    request.getSession().setAttribute("cuentaInfo", cuentaInfo);
 	    
 	    rd = request.getRequestDispatcher("/gestionarCuentas.jsp");
