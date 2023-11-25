@@ -5,13 +5,9 @@ insert into usuarios(usuario, dni, tipoUsuario, clave, estado)
             'clave' as clave, 
             true as estado
 	from clientes
-	union all
-    select concat(nombre,'Adm') as usuario, 
-			dni, 
-            1 as tipoUsuario, 
-            'clave' as clave, 
-            true as estado
-    from clientes
 ;
     
-
+UPDATE usuarios U
+JOIN clientes C ON U.dni = C.dni
+SET U.tipoUsuario = 1
+WHERE C.dni = '00000000';
