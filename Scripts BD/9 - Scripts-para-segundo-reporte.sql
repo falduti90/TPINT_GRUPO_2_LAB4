@@ -1,9 +1,11 @@
-#Clientes por pais
-SELECT P.pais, COUNT(C.dni) AS cantidad_clientes
-FROM Paises P
-LEFT JOIN Clientes C ON P.codPais = C.codPais
-GROUP BY P.pais
+#Clientes Argentinos por localidad
+SELECT L.localidad, COUNT(C.dni) AS cantidad_clientes
+FROM Localidades L
+LEFT JOIN Clientes C ON L.codLocalidad = C.codLocalidad AND L.codProvincia = C.codProvincia AND L.codPais = C.codPais
+WHERE L.codProvincia = (SELECT codProvincia FROM Provincias WHERE provincia = 'Buenos Aires')
+GROUP BY L.localidad
 HAVING COUNT(C.dni) > 0;
+
 
 #Cuentas por tipo
 SELECT TC.tipoCuenta, COUNT(C.nroCuenta) AS cantidad_cuentas
