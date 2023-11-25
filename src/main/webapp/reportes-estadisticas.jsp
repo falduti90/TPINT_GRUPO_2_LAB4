@@ -11,7 +11,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Estadísticas</title>
 </head>
-<body id="page-top">
+<body id="page-top" class="bg-light">
  <header  style="padding: 50px;" >
   <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" >
     <div class="container-fluid">
@@ -33,11 +33,11 @@
     </div>
   </nav>
 </header>
-     <div class="container text-center">
+     <div class="container text-center ">
 
          <!-- Page Heading -->
-         <div class=" mb-4 text-center">
-             <h1 class="h3 mb-0 text-gray-800 ">Estadísticas</h1>
+         <div class=" mb-5 text-center">
+             <h1 class="fs-1 fw-bold mt-5">Estadísticas</h1>
          </div>
 
          <div class="row">
