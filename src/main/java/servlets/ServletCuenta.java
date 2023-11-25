@@ -96,21 +96,33 @@ public class ServletCuenta extends HttpServlet {
 		RequestDispatcher rd;
 		if(neg.VerificarCliente(dni))
 		{
-			if(lCuenta == null)
+			if(lCuenta == null && Integer.parseInt(dni) != 00000000)
 			{
 				resString="El cliente no tiene cuentas asociadas";
 				resBoolean =false;
 			}
-			if(lCuenta.isEmpty())
+			else
+				if(Integer.parseInt(dni) == 00000000)
+				{
+					resString="El Administrador no puede tener cuentas asociadas";
+					resBoolean =false;
+				}
+			if(lCuenta.isEmpty()&& Integer.parseInt(dni) != 00000000)
 			{
 				resString="El cliente no tiene cuentas asociadas";
 				resBoolean=true;
 			}
 			else
-			{
-				resString="go";
-				resBoolean =true;			
-			}
+				if(Integer.parseInt(dni) == 00000000)
+				{
+					resString="El Administrador no puede tener cuentas asociadas";
+					resBoolean =false;
+				}
+				else
+				{
+					resString="go";
+					resBoolean =true;			
+				}
 		}
 		else
 		{
