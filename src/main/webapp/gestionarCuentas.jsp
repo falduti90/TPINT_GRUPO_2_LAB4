@@ -150,7 +150,7 @@
 		        <a href="/TPINT_GRUPO_2_LAB4/transferencias.jsp?getCuenta=<%=currentCuenta%>" class="text-dark fw-bold fs-3">Transferencias</a>
 		    </div>
 		    <div class="btn btn-info mb-2">
-    			<a href="/TPINT_GRUPO_2_LAB4/solicitarPrestamo.jsp?getCuenta=<%=currentCuenta%>&Usuario=<%=usuario%>" class="text-dark fw-bold fs-3">
+    			<a href="/TPINT_GRUPO_2_LAB4/solicitarPrestamo.jsp?getCuenta=<%=currentCuenta%>" class="text-dark fw-bold fs-3">
       			  <input type="hidden" name="Usuario" value="<%=usuario%>">
        				 Solicitar préstamo
     			</a>
