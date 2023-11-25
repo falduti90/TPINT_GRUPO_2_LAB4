@@ -1,3 +1,4 @@
+<%@page import="entidad.Cliente"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="entidad.Cuenta" %>
 <%@page import="entidad.Usuario" %>
@@ -170,7 +171,7 @@
 
 <br>
 
-<%if(listaTC!=null && resBoolean){ %>
+<%if(listaTC!=null && resBoolean ){ %>
 
 <label for="TC">Elige un tipo de cuenta:</label>
  

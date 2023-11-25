@@ -2841,6 +2841,7 @@ SELECT
     1 AS tipoCuenta,
     ROUND(CAST(SUBSTRING(CONCAT(0290010058, SUBSTRING(c.dni, 6, 8)), 9, 5) AS DECIMAL), 2) AS saldo
 FROM clientes c
+WHERE c.dni <> 00000000  -- Evita clientes con dni igual a 00000000 (administradores)
 UNION ALL
 SELECT
     CONCAT(52, SUBSTRING(c.dni, 5, 2)) AS nroCuenta,
@@ -2850,6 +2851,7 @@ SELECT
     1 AS tipoCuenta,
     ROUND(CAST(SUBSTRING(CONCAT(0290010486, SUBSTRING(c.dni, 6, 3)), 9, 5) * 4.6 AS DECIMAL), 2) AS saldo
 FROM clientes c
+WHERE c.dni <> 00000000  -- Evita clientes con dni igual a 00000000 (administradores)
 UNION ALL
 SELECT
     c.nroCuenta,
@@ -2859,6 +2861,7 @@ SELECT
     ROUND(FLOOR(RAND() * (25000 - 200) + 201), 2) AS saldo,
     NULL AS detalle
 FROM Cuentas c;
+
 
 
 insert into prestamos(dni,fecha,importe_a_pagar,importe_pedido,plazo_pago,monto_mensual,cantidad_cuotas,estado)
