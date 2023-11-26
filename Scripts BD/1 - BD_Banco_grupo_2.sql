@@ -1,5 +1,4 @@
-#drop schema BD_Banco_grupo_2
-
+#drop schema BD_Banco_grupo_2;
 
 create schema BD_Banco_grupo_2;
 use BD_Banco_grupo_2;
@@ -98,7 +97,7 @@ estado BIT NOT NULL DEFAULT TRUE,
 primary key (nroCuenta, CBU),
 foreign key (dni) references Clientes(dni) 
 );
-ALTER TABLE Cuentas AUTO_INCREMENT = 5230;
+ALTER TABLE Cuentas AUTO_INCREMENT = 5201;
 ALTER TABLE Cuentas ADD FOREIGN KEY (tipoCuenta) REFERENCES TiposCuentas(codTipo);
 
 create table Movimientos
@@ -2832,9 +2831,8 @@ INSERT INTO TiposMovimientos (tipoMovimiento) VALUES ('Transferencia');
 INSERT INTO TiposCuentas (tipoCuenta) VALUES ('Caja de Ahorro');
 INSERT INTO TiposCuentas (tipoCuenta) VALUES ('Cuenta Corriente');
 
-INSERT INTO Cuentas (nroCuenta, CBU, dni, fecha_creacion, tipoCuenta, saldo)
+INSERT INTO Cuentas ( CBU, dni, fecha_creacion, tipoCuenta, saldo)
 SELECT
-    CONCAT(52, SUBSTRING(c.dni, 7, 2)) AS nroCuenta,
     LPAD(CONCAT(0290010058, SUBSTRING(c.dni, 6, 3)), 23, '0') AS CBU,
     c.dni AS dni,
     SUBSTRING(DATE_SUB(NOW(), INTERVAL CAST(SUBSTRING(c.dni, 6, 3) AS DECIMAL) DAY), 1, 10) AS fecha_creacion,
@@ -2844,7 +2842,6 @@ FROM clientes c
 WHERE c.dni <> 00000000  -- Evita clientes con dni igual a 00000000 (administradores)
 UNION ALL
 SELECT
-    CONCAT(52, SUBSTRING(c.dni, 5, 2)) AS nroCuenta,
     LPAD(CONCAT(0290010486, SUBSTRING(c.dni, 5, 3)), 23, '0') AS CBU,
     c.dni AS dni,
     SUBSTRING(DATE_SUB(NOW(), INTERVAL CAST(SUBSTRING(c.dni, 6, 3) * 2.4 AS DECIMAL) DAY), 1, 10) AS fecha_creacion,
@@ -2854,7 +2851,6 @@ FROM clientes c
 WHERE c.dni <> 00000000  -- Evita clientes con dni igual a 00000000 (administradores)
 UNION ALL
 SELECT
-    c.nroCuenta,
     DATE_ADD(c.fecha_creacion, INTERVAL FLOOR(RAND() * (365) + 1) DAY) AS fecha,
     FLOOR(RAND() * (8000 - 200) + 201) AS importe,
     FLOOR(RAND() * (4) + 1) AS tipoMovimiento,

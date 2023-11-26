@@ -510,3 +510,7 @@ dl
   color: #fff;
   border: 1px solid #007bff;
 }
+
+#miTabla_info {
+    display: none;
+}
