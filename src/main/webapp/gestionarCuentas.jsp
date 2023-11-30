@@ -84,7 +84,30 @@
 			%></script><%
 			
 		}
+		
+		if(request.getAttribute("Transferencia") != null){
+			try{
+				listaCuentas = (ArrayList<Cuenta>) request.getSession().getAttribute("cuentas");
+				currentCuenta = listaCuentas.get(0).getNroCuenta();
+				currentSaldo = listaCuentas.get(0).getSaldo();
+				currentCbu = listaCuentas.get(0).getCbu();			}
+			catch(IndexOutOfBoundsException ex){
+				ex.printStackTrace();
 				
+			}
+	 	}
+		
+		if(request.getAttribute("CuotaPaga") != null){
+			try{
+				listaCuentas = (ArrayList<Cuenta>) request.getSession().getAttribute("cuentas");
+				currentCuenta = listaCuentas.get(0).getNroCuenta();
+				currentSaldo = listaCuentas.get(0).getSaldo();
+				currentCbu = listaCuentas.get(0).getCbu();			}
+			catch(IndexOutOfBoundsException ex){
+				ex.printStackTrace();
+				
+			}
+		}
 	 %> 
 	 
 	 

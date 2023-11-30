@@ -22,4 +22,5 @@ public interface  CuentaDao {
 
 	public int BuscarUltimo();
 
+	public List<Cuenta> BuscarClienteNroCta(int nroCta);
 }

@@ -30,6 +30,7 @@ public class CuentaDaoImpl implements CuentaDao{
 	private static final String readForClient = "SELECT * FROM Cuentas Where dni LIKE ? and estado = 1";
 	private static final String update = "UPDATE Cuentas set saldo = ?, CBU = ?, dni = ?, tipoCuenta = ? Where nroCuenta = ?";
 	private static final String cbuMax = "select max(cbu) +1  from cuentas";
+	private static final String readForClientnroCta = "SELECT * FROM Cuentas Where nroCuenta = ? and estado = 1";
 
 
 	public long BuscarMaxCbu() {
@@ -216,6 +217,31 @@ public class CuentaDaoImpl implements CuentaDao{
 		try {
 			statement = conexion.getSQLConexion().prepareStatement(readForClient);
 			statement.setString(1,  "%" + dni + "%");
+			resultSet = statement.executeQuery();
+			while (resultSet.next()) {
+				cuenta.add(getCuenta(resultSet));
+			}
+		} catch (SQLException e) {
+			System.out.print("Error al querer leer las cuentas del registro(SQL ERROR)");
+		}
+
+		return cuenta;
+	}
+	
+	public List<Cuenta> BuscarClienteNroCta(int nroCta) {
+		PreparedStatement statement;
+		ResultSet resultSet; 
+		ArrayList<Cuenta> cuenta = new ArrayList<Cuenta>();
+		Conexion conexion = Conexion.getConexion();
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		try {
+			statement = conexion.getSQLConexion().prepareStatement(readForClientnroCta);
+			statement.setInt(1,  nroCta);
 			resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				cuenta.add(getCuenta(resultSet));

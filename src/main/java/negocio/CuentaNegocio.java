@@ -28,5 +28,5 @@ public interface CuentaNegocio {
 	
 	public Cuenta BuscarCbu(String cbu);
 	
-	
+	public List<Cuenta> BuscarClienteNroCta(int nroCta);
 }

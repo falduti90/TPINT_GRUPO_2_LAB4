@@ -2,6 +2,7 @@ package servlets;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -77,21 +78,22 @@ public class ServletTransferencia extends HttpServlet {
 		BigDecimal saldoOrigen;
 		BigDecimal SaldoDestino;
         
-		/*Levanto la cuenta de origen*/
 
 		BigDecimal importeBig = new BigDecimal(importe);
 		/*Centa origen*/
 		TipoMovimiento Tmov= new TipoMovimiento(4,"Transferencia",true);
 		
 		TransferenciaNegocioImpl Transferencia = new TransferenciaNegocioImpl();
-		if (Transferencia.CrearTrans(ctaOrigen, cbuDestino, importeBig, Tmov, detalle))
+		if (Transferencia.CrearTrans(ctaOrigen, cbuDestino, importeBig, Tmov, detalle)) {
 			request.setAttribute("Transferencia", true);
-	
+		
+			CuentaNegocioImpl cuentaNegocio = new CuentaNegocioImpl();
+		    List<Cuenta> cuentasActualizadas = cuentaNegocio.BuscarClienteNroCta(Integer.parseInt(ctaOrigen));
+		    request.getSession().setAttribute("cuentas", cuentasActualizadas);
+		}
 		else 
 			request.setAttribute("Transferencia", false);
 		return;
-			
-		
 	}
 
 }

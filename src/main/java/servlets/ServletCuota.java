@@ -1,6 +1,7 @@
 package servlets;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entidad.Cuenta;
+import negocioImpl.CuentaNegocioImpl;
 import negocioImpl.CuotasNegocioImpl;
 
 /*
@@ -50,8 +53,13 @@ public class ServletCuota extends HttpServlet {
 		// TODO Auto-generated method stub
 		RequestDispatcher rd;
 		if(request.getParameter("OPPAGARCUOTA")!=null) {
-			if(pagarCuota(request, response))
+			if(pagarCuota(request, response)) {
+				int nroCta = Integer.parseInt(request.getParameter("NroCuenta"));
+				CuentaNegocioImpl cuentaNegocio = new CuentaNegocioImpl();
+			    List<Cuenta> cuentasActualizadas = cuentaNegocio.BuscarClienteNroCta(nroCta);
+			    request.getSession().setAttribute("cuentas", cuentasActualizadas);
 				request.setAttribute("CuotaPaga", true);
+				}
 			else
 				request.setAttribute("CuotaPaga", false);
 			rd = request.getRequestDispatcher("/gestionarCuentas.jsp");

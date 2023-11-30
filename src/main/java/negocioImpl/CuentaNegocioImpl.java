@@ -190,4 +190,12 @@ public class CuentaNegocioImpl implements CuentaNegocio {
 			return false;
 		}
 	}
+
+
+	@Override
+	public List<Cuenta> BuscarClienteNroCta(int nroCta) {
+		List<Cuenta> lCuentas_x_usuario;
+		lCuentas_x_usuario = cDao.BuscarClienteNroCta(nroCta);
+		return lCuentas_x_usuario; 
+	}
 }
