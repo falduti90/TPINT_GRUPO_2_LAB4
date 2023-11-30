@@ -80,7 +80,7 @@
 			  	 <%} %>	  
 			  <div style="display:flex; flex-direction: column; align-items: center;">
 		<% if( isCliente == false) { %>	
-				<p style="font-size: 1.2rem; color:red; margin-top:20px;">Â¡Error de inicio de sesiÃ³n! Por favor, verifique sus credenciales o visite una sucursal para obtener asistencia adicional. <p>
+				<p style="font-size: 1.2rem; color:red; margin-top:20px;">¡Error de inicio de sesión! Por favor, verifique sus credenciales o visite una sucursal para obtener asistencia adicional. <p>
 			</div>
 		<%} %>
 		

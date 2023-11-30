@@ -128,7 +128,7 @@
 
 
             <%      } else { %>
-                        <option value="<%=cta.getNroCuenta()%> " selected > Cuenta  <%=cta.getNroCuenta()%> - <%=cta.getTipoCuenta().getCodTipo() == 1 ? "Caja de Ahorro" : "Cuenta Corriente"%></option>
+                        <option value="<%=cta.getNroCuenta()%>" selected > Cuenta  <%=cta.getNroCuenta()%> - <%=cta.getTipoCuenta().getCodTipo() == 1 ? "Caja de Ahorro" : "Cuenta Corriente"%></option>
             <%      } } }%>
         </select>
     </div>
