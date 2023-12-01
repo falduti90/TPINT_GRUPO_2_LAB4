@@ -25,16 +25,17 @@
 		}
 		
 		ArrayList<Cuenta> listaCuentas = null;
+		ArrayList<Cuenta> listaCuentasddl = null;
 		int currentCuenta = 0;
 		BigDecimal currentSaldo = new BigDecimal(0);
 		long currentCbu = 0;
-		if(request.getSession().getAttribute("cuentas") != null)
+		if(request.getSession().getAttribute("cuentasDDL") != null)
 		{
 			try{
-				listaCuentas = (ArrayList<Cuenta>) request.getSession().getAttribute("cuentas");
-				currentCuenta = listaCuentas.get(0).getNroCuenta();
-				currentSaldo = listaCuentas.get(0).getSaldo();
-				currentCbu = listaCuentas.get(0).getCbu();			}
+				listaCuentasddl = (ArrayList<Cuenta>) request.getSession().getAttribute("cuentasDDL");
+				currentCuenta = listaCuentasddl.get(0).getNroCuenta();
+				currentSaldo = listaCuentasddl.get(0).getSaldo();
+				currentCbu = listaCuentasddl.get(0).getCbu();			}
 			catch(IndexOutOfBoundsException ex){
 				ex.printStackTrace();
 				
@@ -141,7 +142,7 @@
 	<form method="get" action="ServletCuenta" class="d-flex">
     <div class="flex-grow-1 me-2">
         <select name="cuentaSeleccionada" class="form-select">
-            <% if(listaCuentas!=null) for(Cuenta cta : listaCuentas) { 
+            <% if(listaCuentasddl!=null) for(Cuenta cta : listaCuentasddl) { 
                     if(cta.isEstado()) {
                         if(cta.getNroCuenta() != currentCuenta){
             %>

@@ -167,7 +167,7 @@ public class ServletUsuario extends HttpServlet {
 
 		if (usuNeg.IniciarSesion(usuario)) {
 			request.getSession().setAttribute("Usuario", usuario);
-			request.getSession().setAttribute("cuentas", lCta);
+			request.getSession().setAttribute("cuentasDDL", lCta);
 			cuentasUsuario(request, usuario);
 			return true;
 		} else

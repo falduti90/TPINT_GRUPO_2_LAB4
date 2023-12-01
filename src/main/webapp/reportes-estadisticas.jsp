@@ -295,18 +295,15 @@ var graficoMovimientosPorTipo = new Chart(ctxMovimientos, {
 </script>
 
 	<script>
-    var saldoPromedio = {}; // Declarar la variable aquí una vez
-
-    <%Map<String, BigDecimal> saldoPromedioMap = (Map<String, BigDecimal>) request
-					.getAttribute("saldoPromedioxTipoCuenta");
-			if (saldoPromedioMap != null) {
-				for (Map.Entry<String, BigDecimal> entry : saldoPromedioMap.entrySet()) {%>
-            saldoPromedio['<%=entry.getKey()%>
-		'] =
-	<%=entry.getValue()%>
-		;
-	<%}
-			}%>
+	
+	
+	 var saldoPromedio = {};
+	    <% Map<String, BigDecimal> saldoPromedioMap = (Map<String, BigDecimal>) request.getAttribute("saldoPromedioxTipoCuenta");
+	        if (saldoPromedioMap != null) {
+	            for (Map.Entry<String, BigDecimal> entry : saldoPromedioMap.entrySet()) { %>
+	                saldoPromedio['<%=entry.getKey()%>'] = <%=entry.getValue()%>;
+	    <%      }
+	        } %>
 		// Obtener el canvas donde se renderizará el gráfico de barras
 		var ctxSaldo = document.getElementById('graficoSaldoPromedio')
 				.getContext('2d');
