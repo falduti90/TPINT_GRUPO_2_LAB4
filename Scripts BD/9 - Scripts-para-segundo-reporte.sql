@@ -38,3 +38,5 @@ FROM Prestamos P
 LEFT JOIN Cuotas_x_prestamo CP ON P.codPrestamo = CP.codPrestamo
 WHERE CP.fecha_venc < CURRENT_DATE AND CP.estado = 1
 GROUP BY P.codPrestamo;
+
+select * from movimientos
