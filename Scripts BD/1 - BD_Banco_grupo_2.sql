@@ -2799,7 +2799,7 @@ INSERT INTO Localidades(codPais,codProvincia,localidad) VALUES (12,  25, 'Yerba 
 INSERT INTO Localidades(codPais,codProvincia,localidad) VALUES (12,  7, 'Los Cerrillos');
 
 
-INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('00000000','Admin','x','00-00000000-0','M',1,'1975-05-01', 'x',19,1,12,'admin@gmail.com');
+INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('40192839','Pepe','argento','00-40192839-0','M',1,'1975-05-01', 'Florida 545',19,1,12,'pepeA@gmail.com');
 INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('12345678','Manu','Casulo','27-12345678-1','F',1,'1975-05-01', 'Florida 123',19,1,12,'manucasulo@gmail.com');
 INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('91011223','Facundo','Amarilla','23-91011223-7','M',1,'1980-07-23', 'Mitre 2587',5,1,12,'facuamarilla@gmail.com');
 INSERT INTO Clientes (dni,nombre,apellido,CUIL,sexo,nacionalidad,fecha_nac,direccion,codLocalidad, codProvincia, codPais,correo_electronico) VALUES ('14151617','Mati','Silva Islas','27-14151617-3','F',1,'1990-11-08', 'Rivera 3358',6,1,12,'matiislas@gmail.com');
