@@ -58,11 +58,11 @@
 		int nroCuenta = 0;
 		
 		/*Verifico si estoy recibiendo todos los parametros que necesito*/
-		if (request.getAttribute("Prestamos")!=null &&request.getAttribute("Cuotas")!=null && request.getSession().getAttribute("cuentas") != null && request.getAttribute("NroCuenta")!=null){
+		if (request.getAttribute("Prestamos")!=null &&request.getAttribute("Cuotas")!=null && request.getSession().getAttribute("cuentasDDL") != null && request.getAttribute("NroCuenta")!=null){
 			prestamoList = (ArrayList<Prestamo>) request.getAttribute("Prestamos");
 			cuotasList = (ArrayList<Cuota>) request.getAttribute("Cuotas");
 			nroCuenta = (int) request.getAttribute("NroCuenta");
-			cuentasList = (ArrayList<Cuenta>) request.getSession().getAttribute("cuentas");
+			cuentasList = (ArrayList<Cuenta>) request.getSession().getAttribute("cuentasDDL");
 			for(int i=0;i<cuentasList.size();i++) { 
 	 			if(cuentasList.get(i).isEstado()){
 	 				if (cuentasList.get(i).getNroCuenta()==nroCuenta){

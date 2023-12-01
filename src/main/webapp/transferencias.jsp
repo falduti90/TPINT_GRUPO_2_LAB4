@@ -27,8 +27,8 @@
 	ArrayList<Cuenta> cuentasList = null;
 	Usuario usuario = new Usuario();
 	
-	if(session.getAttribute("Usuario")!=null && request.getParameter("getCuenta")!=null && request.getSession().getAttribute("cuentas") != null){	
-		cuentasList = (ArrayList<Cuenta>) request.getSession().getAttribute("cuentas");
+	if(session.getAttribute("Usuario")!=null && request.getParameter("getCuenta")!=null && request.getSession().getAttribute("cuentasDDL") != null){	
+		cuentasList = (ArrayList<Cuenta>) request.getSession().getAttribute("cuentasDDL");
 		usuario = (Usuario)session.getAttribute("Usuario");	
 		currentCuenta = Integer.parseInt(request.getParameter("getCuenta"));
 		nroCuenta = Integer.parseInt(request.getParameter("getCuenta"));	
