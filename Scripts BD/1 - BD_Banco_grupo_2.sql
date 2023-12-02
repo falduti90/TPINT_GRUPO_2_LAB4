@@ -2839,7 +2839,7 @@ SELECT
     1 AS tipoCuenta,
     ROUND(CAST(SUBSTRING(CONCAT(0290010058, SUBSTRING(c.dni, 6, 8)), 9, 5) AS DECIMAL), 2) AS saldo
 FROM clientes c
-WHERE c.dni <> 00000000  -- Evita clientes con dni igual a 00000000 (administradores)
+WHERE c.dni <> 40192839  -- Evita clientes con dni igual a 40192839 (administradores)
 UNION ALL
 SELECT
     LPAD(CONCAT(0290010486, SUBSTRING(c.dni, 5, 3)), 23, '0') AS CBU,
@@ -2848,7 +2848,7 @@ SELECT
     1 AS tipoCuenta,
     ROUND(CAST(SUBSTRING(CONCAT(0290010486, SUBSTRING(c.dni, 6, 3)), 9, 5) * 4.6 AS DECIMAL), 2) AS saldo
 FROM clientes c
-WHERE c.dni <> 00000000  -- Evita clientes con dni igual a 00000000 (administradores)
+WHERE c.dni <> 40192839  -- Evita clientes con dni igual a 40192839 (administradores)
 UNION ALL
 SELECT
     DATE_ADD(c.fecha_creacion, INTERVAL FLOOR(RAND() * (365) + 1) DAY) AS fecha,
