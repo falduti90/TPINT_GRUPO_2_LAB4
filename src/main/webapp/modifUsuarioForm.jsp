@@ -104,23 +104,14 @@
       	<label for="floatingInput">DNI</label>
       </div>
       <div class="form-floating">
-        <select id="tipo" name="tipo" required required class="form-control mb-2">
-         <%
-		 	if(listaTipos!=null)
-		 		
-				 if(isCliente == true) { %>  
-				<option value="<%= us.getTipoUsuario().getCodTipo() %>" selected> <%= us.getTipoUsuario().getTipoUsuario() %></option>
-				<%	} else {	
-		 		
-				for(TipoUsuario t:listaTipos){
-					if(t.getCodTipo() != us.getTipoUsuario().getCodTipo()) {
-			%>
-				<option value="<%= t.getCodTipo() %>" > <%= t.getTipoUsuario() %></option>
-			<%	} else { %>
-				<option value="<%= t.getCodTipo() %>" selected> <%= t.getTipoUsuario() %></option>
-			<%	} } }%>
-        </select>
-        <label for="floatingInput">Tipo Usuario</label>
+      <%
+		 	if(listaTipos!=null)		 		
+				 if(isCliente == true) { %> 
+      <input id="tipo" type="text" value="Cliente" disabled class="form-control mb-2"> <input type="hidden" name="txtTipo" value="<%= 2 %>" >
+      <%	} else { %>
+      
+      <input id="tipo" type="text" value="<%= listaTipos.get(1).getTipoUsuario() %>" disabled class="form-control mb-2"> <input type="hidden" name="txtTipo" value="<%= listaTipos.get(1).getCodTipo() %>"> <%} %>
+      <label for="floatingInput">Tipo Usuario</label>
       </div>
       <div class="form-floating">
         <input disabled required class="form-control mb-2" type="text" name="txtUsuario" value="<%= us.getUsuario() %>"> <input id="usuario" type="hidden" name="txtUsuario" value="<%= us.getUsuario() %>">

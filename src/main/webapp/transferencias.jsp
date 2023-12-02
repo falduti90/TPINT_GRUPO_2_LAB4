@@ -6,6 +6,8 @@
 <%@page session="true"%>
 <%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList" %>
+<%@page import="java.math.BigDecimal"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,6 +26,8 @@
 	Cuenta cuenta = null;
 	int currentCuenta = 0;
 	int nroCuenta = 0;
+	BigDecimal currentSaldo = null;
+
 	ArrayList<Cuenta> cuentasList = null;
 	Usuario usuario = new Usuario();
 	
@@ -32,6 +36,8 @@
 		usuario = (Usuario)session.getAttribute("Usuario");	
 		currentCuenta = Integer.parseInt(request.getParameter("getCuenta"));
 		nroCuenta = Integer.parseInt(request.getParameter("getCuenta"));	
+		currentSaldo = new BigDecimal(request.getParameter("getSaldo"));
+
 		for(int i=0;i<cuentasList.size();i++) { 
  			if(cuentasList.get(i).isEstado()){
  				if (cuentasList.get(i).getNroCuenta()==nroCuenta){
@@ -88,7 +94,7 @@
 
         <div class="mb-3">
             <label for="txtImporteDisponible" class="col-form-label">Importe disponible:</label>
-            <input id="txtImporteDisponible" type="text" value="$<%= String.format("%.2f",cuenta.getSaldo())%>" class="form-control" name="txtImporteDisponible" readonly>
+            <input id="txtImporteDisponible" type="text" value="$<%= String.format("%.2f",currentSaldo)%>" class="form-control" name="txtImporteDisponible" readonly>
         </div>
 
         <div class="row">

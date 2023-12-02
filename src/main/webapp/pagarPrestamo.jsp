@@ -4,6 +4,7 @@
 <%@page import="entidad.Cuenta" %>
 <%@page import="entidad.Cuota" %>
 <%@page import="java.util.ArrayList" %>
+<%@page import="java.math.BigDecimal"%>
 <%-- <%@page import="jakarta.servlet.RequestDispatcher" %> --%>
 <!DOCTYPE html>
 <html>
@@ -56,13 +57,14 @@
 		ArrayList<Cuota> cuotasList = null;
 		int pos= 0;
 		int nroCuenta = 0;
-		
+		BigDecimal currentSaldo = null;
 		/*Verifico si estoy recibiendo todos los parametros que necesito*/
 		if (request.getAttribute("Prestamos")!=null &&request.getAttribute("Cuotas")!=null && request.getSession().getAttribute("cuentasDDL") != null && request.getAttribute("NroCuenta")!=null){
 			prestamoList = (ArrayList<Prestamo>) request.getAttribute("Prestamos");
 			cuotasList = (ArrayList<Cuota>) request.getAttribute("Cuotas");
 			nroCuenta = (int) request.getAttribute("NroCuenta");
 			cuentasList = (ArrayList<Cuenta>) request.getSession().getAttribute("cuentasDDL");
+			currentSaldo = (BigDecimal) request.getAttribute("Saldo");
 			for(int i=0;i<cuentasList.size();i++) { 
 	 			if(cuentasList.get(i).isEstado()){
 	 				if (cuentasList.get(i).getNroCuenta()==nroCuenta){
@@ -101,7 +103,7 @@
 		<%	} %>
 		</div>
 		<div class="Cuenta-Detalle">
-			<label id="">$<%= String.format("%.2f", cuentasList.get(pos).getSaldo())%></label>
+			<label id="">$<%= String.format("%.2f",currentSaldo)%></label>
 			<label id="lblDetalleCuenta"><%=cuentasList.get(pos).getTipoCuenta().getTipoCuenta()%> - Cuenta Nro: <%=cuentasList.get(pos).getNroCuenta()%></label>
 		</div>
 	</section>
@@ -163,6 +165,8 @@
 		
 		else if(confirm("Presione aceptar para confirmar el pago de la cuota.."))
 			document.forms[0].submit();
+		
+		
 		
 		else
 			alert("Pago cancelado")

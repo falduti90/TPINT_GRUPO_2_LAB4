@@ -287,7 +287,7 @@ public class ServletUsuario extends HttpServlet {
 
 		String contrasenia = request.getParameter("txtContrasenia");
 		String contrasenia2 = request.getParameter("txtContrasenia2");
-		int tipoUsuario = Integer.parseInt(request.getParameter("tipo"));
+		int tipoUsuario = Integer.parseInt(request.getParameter("txtTipo"));
 		String usuario = request.getParameter("txtUsuario");
 		String dni = request.getParameter("txtDNI");
 

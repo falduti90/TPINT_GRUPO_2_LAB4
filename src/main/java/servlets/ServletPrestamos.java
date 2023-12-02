@@ -1,6 +1,6 @@
 package servlets;
 import java.io.IOException;
-
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.ListIterator;
 
@@ -70,6 +70,8 @@ public class ServletPrestamos extends HttpServlet {
 		ArrayList<Prestamo> prestamosActivos  = new ArrayList<Prestamo>();
 		ListIterator<Prestamo> it = prestamosList.listIterator();
 		
+		BigDecimal csaldo = new BigDecimal(request.getParameter("getSaldo"));
+		
 		/*Levanto solo los prestamos activos*/
 		while (it.hasNext()) {
 			Prestamo p = it.next();
@@ -83,6 +85,7 @@ public class ServletPrestamos extends HttpServlet {
 			request.setAttribute("Prestamos", prestamosActivos);
 			request.setAttribute("NroCuenta", nroCuenta);	
 			request.setAttribute("Cuotas", cuotaList);	
+			request.setAttribute("Saldo", csaldo);
 		}
 		else {
 			request.setAttribute("SinPrestamos", true);

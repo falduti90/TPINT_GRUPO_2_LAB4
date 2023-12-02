@@ -172,7 +172,7 @@
 		        </a>
 		    </div>
 		    <div class="btn btn-info  mb-2">
-		        <a href="/TPINT_GRUPO_2_LAB4/transferencias.jsp?getCuenta=<%=currentCuenta%>" class="text-dark fw-bold fs-3">Transferencias</a>
+		        <a href="/TPINT_GRUPO_2_LAB4/transferencias.jsp?getCuenta=<%=currentCuenta%>&getSaldo=<%=currentSaldo%>" class="text-dark fw-bold fs-3">Transferencias</a>
 		    </div>
 		    <div class="btn btn-info mb-2">
     			<a href="/TPINT_GRUPO_2_LAB4/solicitarPrestamo.jsp?getCuenta=<%=currentCuenta%>" class="text-dark fw-bold fs-3">
@@ -181,7 +181,7 @@
     			</a>
 			</div>
 		    <div class="btn btn-info mb-2">
-		        <a href="/TPINT_GRUPO_2_LAB4/ServletPrestamos?pagoPrestamos=<%=currentCuenta%>" class="text-dark fw-bold fs-3">Pagar prestamos</a>
+		        <a href="/TPINT_GRUPO_2_LAB4/ServletPrestamos?pagoPrestamos=<%=currentCuenta%>&getSaldo=<%=currentSaldo%>" class="text-dark fw-bold fs-3">Pagar prestamos</a>
 		    </div>
 			<a href="inicioClientes.jsp" class="btn btn-secondary text-center fw-bold"> <span class="fa fa-arrow-left"></span> Volver</a>
 		</div>
