@@ -73,7 +73,7 @@ jsp
 		</div>
 	</div>
 	</nav> </header>
-	<div>
+	<div class="container">
 		<div class="row mt-4">
 			<div class="col-lg-6">
 				<div class="card shadow mb-4 mx-4">

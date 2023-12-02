@@ -503,12 +503,15 @@ dl
   border-radius: 3px;
   text-decoration: none;
   color: #333;
+  margin-bottom: 55px;
+  
 }
 
 .dataTables_paginate a.current {
   background-color: #007bff;
   color: #fff;
   border: 1px solid #007bff;
+  
 }
 
 #miTabla_info {
