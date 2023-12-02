@@ -79,7 +79,7 @@ public class ServletPrestamosxAutorizar extends HttpServlet {
 		solicitado = pdxaNeg.Update(pxa);
 
 		if(solicitado)
-			resString="Solicitud agregada Satisfactoriamente";
+			resString="Solicitud Procesada Satisfactoriamente";
 		else
 			resString="Solicitud no pudo ser agregada Satisfactoriamente";
 		}
@@ -210,7 +210,7 @@ public class ServletPrestamosxAutorizar extends HttpServlet {
 		solicitado = pdxaNeg.Insert(pxa);
 
 		if(solicitado)
-			resString="Solicitud agregada Satisfactoriamente";
+			resString="Solicitud procesada Satisfactoriamente";
 		else
 			resString="Solicitud no pudo ser agregada Satisfactoriamente";
 		}
